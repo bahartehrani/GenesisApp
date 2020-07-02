@@ -13,6 +13,7 @@
 		0162ECD524AE6F330060BBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0162ECD424AE6F330060BBA9 /* Assets.xcassets */; };
 		0162ECD824AE6F330060BBA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0162ECD724AE6F330060BBA9 /* Preview Assets.xcassets */; };
 		0162ECDB24AE6F330060BBA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0162ECD924AE6F330060BBA9 /* LaunchScreen.storyboard */; };
+		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		0162ECD724AE6F330060BBA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0162ECDA24AE6F330060BBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0162ECDC24AE6F330060BBA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.release.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.release.xcconfig"; sourceTree = "<group>"; };
+		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.debug.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				0162ECCD24AE6F330060BBA9 /* GenesisApp */,
 				0162ECCC24AE6F330060BBA9 /* Products */,
+				27FA1F007954CDDDEE31F073 /* Pods */,
+				DDDD4A4E0DB7744612DE1859 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +82,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		27FA1F007954CDDDEE31F073 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */,
+				36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DDDD4A4E0DB7744612DE1859 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0162ECDF24AE6F330060BBA9 /* Build configuration list for PBXNativeTarget "GenesisApp" */;
 			buildPhases = (
+				8296410EF952F8738F60349F /* [CP] Check Pods Manifest.lock */,
 				0162ECC724AE6F330060BBA9 /* Sources */,
 				0162ECC824AE6F330060BBA9 /* Frameworks */,
 				0162ECC924AE6F330060BBA9 /* Resources */,
+				23D2A3C3F8BE41B9943C6928 /* [CP] Embed Pods Frameworks */,
+				3464B20FFA02D3A6DA1C9458 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,6 +168,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23D2A3C3F8BE41B9943C6928 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenesisApp/Pods-GenesisApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenesisApp/Pods-GenesisApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GenesisApp/Pods-GenesisApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3464B20FFA02D3A6DA1C9458 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenesisApp/Pods-GenesisApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenesisApp/Pods-GenesisApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GenesisApp/Pods-GenesisApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8296410EF952F8738F60349F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GenesisApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0162ECC724AE6F330060BBA9 /* Sources */ = {
@@ -282,6 +369,7 @@
 		};
 		0162ECE024AE6F330060BBA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,6 +389,7 @@
 		};
 		0162ECE124AE6F330060BBA9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
