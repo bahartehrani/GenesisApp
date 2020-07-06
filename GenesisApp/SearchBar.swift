@@ -51,7 +51,7 @@ struct SearchBar: View {
                 }
  
             
-        }.padding(.vertical,24)
+        }.padding(.vertical,20)
     }
 }
 

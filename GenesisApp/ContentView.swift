@@ -38,19 +38,48 @@ struct ContentView: View {
                 // Search Bar
                 SearchBar(text: $searchQuery)
                 
-                
-                
                 // Recently Studied
+                HStack {
+                    Text("Recently Studied")
+                        .font(Font.custom("Lato-Bold", size: 24))
+                        .padding(18)
+                    
+                    Spacer()
+                }
+                
+                //ScrollView
                 
                 // Browse by Topic
+                HStack {
+                    Text("Browse By Topic")
+                        .font(Font.custom("Lato-Bold", size: 24))
+                        .padding(18)
+                    
+                    Spacer()
+                }
+                
+                // ScrollView
+                
+                Spacer()
                 
             }
-            .navigationBarItems(trailing:
-                Button(action: {
-                    //
+            .navigationBarItems(
+                leading: Button(action: {
+                    // Actions
+                }, label: {
+                    Image(systemName: "questionmark.circle")
+                        .font(.system(size: 24))
+                        .foregroundColor(.black)
+                        .padding()
+                    
+                }),
+                trailing: Button(action: {
+                // Actions
                 }, label: {
                     Image("TopProfileIcon")
+                        .foregroundColor(.black)
                         .padding()
+                    
                 })
             )
             
