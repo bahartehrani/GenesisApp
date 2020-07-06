@@ -1,0 +1,62 @@
+//
+//  SearchBar.swift
+//  GenesisApp
+//
+//  Created by Productivity on 7/6/20.
+//  Copyright © 2020 Genesis. All rights reserved.
+//
+
+import SwiftUI
+
+struct SearchBar: View {
+    @Binding var text: String
+ 
+    @State private var isEditing = false
+ 
+    var body: some View {
+        HStack {
+ 
+            TextField("Search ...", text: $text)
+                .font(Font.custom("Lato-Thin", size: 12))
+                .padding(7)
+                .background(Color(.systemGray6))
+                
+                .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.black, lineWidth: 1))
+                .overlay(
+                    HStack {
+                        
+                        if isEditing {
+                            Button(action: {
+                                self.text = ""
+                            }) {
+                                Image(systemName: "multiply.circle.fill")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 8)
+                            }
+                        } else {
+                                Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
+                                .padding(.trailing, 12)
+                        }
+                    }
+                )
+                
+                
+                
+                .padding(.horizontal, 48)
+                
+                .onTapGesture {
+                    self.isEditing = true
+                }
+ 
+            
+        }.padding(.vertical,24)
+    }
+}
+
+struct SearchBar_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchBar(text: .constant(""))
+    }
+}
