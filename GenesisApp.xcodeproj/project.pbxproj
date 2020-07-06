@@ -24,6 +24,8 @@
 		0162ECD524AE6F330060BBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0162ECD424AE6F330060BBA9 /* Assets.xcassets */; };
 		0162ECD824AE6F330060BBA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0162ECD724AE6F330060BBA9 /* Preview Assets.xcassets */; };
 		0162ECDB24AE6F330060BBA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0162ECD924AE6F330060BBA9 /* LaunchScreen.storyboard */; };
+		0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */; };
+		0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */; };
 		0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0182253B24B3AF1D003EB4BC /* SearchBar.swift */; };
 		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		0162ECD724AE6F330060BBA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0162ECDA24AE6F330060BBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0162ECDC24AE6F330060BBA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyStudiedCardView.swift; sourceTree = "<group>"; };
+		0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopicCardView.swift; sourceTree = "<group>"; };
 		0182253B24B3AF1D003EB4BC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.release.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.release.xcconfig"; sourceTree = "<group>"; };
 		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,8 @@
 				0162ECCE24AE6F330060BBA9 /* AppDelegate.swift */,
 				0162ECD024AE6F330060BBA9 /* SceneDelegate.swift */,
 				0162ECD224AE6F330060BBA9 /* ContentView.swift */,
+				0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */,
+				0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */,
 				0182253B24B3AF1D003EB4BC /* SearchBar.swift */,
 				0162ECD424AE6F330060BBA9 /* Assets.xcassets */,
 				0162ECD924AE6F330060BBA9 /* LaunchScreen.storyboard */,
@@ -289,6 +295,8 @@
 			files = (
 				0162ECCF24AE6F330060BBA9 /* AppDelegate.swift in Sources */,
 				0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */,
+				0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */,
+				0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */,
 				0162ECD124AE6F330060BBA9 /* SceneDelegate.swift in Sources */,
 				0162ECD324AE6F330060BBA9 /* ContentView.swift in Sources */,
 			);

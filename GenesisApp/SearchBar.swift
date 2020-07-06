@@ -31,6 +31,7 @@ struct SearchBar: View {
                             }) {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(.gray)
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                                     .padding(.trailing, 8)
                             }
                         } else {
@@ -51,7 +52,9 @@ struct SearchBar: View {
                 }
  
             
-        }.padding(.vertical,20)
+        }
+        .padding(.top,20)
+        .padding(.bottom,16)
     }
 }
 
