@@ -9,8 +9,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showProfile = false
+    
+
     var body: some View {
         Text("Hello, World!")
+        
+        // .font(Font.custom("Lato-Black", size: 20))
+        
+        
+        // Profile Icon, possible a ? icon to learn more,
+        // like an "Our Mission" page
+        
+        // Welcome Sign
+        
+        // Search Bar
+        
+        // Recently Studied
+        
+        // Browse by Topic
+        
+        
     }
 }
 
