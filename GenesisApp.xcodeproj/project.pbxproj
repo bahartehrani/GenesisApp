@@ -27,6 +27,7 @@
 		0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */; };
 		0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */; };
 		0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0182253B24B3AF1D003EB4BC /* SearchBar.swift */; };
+		01E9088924BCF42A0029FC0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E9088824BCF4290029FC0C /* GoogleService-Info.plist */; };
 		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyStudiedCardView.swift; sourceTree = "<group>"; };
 		0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopicCardView.swift; sourceTree = "<group>"; };
 		0182253B24B3AF1D003EB4BC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		01E9088824BCF4290029FC0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.release.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.release.xcconfig"; sourceTree = "<group>"; };
 		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.debug.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				0162ECD424AE6F330060BBA9 /* Assets.xcassets */,
 				0162ECD924AE6F330060BBA9 /* LaunchScreen.storyboard */,
 				0162ECDC24AE6F330060BBA9 /* Info.plist */,
+				01E9088824BCF4290029FC0C /* GoogleService-Info.plist */,
 				0132588D24B3AB98008A1881 /* Lato */,
 				0162ECD624AE6F330060BBA9 /* Preview Content */,
 			);
@@ -212,6 +215,7 @@
 			files = (
 				0132589C24B3AB98008A1881 /* Lato-Bold.ttf in Resources */,
 				013258A324B3AB98008A1881 /* Lato-ThinItalic.ttf in Resources */,
+				01E9088924BCF42A0029FC0C /* GoogleService-Info.plist in Resources */,
 				013258A224B3AB98008A1881 /* Lato-Light.ttf in Resources */,
 				013258A024B3AB98008A1881 /* OFL.txt in Resources */,
 				0162ECDB24AE6F330060BBA9 /* LaunchScreen.storyboard in Resources */,
