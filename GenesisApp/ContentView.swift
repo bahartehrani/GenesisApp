@@ -29,10 +29,6 @@ struct ContentView: View {
                     
                     // .font(Font.custom("Lato-Black", size: 20))
                     
-                    
-                    // Profile Icon, possible a ? icon to learn more,
-                    // like an "Our Mission" page
-                    
                     VStack {
                         
                         // Welcome Sign
@@ -51,27 +47,31 @@ struct ContentView: View {
                     
                     
                     VStack {
-                        // Recently Studied
-                        HStack {
-                            Text("Recently Studied")
-                                .font(Font.custom("Lato-Bold", size: 24))
-                                .padding(.horizontal,16)
-                                .padding(.top,11)
-                            
-                            Spacer()
-                        }
+                        // Recently Studied - hide if user hasn't clicked on anything
+                        // if !recentContent.count == 0 then...
                         
-                        ScrollView (.horizontal) {
-                            
+                        VStack {
                             HStack {
-                                ForEach(self.fillerRS.map{$0.key}.indices) { index in
-                                    RecentlyStudiedCardView(mainTopic: (self.fillerRS.map{$0.key})[index], subTopic: (self.fillerRS.map{$0.value})[index])
-                                        .padding(.horizontal,6)
-                                }
+                                Text("Recently Studied")
+                                    .font(Font.custom("Lato-Bold", size: 24))
+                                    .padding(.horizontal,16)
+                                    .padding(.top,11)
+                                
+                                Spacer()
                             }
-                                .padding(.horizontal)
-                                .padding(.vertical,11)
                             
+                            ScrollView (.horizontal) {
+                                
+                                HStack {
+                                    ForEach(self.fillerRS.map{$0.key}.indices) { index in
+                                        RecentlyStudiedCardView(mainTopic: (self.fillerRS.map{$0.key})[index], subTopic: (self.fillerRS.map{$0.value})[index])
+                                            .padding(.horizontal,6)
+                                    }
+                                }
+                                    .padding(.horizontal)
+                                    .padding(.vertical,11)
+                                
+                            }
                         }
                         
                         

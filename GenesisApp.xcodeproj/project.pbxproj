@@ -28,6 +28,16 @@
 		0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */; };
 		0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0182253B24B3AF1D003EB4BC /* SearchBar.swift */; };
 		01E9088924BCF42A0029FC0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E9088824BCF4290029FC0C /* GoogleService-Info.plist */; };
+		01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */; };
+		01E9088F24BCF75A0029FC0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9088E24BCF75A0029FC0C /* User.swift */; };
+		01E9089124BCF8910029FC0C /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089024BCF8910029FC0C /* SessionStore.swift */; };
+		01E9089324BCFB150029FC0C /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089224BCFB150029FC0C /* MotherView.swift */; };
+		01E9089724BCFC180029FC0C /* OnboardSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089624BCFC180029FC0C /* OnboardSubview.swift */; };
+		01E9089924BCFC5E0029FC0C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089824BCFC5E0029FC0C /* OnboardingView.swift */; };
+		01E9089B24BCFCAB0029FC0C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089A24BCFCAB0029FC0C /* PageViewController.swift */; };
+		01E9089D24BCFF130029FC0C /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089C24BCFF130029FC0C /* PageControl.swift */; };
+		01E9089F24BD044D0029FC0C /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089E24BD044D0029FC0C /* LaunchScreen.swift */; };
+		01E908A224BD053B0029FC0C /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E908A124BD053B0029FC0C /* SetupView.swift */; };
 		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +65,16 @@
 		0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopicCardView.swift; sourceTree = "<group>"; };
 		0182253B24B3AF1D003EB4BC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		01E9088824BCF4290029FC0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTypeExtensions.swift; sourceTree = "<group>"; };
+		01E9088E24BCF75A0029FC0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		01E9089024BCF8910029FC0C /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		01E9089224BCFB150029FC0C /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		01E9089624BCFC180029FC0C /* OnboardSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSubview.swift; sourceTree = "<group>"; };
+		01E9089824BCFC5E0029FC0C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		01E9089A24BCFCAB0029FC0C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		01E9089C24BCFF130029FC0C /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		01E9089E24BD044D0029FC0C /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		01E908A124BD053B0029FC0C /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.release.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.release.xcconfig"; sourceTree = "<group>"; };
 		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.debug.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,9 +131,15 @@
 		0162ECCD24AE6F330060BBA9 /* GenesisApp */ = {
 			isa = PBXGroup;
 			children = (
+				01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */,
 				0162ECCE24AE6F330060BBA9 /* AppDelegate.swift */,
 				0162ECD024AE6F330060BBA9 /* SceneDelegate.swift */,
+				01E9088E24BCF75A0029FC0C /* User.swift */,
+				01E9089024BCF8910029FC0C /* SessionStore.swift */,
+				01E9089224BCFB150029FC0C /* MotherView.swift */,
 				0162ECD224AE6F330060BBA9 /* ContentView.swift */,
+				01E9089524BCFBF80029FC0C /* Onboarding */,
+				01E908A024BD05250029FC0C /* Setup */,
 				0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */,
 				0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */,
 				0182253B24B3AF1D003EB4BC /* SearchBar.swift */,
@@ -133,6 +159,26 @@
 				0162ECD724AE6F330060BBA9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		01E9089524BCFBF80029FC0C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				01E9089E24BD044D0029FC0C /* LaunchScreen.swift */,
+				01E9089824BCFC5E0029FC0C /* OnboardingView.swift */,
+				01E9089C24BCFF130029FC0C /* PageControl.swift */,
+				01E9089A24BCFCAB0029FC0C /* PageViewController.swift */,
+				01E9089624BCFC180029FC0C /* OnboardSubview.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		01E908A024BD05250029FC0C /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				01E908A124BD053B0029FC0C /* SetupView.swift */,
+			);
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		27FA1F007954CDDDEE31F073 /* Pods */ = {
@@ -299,10 +345,20 @@
 			files = (
 				0162ECCF24AE6F330060BBA9 /* AppDelegate.swift in Sources */,
 				0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */,
+				01E9089F24BD044D0029FC0C /* LaunchScreen.swift in Sources */,
+				01E9089724BCFC180029FC0C /* OnboardSubview.swift in Sources */,
 				0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */,
+				01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */,
+				01E908A224BD053B0029FC0C /* SetupView.swift in Sources */,
+				01E9088F24BCF75A0029FC0C /* User.swift in Sources */,
+				01E9089124BCF8910029FC0C /* SessionStore.swift in Sources */,
 				0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */,
+				01E9089D24BCFF130029FC0C /* PageControl.swift in Sources */,
 				0162ECD124AE6F330060BBA9 /* SceneDelegate.swift in Sources */,
+				01E9089924BCFC5E0029FC0C /* OnboardingView.swift in Sources */,
+				01E9089B24BCFCAB0029FC0C /* PageViewController.swift in Sources */,
 				0162ECD324AE6F330060BBA9 /* ContentView.swift in Sources */,
+				01E9089324BCFB150029FC0C /* MotherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"GenesisApp/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GenesisApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -461,6 +518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"GenesisApp/Preview Content\"";
+				DEVELOPMENT_TEAM = N99A873QRC;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GenesisApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
