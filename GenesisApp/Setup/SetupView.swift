@@ -53,8 +53,9 @@ struct SetupView: View {
                 },
                     label: {
                         Text("Log In")
-                        .roundedButtonFilledStyle()
+                        .roundedButtonHollowStyle()
                 }).padding(.horizontal)
+                    .padding(.vertical,4)
                 
                 
             }.padding(.bottom,50)

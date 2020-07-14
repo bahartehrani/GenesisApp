@@ -38,6 +38,7 @@
 		01E9089D24BCFF130029FC0C /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089C24BCFF130029FC0C /* PageControl.swift */; };
 		01E9089F24BD044D0029FC0C /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9089E24BD044D0029FC0C /* LaunchScreen.swift */; };
 		01E908A224BD053B0029FC0C /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E908A124BD053B0029FC0C /* SetupView.swift */; };
+		01E908A424BD36E30029FC0C /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E908A324BD36E30029FC0C /* SignupView.swift */; };
 		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		01E9089C24BCFF130029FC0C /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		01E9089E24BD044D0029FC0C /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		01E908A124BD053B0029FC0C /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		01E908A324BD36E30029FC0C /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.release.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.release.xcconfig"; sourceTree = "<group>"; };
 		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.debug.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				01E908A124BD053B0029FC0C /* SetupView.swift */,
+				01E908A324BD36E30029FC0C /* SignupView.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				01E9089F24BD044D0029FC0C /* LaunchScreen.swift in Sources */,
 				01E9089724BCFC180029FC0C /* OnboardSubview.swift in Sources */,
 				0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */,
+				01E908A424BD36E30029FC0C /* SignupView.swift in Sources */,
 				01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */,
 				01E908A224BD053B0029FC0C /* SetupView.swift in Sources */,
 				01E9088F24BCF75A0029FC0C /* User.swift in Sources */,
