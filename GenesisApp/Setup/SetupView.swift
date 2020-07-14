@@ -11,56 +11,81 @@ import SwiftUI
 struct SetupView: View {
     
     @State var currentPageIndex = 0
+    @EnvironmentObject var userInfo : UserData
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var session: SessionStore
+    
+    @State var showSignUp = false
+    @State var showLogIn = false
     
     var body: some View {
         
-        VStack {
-            
+        NavigationView {
             VStack {
                 
-                Image("Landing Page Logo")
-                    .padding(.bottom,-50)
+                VStack {
+                    
+                    Image("Landing Page Logo")
+                        .padding(.bottom,-50)
+                    
+                    Text("Figure")
+                        .titleStyle()
+                        .foregroundColor(.primaryBlue)
+                    
+                    Text("Got that coin? Learn how to work it.")
+                        .font(Font.custom("Lato-Thin", size: 18))
+                        .multilineTextAlignment(.center)
+                    
+                    NavigationLink(destination: SignUpViewCollect(signUpStep: true)
+                    .environmentObject(userInfo)
+                    //.navigationBarTitle("")
+                        //.navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$showSignUp) {
+                        EmptyView()
+                    }.isDetailLink(false)
+                    
+                    NavigationLink(destination: LoginView(showLogIn: self.$showLogIn)
+                    .environmentObject(userInfo), isActive: self.$showLogIn) {
+                        EmptyView()
+                    }.isDetailLink(false)
+                    
+                    
+                }.padding(.top)
+                .offset(x:0,y:-40)
                 
-                Text("Figure")
-                    .titleStyle()
-                    .foregroundColor(.primaryBlue)
-                
-                Text("Got that coin? Learn how to work it.")
-                    .font(Font.custom("Lato-Thin", size: 18))
-                    .multilineTextAlignment(.center)
-                
-                
-            }.padding(.top)
-            
-            Spacer()
-            
-            
-            VStack {
-                
-                Button(
-                    action: {
-                        //
-                },
-                    label: {
-                        Text("Sign Up")
-                        .roundedButtonFilledStyle()
-                    }).padding()
-                
-                Button(
-                    action: {
-                        //
-                },
-                    label: {
-                        Text("Log In")
-                        .roundedButtonHollowStyle()
-                }).padding(.horizontal)
-                    .padding(.vertical,4)
+                Spacer()
                 
                 
-            }.padding(.bottom,50)
-            
-        }
+                VStack {
+                    
+                    Button(
+                        action: {
+                            self.showSignUp = true
+                    },
+                        label: {
+                            Text("Sign Up")
+                            .roundedButtonFilledStyle()
+                        }).padding()
+                    
+                    Button(
+                        action: {
+                            self.showLogIn = true
+                    },
+                        label: {
+                            Text("Log In")
+                            .roundedButtonHollowStyle()
+                    }).padding(.horizontal)
+                        .padding(.vertical,4)
+                    
+                    
+                }.padding(.bottom,50)
+                
+            }
+            .offset(x:0,y:-10)
+            .navigationBarTitle("") //this must be empty
+            .navigationBarBackButtonHidden(true)
+        }.navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

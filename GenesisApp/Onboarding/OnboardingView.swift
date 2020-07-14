@@ -22,6 +22,7 @@ struct OnboardingView: View {
     
     @State var currentPageIndex = 0
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var session: SessionStore
     
     var body: some View {
         
@@ -84,21 +85,6 @@ struct OnboardingView: View {
         }
     
     }
-}
-
-class ViewRouter: ObservableObject {
-    
-    init() {
-        if !UserDefaults.standard.bool(forKey: "didLaunchBefore") {
-            UserDefaults.standard.set(true, forKey: "didLaunchBefore")
-            currentPage = "onboardingView"
-        } else {
-            currentPage = "contentView"
-        }
-    }
-    
-    @Published var currentPage: String
-    
 }
 
 

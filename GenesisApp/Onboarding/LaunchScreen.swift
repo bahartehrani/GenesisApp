@@ -10,7 +10,20 @@ import SwiftUI
 
 struct LaunchScreen: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            Spacer()
+            Image("Splash Page Logo")
+            .padding(.bottom,-60)
+            
+            Text("Figure")
+                .titleStyle()
+                .foregroundColor(.primaryArtifact)
+            
+            Spacer()
+            Spacer()
+            Spacer()
+        }
     }
 }
 

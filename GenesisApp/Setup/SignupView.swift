@@ -7,17 +7,63 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SignupView: View {
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @Binding var signUpStep : Bool
     
     @State var typedPassword = ""
     @State var typedConfirmPassword = ""
     @State var agreed = false
     
+    @State var showAlert = false
+    @State var termsMessage = "Please agree to our terms and conditions to proceed."
+    @State var alertMessage = "Something went wrong. "
+    
+    var db = Firestore.firestore()
+    
+    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var session: SessionStore
     @EnvironmentObject var userInfo : UserData
     
+    func signingUp() {
+        if self.typedPassword != self.typedConfirmPassword {
+            self.showAlert = true
+            self.alertMessage = "Passwords do not match. "
+        }
+        if !self.agreed {
+            self.showAlert = true
+            self.alertMessage = self.termsMessage
+        }
+        else if self.agreed && self.typedPassword == self.typedConfirmPassword {
+            session.signUp(email: self.userInfo.email, password: typedPassword) { (result, error) in
+                if error != nil {
+                    self.showAlert = true
+                    self.alertMessage = (error?.localizedDescription ?? "Something went wrong. ")
+                    
+                } else {
+                    self.showAlert = false
+                    
+                    self.userInfo.uid = (result?.user.uid)!
+                    self.db.collection("users").document((result?.user.uid)!).setData([
+                        "uid" : self.userInfo.uid,
+                        "firstName" : self.userInfo.firstName,
+                        "lastName" : self.userInfo.lastName,
+                        "email" : self.userInfo.email
+                    ])
+
+                }
+            }
+            
+            //
+            
+        }
+    }
+    
     var body: some View {
-        NavigationView {
             VStack {
                 
                 
@@ -93,22 +139,26 @@ struct SignupView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    //
-                }, label: {
-                    Text("Next")
-                    .roundedSmallButtonHollowStyle()
-                }).padding(.vertical)
+                NavigationLink(destination: SignUpSurveyView()) {
+                    Button(action: {
+                        self.signingUp()
+                        withAnimation {
+                            self.signUpStep = false
+                        }
+                    }, label: {
+                        Text("Next")
+                        .roundedSmallButtonHollowStyle()
+                    }).padding(.vertical)
+                }
                 
                 
                 Spacer()
-                
                     
-            }
-                .offset(y: -30)
+            }.offset(y: -30)
+        .navigationBarBackButtonHidden(true)
             .navigationBarItems(
             leading: Button(action: {
-                // Action
+                self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image("Backward arrow small")
                     .font(.system(size: 24))
@@ -116,12 +166,12 @@ struct SignupView: View {
                     .padding()
                 
         }))
-        }
+            //.offset(y: -60)
     }
 }
 
 struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
-        SignupView().environmentObject(UserData())
+        SignupView(signUpStep: .constant(true)).environmentObject(UserData())
     }
 }

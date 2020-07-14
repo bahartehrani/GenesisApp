@@ -64,6 +64,19 @@ class UserData: ObservableObject, Identifiable {
         }
     }
     
+    @Published var ageRange : String? {
+        didSet {
+            UserDefaults.standard.set(ageRange, forKey: "ageRange")
+        }
+    }
+    
+    @Published var firstTime : Bool? {
+        didSet {
+            UserDefaults.standard.set(firstTime, forKey: "firstTime")
+        }
+    }
+    
+    
     init() {
         
         self.uid = UserDefaults.standard.object(forKey: "uid") as? String ?? ""
@@ -73,7 +86,25 @@ class UserData: ObservableObject, Identifiable {
         self.moneyWeek = UserDefaults.standard.object(forKey: "moneyWeek") as? Int ?? 0
         self.starredContent = UserDefaults.standard.object(forKey: "starredContent") as? String ?? ""
         self.recentContent = UserDefaults.standard.object(forKey: "recentContent") as? String ?? ""
+        
+        self.ageRange = UserDefaults.standard.object(forKey: "ageRange") as? String ?? "Unknown"
+        
+        self.firstTime = UserDefaults.standard.object(forKey: "firstTime") as? Bool ?? true
     }
     
 }
 
+class ViewRouter: ObservableObject {
+    
+    init() {
+        if !UserDefaults.standard.bool(forKey: "didLaunchBefore") {
+            UserDefaults.standard.set(true, forKey: "didLaunchBefore")
+            currentPage = "onboardingView"
+        } else {
+            currentPage = "contentView"
+        }
+    }
+    
+    @Published var currentPage: String
+    
+}

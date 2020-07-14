@@ -13,12 +13,22 @@ extension TextField {
     
     func signUpTFStyle() -> some View {
         self
-            .font(Font.custom("Lato-Thin", size: 17))
+            .font(Font.custom("Lato-Thin", size: 14))
             .foregroundColor(.primaryBlue)
             .padding(.horizontal)
-            .padding(.vertical,10)
+            .padding(.vertical,12)
             .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.black, lineWidth: 1))
             .padding(.horizontal, 25)
+    }
+    
+    func numEnter() -> some View {
+        self
+            .font(Font.custom("Lato-Thin", size: 14))
+            .foregroundColor(.primaryBlue)
+            .padding(.horizontal)
+            .padding(.vertical,12)
+            .frame(width: UIScreen.main.bounds.width / 3)
+            .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.black, lineWidth: 1))
     }
     
 }
@@ -27,7 +37,7 @@ extension SecureField {
     
     func signUpTFStyle() -> some View {
         self
-            .font(Font.custom("Lato-Thin", size: 17))
+            .font(Font.custom("Lato-Thin", size: 14))
             .foregroundColor(.primaryBlue)
             .padding(.horizontal)
             .padding(.vertical,10)
@@ -56,6 +66,18 @@ extension Text {
             .padding(.vertical, 16)
             .padding(.horizontal, 40)
             .frame(width: UIScreen.main.bounds.width / 1.5)
+            .background(Color.primaryBlue)
+            .multilineTextAlignment(.center)
+            .cornerRadius(24)
+    }
+    
+    func roundedSmallButtonFilledStyle(minWidth: CGFloat? = nil, maxWidth: CGFloat? = nil) -> some View {
+        self
+            .font(Font.custom("Lato-Bold", size: 20))
+            .foregroundColor(.white)
+            .padding(.vertical, 16)
+            .padding(.horizontal, 40)
+            .frame(width: UIScreen.main.bounds.width / 2)
             .background(Color.primaryBlue)
             .multilineTextAlignment(.center)
             .cornerRadius(24)
@@ -103,6 +125,7 @@ extension UIColor {
     static let secondaryOrange = UIColor(named: "secondaryOrange")!
     static let secondaryMint = UIColor(named: "secondaryMint")!
     static let secondaryText = UIColor(named: "secondaryText")!
+    static let primaryArtifact = UIColor(named: "primaryArtifact")!
 }
 
 extension Color {
@@ -115,4 +138,5 @@ extension Color {
     static let secondaryOrange = Color(UIColor.secondaryOrange)
     static let secondaryMint = Color(UIColor.secondaryMint)
     static let secondaryText = Color(UIColor.secondaryText)
+    static let primaryArtifact = Color(UIColor.primaryArtifact)
 }
