@@ -130,7 +130,9 @@ struct SignUpSurveyView: View {
                 
                 Button(action: {
                     self.finishSignUp()
-                    self.viewRouter.currentPage = "contentView"
+                    withAnimation {
+                        self.viewRouter.currentPage = "contentView"
+                    }
                 }, label: {
                     Text("Sign Up")
                     .roundedSmallButtonFilledStyle()
@@ -145,7 +147,9 @@ struct SignUpSurveyView: View {
                 .navigationBarItems(
                 trailing: Button(action: {
                     self.finishSignUp()
-                    self.viewRouter.currentPage = "contentView"
+                    withAnimation {
+                        self.viewRouter.currentPage = "contentView"
+                    }
                 }, label: {
                     Text("Skip")
                         .foregroundColor(.secondaryText)
