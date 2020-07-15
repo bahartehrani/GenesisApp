@@ -101,30 +101,25 @@ struct ContentView: View {
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Savings")
+                                MainTopicCardView(mainTopic: "Savings", toggle: .constant(false))
                                     .padding(.trailing,11)
                                 
-                                MainTopicCardView(mainTopic: "Spending")
-                                    .onTapGesture {
-                                        withAnimation {
-                                            self.toggleSpending = true
-                                        }
-                                    }
+                                MainTopicCardView(mainTopic: "Spending", toggle: self.$toggleSpending)
                                 
                             }.padding(.vertical,11)
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Managing")
+                                MainTopicCardView(mainTopic: "Managing", toggle: .constant(false))
                                     .padding(.trailing,11)
                                 
-                                MainTopicCardView(mainTopic: "Investing")
+                                MainTopicCardView(mainTopic: "Investing", toggle: .constant(false))
                                 
                             }.padding(.vertical,11)
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Student\nSpecifics")
+                                MainTopicCardView(mainTopic: "Student\nSpecifics", toggle: .constant(false))
                                     .padding(.horizontal,22)
                                 
                                 Spacer()

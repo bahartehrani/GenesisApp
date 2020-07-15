@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainTopicCardView: View {
     @State var mainTopic : String
-    
+    @Binding var toggle : Bool
     
     var body: some View {
         
@@ -32,12 +32,18 @@ struct MainTopicCardView: View {
                 RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1)
         
             )
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation {
+                    self.toggle = true
+                }
+            }
         
     }
 }
 
 struct MainTopicCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTopicCardView(mainTopic: "Savings")
+        MainTopicCardView(mainTopic: "Savings", toggle: .constant(false))
     }
 }
