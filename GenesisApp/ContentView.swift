@@ -51,7 +51,7 @@ struct ContentView: View {
                         
                         // Welcome Sign
                         Text("Welcome, " + "Daisy")
-                        .font(Font.custom("Lato-Bold", size: 28))
+                        .font(Font.custom("Lato-Bold", size: 30))
                         
                         Text("What would you like to learn today?")
                         .font(Font.custom("Lato-Thin", size: 18))
@@ -98,7 +98,7 @@ struct ContentView: View {
                         // Browse by Topic
                         HStack {
                             Text("Browse By Topic")
-                                .font(Font.custom("Lato-Bold", size: 24))
+                                .font(Font.custom("Lato-Bold", size: 26))
                                 .padding(.horizontal,18)
                                 .padding(.vertical,4)
                             
