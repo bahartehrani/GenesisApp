@@ -29,7 +29,7 @@ struct AccountView: View {
                     
                     Spacer()
                 }
-                .padding(.horizontal)
+                .padding(.horizontal,20)
                 .padding(.top,8)
                 
                 // Edit Account
@@ -47,7 +47,7 @@ struct AccountView: View {
                     Spacer()
                 }
                 .padding(.vertical,6)
-                .padding(.horizontal)
+                .padding(.horizontal,20)
                 
                 
                 // Weekly Tip
@@ -78,8 +78,6 @@ struct AccountView: View {
                 })
 
             )
-            
-            Text("\(bottomState.height)").offset(y:-400)
             
             // Artifacts?
             StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)

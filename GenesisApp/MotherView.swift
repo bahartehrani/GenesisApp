@@ -38,6 +38,7 @@ struct MotherView : View {
                 
             }
         }
+        //.transition(.slide)
         .environmentObject(userInfo)
         .onAppear(perform: getUser)
         .onAppear {
