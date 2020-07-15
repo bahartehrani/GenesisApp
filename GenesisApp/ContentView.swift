@@ -109,25 +109,25 @@ struct ContentView: View {
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Savings", toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Savings", primaryColor: Color.secondaryGold, topicImage: "Home - Savings Illustration", toggle: .constant(false))
                                     .padding(.trailing,11)
                                 
-                                MainTopicCardView(mainTopic: "Spending", toggle: self.$toggleSpending)
+                                MainTopicCardView(mainTopic: "Spending", primaryColor: Color.primaryGreen, topicImage: "Home - Spending Illustration", toggle: self.$toggleSpending)
                                 
                             }.padding(.vertical,11)
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Managing", toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Managing", primaryColor: Color.secondaryPink, topicImage: "Home - Management Illustration",toggle: .constant(false))
                                     .padding(.trailing,11)
                                 
-                                MainTopicCardView(mainTopic: "Investing", toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Investing",primaryColor: Color.secondaryMint, topicImage: "Home - Investing Illustration", toggle: .constant(false))
                                 
                             }.padding(.vertical,11)
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Student\nSpecifics", toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Student\nSpecifics", primaryColor: Color.secondaryOrange, topicImage: "Home - Student Spec Illustration", toggle: .constant(false))
                                     .padding(.horizontal,22)
                                 
                                 Spacer()
