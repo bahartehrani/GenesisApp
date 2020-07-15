@@ -31,6 +31,7 @@
 		019CEF9724BF6E1800A34230 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9624BF6E1800A34230 /* AccountView.swift */; };
 		019CEF9924BF6EB700A34230 /* WeeklyTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9824BF6EB700A34230 /* WeeklyTipView.swift */; };
 		019CEF9B24BF757700A34230 /* WeeklyBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9A24BF757700A34230 /* WeeklyBudgetView.swift */; };
+		019CEF9D24BF7C6300A34230 /* StarredArtifactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9C24BF7C6300A34230 /* StarredArtifactsView.swift */; };
 		01E9088924BCF42A0029FC0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E9088824BCF4290029FC0C /* GoogleService-Info.plist */; };
 		01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */; };
 		01E9088F24BCF75A0029FC0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9088E24BCF75A0029FC0C /* User.swift */; };
@@ -77,6 +78,7 @@
 		019CEF9624BF6E1800A34230 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		019CEF9824BF6EB700A34230 /* WeeklyTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTipView.swift; sourceTree = "<group>"; };
 		019CEF9A24BF757700A34230 /* WeeklyBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBudgetView.swift; sourceTree = "<group>"; };
+		019CEF9C24BF7C6300A34230 /* StarredArtifactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredArtifactsView.swift; sourceTree = "<group>"; };
 		01E9088824BCF4290029FC0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTypeExtensions.swift; sourceTree = "<group>"; };
 		01E9088E24BCF75A0029FC0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				019CEF9624BF6E1800A34230 /* AccountView.swift */,
+				019CEF9C24BF7C6300A34230 /* StarredArtifactsView.swift */,
 				019CEF9824BF6EB700A34230 /* WeeklyTipView.swift */,
 				019CEF9A24BF757700A34230 /* WeeklyBudgetView.swift */,
 			);
@@ -396,6 +399,7 @@
 			files = (
 				0162ECCF24AE6F330060BBA9 /* AppDelegate.swift in Sources */,
 				0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */,
+				019CEF9D24BF7C6300A34230 /* StarredArtifactsView.swift in Sources */,
 				01E9089F24BD044D0029FC0C /* LaunchScreen.swift in Sources */,
 				01E9089724BCFC180029FC0C /* OnboardSubview.swift in Sources */,
 				01E908A824BD491F0029FC0C /* SignUpSurveyView.swift in Sources */,
