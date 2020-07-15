@@ -152,3 +152,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+let screen = UIScreen.main.bounds
