@@ -25,7 +25,7 @@ struct LoginView: View {
     
     @Binding var showLogIn : Bool
     
-    func loggingIn() {
+    func loggingIn(completion:@escaping((String?) -> () )) {
         loading = true
         session.signIn(email: self.userInfo.email, password: typedPassword) { (result, error) in
         if error != nil {
@@ -52,6 +52,7 @@ struct LoginView: View {
                     withAnimation {
                         self.loading = false
                     }
+                    completion(self.userInfo.uid)
                 }
             }
                 
@@ -99,10 +100,10 @@ struct LoginView: View {
                         
 
                     Button(action: {
-                        self.loggingIn()
-                        withAnimation {
-                            self.viewRouter.currentPage = "contentView"
-                            self.showLogIn = false
+                        self.loggingIn { str in
+                            withAnimation {
+                                self.viewRouter.currentPage = "contentView"
+                            }
                         }
                     }, label: {
                         Text("Log In")
