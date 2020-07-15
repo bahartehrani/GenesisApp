@@ -16,7 +16,6 @@ struct AccountView: View {
     @Binding var toggle : Bool
     
     @State var showArtifacts = false
-    @State var clickArtifacts = false
     @State var bottomState = CGSize.zero
     
     var body: some View {
@@ -40,7 +39,7 @@ struct AccountView: View {
                     Button(action: {
                         //
                     }, label: {
-                        Text(self.showArtifacts || self.clickArtifacts ? " " : "Edit Account")
+                        Text(self.showArtifacts ? " " : "Edit Account")
                         .font(Font.custom("Lato-Regular", size: 18))
                         .foregroundColor(.secondaryText)
                     })
@@ -62,7 +61,9 @@ struct AccountView: View {
                 
                 Spacer()
                 
-            }.navigationBarItems(trailing:
+            }
+            .offset(x:0, y: -75)
+            .navigationBarItems(trailing:
 
                 Button(action: {
                     withAnimation {
@@ -78,31 +79,28 @@ struct AccountView: View {
 
             )
             
-            Text("\(bottomState.height)").offset(y: -350)
-            
             // Artifacts?
-            StarredArtifactsView(showArtifacts: self.$clickArtifacts)
-                .offset(x:0, y: screen.height - 132)
-                .offset(y: self.clickArtifacts ? -620 : bottomState.height)
+            StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)
+                .offset(x:0, y: screen.height - 205)
+                .offset(y: bottomState.height)
                 .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.4))
                 .gesture(
                     DragGesture()
                         .onChanged({ value in
-                            self.clickArtifacts = false
                             self.bottomState = value.translation
                             if self.showArtifacts {
-                                self.bottomState.height += -620
+                                self.bottomState.height = -605
+                                self.showArtifacts = false
                             }
                         })
                         .onEnded({ value in
-                            self.clickArtifacts = false
-                            if (self.bottomState.height > -310) {
+                            if (self.bottomState.height > -240) {
                                 withAnimation {
                                     self.showArtifacts = false
                                 }
                             }
-                            if (self.bottomState.height < -400) {
-                                self.bottomState.height = -620
+                            if (self.bottomState.height < -325 && !self.showArtifacts) {
+                                self.bottomState.height = -605
                                 withAnimation {
                                     self.showArtifacts = true
                                 }

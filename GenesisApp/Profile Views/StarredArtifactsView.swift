@@ -10,6 +10,7 @@ import SwiftUI
 
 struct StarredArtifactsView: View {
     @Binding var showArtifacts : Bool
+    @Binding var bottomState : CGSize
 
     var body: some View {
         
@@ -28,6 +29,11 @@ struct StarredArtifactsView: View {
             .contentShape(Rectangle())
             .onTapGesture {
                 self.showArtifacts.toggle()
+                if !self.showArtifacts {
+                    self.bottomState = .zero
+                } else {
+                    self.bottomState.height = -605
+                }
                 print(self.showArtifacts)
             }
             
@@ -44,6 +50,6 @@ struct StarredArtifactsView: View {
 
 struct StarredArtifactsView_Previews: PreviewProvider {
     static var previews: some View {
-        StarredArtifactsView(showArtifacts: .constant(false))
+        StarredArtifactsView(showArtifacts: .constant(false),bottomState: .constant(.zero))
     }
 }

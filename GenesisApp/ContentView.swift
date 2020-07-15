@@ -16,6 +16,7 @@ struct ContentView: View {
     @EnvironmentObject var session: SessionStore
     
     @State var toggleSpending = false
+    @State var toggleProfile = false
     
     @State var fillerRS = [
         "Managing" : "Budgeting",
@@ -34,6 +35,13 @@ struct ContentView: View {
                     .environmentObject(userInfo)
                     .navigationBarBackButtonHidden(true)
                     , isActive: self.$toggleSpending) {
+                            EmptyView()
+                    }.isDetailLink(false)
+                    
+                    NavigationLink(destination: AccountView(toggle: self.$toggleProfile)
+                    .environmentObject(userInfo)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$toggleProfile) {
                             EmptyView()
                     }.isDetailLink(false)
                     
@@ -147,7 +155,7 @@ struct ContentView: View {
                     
                 }),
                 trailing: Button(action: {
-                // Actions
+                    self.toggleProfile = true
                 }, label: {
                     Image("TopProfileIcon")
                         .foregroundColor(.black)
