@@ -100,7 +100,7 @@ struct ContentView: View {
                             Text("Browse By Topic")
                                 .font(Font.custom("Lato-Bold", size: 24))
                                 .padding(.horizontal,18)
-                                .padding(.vertical,6)
+                                .padding(.vertical,4)
                             
                             Spacer()
                         }
@@ -114,7 +114,7 @@ struct ContentView: View {
                                 
                                 MainTopicCardView(mainTopic: "Spending", primaryColor: Color.primaryGreen, topicImage: "Home - Spending Illustration", toggle: self.$toggleSpending)
                                 
-                            }.padding(.vertical,7)
+                            }.padding(.bottom,7)
                             
                             HStack {
                                 
