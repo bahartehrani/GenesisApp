@@ -151,12 +151,10 @@
 				01E9089024BCF8910029FC0C /* SessionStore.swift */,
 				01E9089224BCFB150029FC0C /* MotherView.swift */,
 				0162ECD224AE6F330060BBA9 /* ContentView.swift */,
+				019CEF9424BF6DBE00A34230 /* Topic Views */,
 				01E9089524BCFBF80029FC0C /* Onboarding */,
 				01E908A024BD05250029FC0C /* Setup */,
-				0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */,
-				0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */,
-				E4631C2024BE7F0B008E9FCF /* TopicView.swift */,
-				0182253B24B3AF1D003EB4BC /* SearchBar.swift */,
+				019CEF9324BF6D8800A34230 /* Home Views */,
 				0162ECD424AE6F330060BBA9 /* Assets.xcassets */,
 				0162ECD924AE6F330060BBA9 /* LaunchScreen.storyboard */,
 				0162ECDC24AE6F330060BBA9 /* Info.plist */,
@@ -173,6 +171,24 @@
 				0162ECD724AE6F330060BBA9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		019CEF9324BF6D8800A34230 /* Home Views */ = {
+			isa = PBXGroup;
+			children = (
+				0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */,
+				0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */,
+				0182253B24B3AF1D003EB4BC /* SearchBar.swift */,
+			);
+			path = "Home Views";
+			sourceTree = "<group>";
+		};
+		019CEF9424BF6DBE00A34230 /* Topic Views */ = {
+			isa = PBXGroup;
+			children = (
+				E4631C2024BE7F0B008E9FCF /* TopicView.swift */,
+			);
+			path = "Topic Views";
 			sourceTree = "<group>";
 		};
 		01E9089524BCFBF80029FC0C /* Onboarding */ = {
