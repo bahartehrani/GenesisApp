@@ -34,7 +34,7 @@ struct MotherView : View {
             } else {
                 // splash screen
                 LaunchScreen()
-                    .transition(.slide)
+                    .transition(.opacity)
                 
             }
         }
