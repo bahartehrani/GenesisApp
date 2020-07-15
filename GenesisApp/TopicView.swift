@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct TopicView: View {
-    
     @State var mainTopic : String
     @Binding var toggle : Bool
-    
-    @State var mainTopic : String
-    @Binding var toggle : Bool
+    @State var showLoans = true
+    @State var showCredit = false
+    @State var showDebt = false
+    @State var subtopic1 = subTopicData1
+    @State var subtopic2 = subTopicData2
+    @State var subtopic3 = subTopicData3
     
     var body: some View {
         VStack {
@@ -39,44 +41,72 @@ struct TopicView: View {
 //            article selections
             VStack {
                 ScrollView (.horizontal) {
-                    HStack() {
+                    HStack(spacing: 50) {
+                        Button(action: {
+                            self.showLoans = true;
+                            self.showCredit = false;
+                            self.showDebt = false;
+                        }) {
                         Text("Loans")
-                            .padding(.leading)
-                        Spacer()
+                        }
+//                        .padding(.leading)
+                        Button(action: {
+                            self.showLoans = false;
+                            self.showCredit = true;
+                            self.showDebt = false;
+                        }) {
                         Text("Credit")
-                        Spacer()
+                        }
+                        Button(action: {
+                            self.showLoans = false;
+                            self.showCredit = false;
+                            self.showDebt = true;
+                        }) {
                         Text("Debt")
-                        .padding(.trailing)
+                        }
                     }
-                        .padding(.horizontal)
-                        .frame(width: screen.width)
+                    .frame(width: screen.width)
                     .font(.custom("Lato-Black", size: 24))
                 }
                 .padding(.top, 24)
-                
                 .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                 .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
-                .offset(x: 0, y: -40)
+                .offset(x: 0, y: -30)
                 
-                ScrollView {
-                    VStack {
-                        SubTopicView()
-                        SubTopicView()
-                        SubTopicView()
-                        SubTopicView()
-                        SubTopicView()
-                        SubTopicView()
-                        SubTopicView()
+                
+                if showLoans{
+                    ScrollView {
+                        ForEach(subtopic1.indices, id: \.self) { index in
+                            SubTopicView(type: self.subtopic1[index].type, title: self.subtopic1[index].title
+                            )
+                        }
                     }
                 }
-                .offset(x: 0, y: -16)
+                
+                if showCredit{
+                    ScrollView {
+                        ForEach(subtopic2.indices, id: \.self) { index in
+                            SubTopicView(type: self.subtopic2[index].type, title: self.subtopic2[index].title
+                            )
+                        }
+                    }
+                }
+                
+                if showDebt{
+                    ScrollView {
+                        ForEach(subtopic3.indices, id: \.self) { index in
+                            SubTopicView(type: self.subtopic3[index].type, title: self.subtopic3[index].title
+                            )
+                        }
+                    }
+                }
             }
                 //different phones have diff sizes :o ; not sure how to fix; maybe a new view open up the details + a pic?
             .frame(height: screen.height * 3/5)
             
         }
     .navigationBarItems(trailing:
-            
+
             Button(action: {
                 withAnimation {
                     self.toggle = false
@@ -88,7 +118,7 @@ struct TopicView: View {
                     .padding()
                         .foregroundColor(.black)
             })
-        
+
         )
         .edgesIgnoringSafeArea(.all)
     }
@@ -101,9 +131,8 @@ struct TopicView_Previews: PreviewProvider {
 }
 
 struct SubTopicView: View {
-    
-    // Name of article var
-    
+    var type : String
+    var title: String
     // Name of article var
     
     var body: some View {
@@ -114,9 +143,9 @@ struct SubTopicView: View {
                 .padding(.trailing, 8)
             
             VStack(alignment: .leading) {
-                Text("Article".uppercased())
+                Text(type.uppercased())
                     .font(.custom("Lato-Black", size: 16))
-                Text("Introduction to Loansbnbgjhvhb")
+                Text(title)
                     .font(.custom("Lato-Regular", size: 20))
             }
             Spacer()
@@ -126,3 +155,38 @@ struct SubTopicView: View {
         .frame(maxWidth: .infinity)
     }
 }
+
+
+struct SubTopic : Identifiable {
+    var id = UUID()
+    var type: String
+    var title: String
+}
+
+let subTopicData1 = [
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+]
+
+let subTopicData2 = [
+    SubTopic(type: "Game", title: "bbbbbbbbb"),
+    SubTopic(type: "Game", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Game", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Game", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Game", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Game", title: "AAAAAAAAAAAAAAA"),
+]
+
+let subTopicData3 = [
+    SubTopic(type: "Article", title: "ccccccccc"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+    SubTopic(type: "Article", title: "AAAAAAAAAAAAAAA"),
+]
+
