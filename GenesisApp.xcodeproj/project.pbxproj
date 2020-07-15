@@ -27,6 +27,7 @@
 		0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */; };
 		0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */; };
 		0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0182253B24B3AF1D003EB4BC /* SearchBar.swift */; };
+		019CEF9224BF68AD00A34230 /* CommentedOutCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9124BF68AD00A34230 /* CommentedOutCode.swift */; };
 		01E9088924BCF42A0029FC0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E9088824BCF4290029FC0C /* GoogleService-Info.plist */; };
 		01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */; };
 		01E9088F24BCF75A0029FC0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9088E24BCF75A0029FC0C /* User.swift */; };
@@ -69,6 +70,7 @@
 		0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyStudiedCardView.swift; sourceTree = "<group>"; };
 		0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopicCardView.swift; sourceTree = "<group>"; };
 		0182253B24B3AF1D003EB4BC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		019CEF9124BF68AD00A34230 /* CommentedOutCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentedOutCode.swift; sourceTree = "<group>"; };
 		01E9088824BCF4290029FC0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTypeExtensions.swift; sourceTree = "<group>"; };
 		01E9088E24BCF75A0029FC0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				01E9088A24BCF7260029FC0C /* SwiftTypeExtensions.swift */,
+				019CEF9124BF68AD00A34230 /* CommentedOutCode.swift */,
 				0162ECCE24AE6F330060BBA9 /* AppDelegate.swift */,
 				0162ECD024AE6F330060BBA9 /* SceneDelegate.swift */,
 				01E9088E24BCF75A0029FC0C /* User.swift */,
@@ -366,6 +369,7 @@
 				E4631C2124BE7F0B008E9FCF /* TopicView.swift in Sources */,
 				0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */,
 				01E908A424BD36E30029FC0C /* SignupView.swift in Sources */,
+				019CEF9224BF68AD00A34230 /* CommentedOutCode.swift in Sources */,
 				01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */,
 				01E908A224BD053B0029FC0C /* SetupView.swift in Sources */,
 				01E9088F24BCF75A0029FC0C /* User.swift in Sources */,

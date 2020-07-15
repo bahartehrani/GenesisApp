@@ -38,15 +38,15 @@ struct SetupView: View {
                     
                     NavigationLink(destination: SignUpViewCollect(signUpStep: true)
                     .environmentObject(userInfo)
-                    //.navigationBarTitle("")
-                        //.navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true)
                     , isActive: self.$showSignUp) {
                         EmptyView()
                     }.isDetailLink(false)
                     
                     NavigationLink(destination: LoginView(showLogIn: self.$showLogIn)
-                    .environmentObject(userInfo), isActive: self.$showLogIn) {
+                    .environmentObject(userInfo)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$showLogIn) {
                         EmptyView()
                     }.isDetailLink(false)
                     

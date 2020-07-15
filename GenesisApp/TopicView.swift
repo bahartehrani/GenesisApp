@@ -11,6 +11,9 @@ import SwiftUI
 struct TopicView: View {
     @State var mainTopic : String
     @Binding var toggle : Bool
+    @State private var currentPage = 0
+    @State var subtopicNames = ["Loans", "Credit", "Debit"]
+    
     @State var showLoans = true
     @State var showCredit = false
     @State var showDebt = false
@@ -38,68 +41,19 @@ struct TopicView: View {
             .frame(maxHeight: 350)
             .background(Color.secondaryGold)
             
+            
 //            article selections
             VStack {
-                ScrollView (.horizontal) {
-                    HStack(spacing: 50) {
-                        Button(action: {
-                            self.showLoans = true;
-                            self.showCredit = false;
-                            self.showDebt = false;
-                        }) {
-                        Text("Loans")
-                        }
-//                        .padding(.leading)
-                        Button(action: {
-                            self.showLoans = false;
-                            self.showCredit = true;
-                            self.showDebt = false;
-                        }) {
-                        Text("Credit")
-                        }
-                        Button(action: {
-                            self.showLoans = false;
-                            self.showCredit = false;
-                            self.showDebt = true;
-                        }) {
-                        Text("Debt")
-                        }
-                    }
-                    .frame(width: screen.width)
-                    .font(.custom("Lato-Black", size: 24))
-                }
-                .padding(.top, 24)
-                .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
-                .offset(x: 0, y: -30)
+//
+                subtopicSelectors(valueFromParent: self.$currentPage, subtopicName: self.subtopicNames)
                 
-                
-                if showLoans{
-                    ScrollView {
-                        ForEach(subtopic1.indices, id: \.self) { index in
-                            SubTopicView(type: self.subtopic1[index].type, title: self.subtopic1[index].title
-                            )
-                        }
+                PagerView(pageCount: self.subtopicNames.count, currentIndex: self.$currentPage) {
+                    ForEach(0..<self.subtopicNames.count) {index in
+                        subtopicMainView(subtopic: self.subtopic1)
                     }
                 }
                 
-                if showCredit{
-                    ScrollView {
-                        ForEach(subtopic2.indices, id: \.self) { index in
-                            SubTopicView(type: self.subtopic2[index].type, title: self.subtopic2[index].title
-                            )
-                        }
-                    }
-                }
-                
-                if showDebt{
-                    ScrollView {
-                        ForEach(subtopic3.indices, id: \.self) { index in
-                            SubTopicView(type: self.subtopic3[index].type, title: self.subtopic3[index].title
-                            )
-                        }
-                    }
-                }
+ 
             }
                 //different phones have diff sizes :o ; not sure how to fix; maybe a new view open up the details + a pic?
             .frame(height: screen.height * 3/5)
@@ -123,6 +77,59 @@ struct TopicView: View {
         .edgesIgnoringSafeArea(.all)
     }
 }
+
+struct subtopicSelectors : View {
+    
+    @Binding var valueFromParent : Int
+    @State var subtopicName : [String]
+    
+    var body : some View {
+        ScrollView (.horizontal) {
+            HStack(spacing: 50) {
+                
+                ForEach(0..<self.subtopicName.count) { index in
+                    
+                    Button(action: {
+                        self.valueFromParent = index
+                    }) {
+                        Text(self.subtopicName[index])
+                            .foregroundColor(self.valueFromParent == index ? .secondaryText : .black)
+                    }
+                }
+                
+            }
+            .frame(width: screen.width)
+            .font(.custom("Lato-Black", size: 24))
+        }
+        .padding(.top, 24)
+        .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+        .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
+        .offset(x: 0, y: -30)
+    }
+    
+}
+
+struct subtopicMainView : View {
+    
+    @State var subtopic : [SubTopic]
+    
+    var body : some View {
+        
+        ScrollView {
+            ForEach(subtopic.indices, id: \.self) { index in
+                SubTopicView(type: self.subtopic[index].type, title: self.subtopic[index].title
+                )
+            }
+        }
+        
+        
+        
+    }
+    
+}
+
+
+
 
 struct TopicView_Previews: PreviewProvider {
     static var previews: some View {

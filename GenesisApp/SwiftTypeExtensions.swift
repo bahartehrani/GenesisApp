@@ -140,3 +140,89 @@ extension Color {
     static let secondaryText = Color(UIColor.secondaryText)
     static let primaryArtifact = Color(UIColor.primaryArtifact)
 }
+
+struct ActivityIndicator: UIViewRepresentable {
+
+    @Binding var isAnimating: Bool
+    let style: UIActivityIndicatorView.Style
+
+    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView(style: style)
+    }
+
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
+        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+    }
+}
+
+struct LoadingView<Content>: View where Content: View {
+
+    @Binding var isShowing: Bool
+    var content: () -> Content
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .center) {
+
+                self.content()
+                    .disabled(self.isShowing)
+                    .blur(radius: self.isShowing ? 3 : 0)
+
+                VStack {
+                    Text("Logging in...")
+                    ActivityIndicator(isAnimating: .constant(true), style: .large)
+                }
+                .frame(width: geometry.size.width / 2,
+                       height: geometry.size.height / 5)
+                .background(Color.secondary.colorInvert())
+                .foregroundColor(Color.primary)
+                .cornerRadius(20)
+                .opacity(self.isShowing ? 1 : 0)
+
+            }
+        }
+    }
+}
+
+struct PagerView<Content: View>: View {
+    let pageCount: Int
+    @Binding var currentIndex: Int
+    let content: Content
+
+    @GestureState private var translation: CGFloat = 0
+
+    init(pageCount: Int, currentIndex: Binding<Int>, @ViewBuilder content: () -> Content) {
+        self.pageCount = pageCount
+        self._currentIndex = currentIndex
+        self.content = content()
+    }
+
+    var body: some View {
+        
+        VStack {
+            GeometryReader { geometry in
+                
+                HStack(spacing: 0) {
+                    self.content.frame(width: geometry.size.width)
+                }
+                .frame(width: geometry.size.width, alignment: .leading)
+                .offset(x: -CGFloat(self.currentIndex) * geometry.size.width)
+                .offset(x: self.translation)
+                .animation(.interactiveSpring(), value: self.translation)
+                .animation(.interactiveSpring(), value: self.currentIndex)
+                .gesture(
+                    DragGesture().updating(self.$translation) { value, state, _ in
+                        state = value.translation.width
+                    }.onEnded { value in
+                        let offset = value.translation.width / geometry.size.width
+                        let newIndex = (CGFloat(self.currentIndex) - offset).rounded()
+                        self.currentIndex = min(max(Int(newIndex), 0), self.pageCount - 1)
+                    
+                        
+                    }
+                )
+
+            }.padding(.top,3)
+        }
+    }
+}

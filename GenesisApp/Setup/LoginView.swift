@@ -19,12 +19,14 @@ struct LoginView: View {
     
     @State var showAlert = false
     @State var alertMessage = "Something went wrong. "
+    @State var loading = false
     
     var db = Firestore.firestore()
     
     @Binding var showLogIn : Bool
     
     func loggingIn() {
+        loading = true
         session.signIn(email: self.userInfo.email, password: typedPassword) { (result, error) in
         if error != nil {
             
@@ -47,7 +49,9 @@ struct LoginView: View {
                     
                     self.userInfo.ageRange = document?.get("ageRange") as? String ?? "Unknown"
                     self.userInfo.firstTime = document?.get("firstTime") as? Bool ?? true
-                    
+                    withAnimation {
+                        self.loading = false
+                    }
                 }
             }
                 
@@ -56,70 +60,74 @@ struct LoginView: View {
 }
     
     var body: some View {
-        NavigationView {
+        LoadingView(isShowing: self.$loading) {
             VStack {
-                
-                HStack {
-                    Text("Log In")
-                    .font(Font.custom("Lato-Bold", size: 32))
-                     
-                    Spacer()
-                }
-                    .padding(.horizontal,36)
-                    .padding(.vertical)
-                
-                
-                
-                VStack {
-                    Group {
-                        
-                        
-                        TextField("Email", text: self.$userInfo.email)
-                            .signUpTFStyle()
-                            .autocapitalization(.none)
-                            .keyboardType(.emailAddress)
-                            .disableAutocorrection(true)
-                        
-                        
-                        
-                        SecureField("Password", text: self.$typedPassword)
-                            .signUpTFStyle()
-                            .autocapitalization(.none)
-                            .disableAutocorrection(true)
-                        
-                        
+                    
+                    HStack {
+                        Text("Log In")
+                        .font(Font.custom("Lato-Bold", size: 32))
+                         
+                        Spacer()
                     }
-                        .padding(.horizontal)
-                        .padding(.vertical,8)
-                }.padding(.bottom,24)
+                        .padding(.horizontal,36)
+                        .padding(.vertical)
                     
+                    
+                    
+                    VStack {
+                        Group {
+                            
+                            
+                            TextField("Email", text: self.$userInfo.email)
+                                .signUpTFStyle()
+                                .autocapitalization(.none)
+                                .keyboardType(.emailAddress)
+                                .disableAutocorrection(true)
+                            
+                            
+                            
+                            SecureField("Password", text: self.$typedPassword)
+                                .signUpTFStyle()
+                                .autocapitalization(.none)
+                                .disableAutocorrection(true)
+                            
+                            
+                        }
+                            .padding(.horizontal)
+                            .padding(.vertical,8)
+                    }.padding(.bottom,24)
+                        
 
-                Button(action: {
-                    self.loggingIn()
-                    self.viewRouter.currentPage = "contentView"
-                }, label: {
-                    Text("Log In")
-                    .roundedSmallButtonFilledStyle()
-                }).padding(.vertical)
-                
-                
-                Spacer()
-                Spacer()
-                
+                    Button(action: {
+                        self.loggingIn()
+                        withAnimation {
+                            self.viewRouter.currentPage = "contentView"
+                            self.showLogIn = false
+                        }
+                    }, label: {
+                        Text("Log In")
+                        .roundedSmallButtonFilledStyle()
+                    }).padding(.vertical)
                     
-            }
-                .offset(y: -30)
-            .navigationBarItems(
-            leading: Button(action: {
-                self.showLogIn = false
-            }, label: {
-                Image("Backward arrow small")
-                    .font(.system(size: 24))
-                    .foregroundColor(.secondaryText)
-                    .padding()
-                
-        }))
+                    
+                    Spacer()
+                    Spacer()
+                    
+                        
+                }
+                    .offset(y: -30)
+                .navigationBarItems(
+                leading: Button(action: {
+                    self.showLogIn = false
+                }, label: {
+                    Image("Backward arrow small")
+                        .font(.system(size: 24))
+                        .foregroundColor(.secondaryText)
+                        .padding()
+                    
+            }))
         }
+        
     }
 }
 
