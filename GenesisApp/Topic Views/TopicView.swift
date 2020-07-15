@@ -14,9 +14,6 @@ struct TopicView: View {
     @State private var currentPage = 0
     @State var subtopicNames = ["Loans", "Credit", "Debit"]
     
-    @State var showLoans = true
-    @State var showCredit = false
-    @State var showDebt = false
     @State var subtopic1 = subTopicData1
     @State var subtopic2 = subTopicData2
     @State var subtopic3 = subTopicData3
