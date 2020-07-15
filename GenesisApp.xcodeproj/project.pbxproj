@@ -43,6 +43,7 @@
 		01E908A824BD491F0029FC0C /* SignUpSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E908A724BD491F0029FC0C /* SignUpSurveyView.swift */; };
 		01E908AA24BD68AF0029FC0C /* SignUpViewCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E908A924BD68AF0029FC0C /* SignUpViewCollect.swift */; };
 		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
+		E4631C2124BE7F0B008E9FCF /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4631C2024BE7F0B008E9FCF /* TopicView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.release.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.release.xcconfig"; sourceTree = "<group>"; };
 		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.debug.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E4631C2024BE7F0B008E9FCF /* TopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				01E908A024BD05250029FC0C /* Setup */,
 				0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */,
 				0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */,
+				E4631C2024BE7F0B008E9FCF /* TopicView.swift */,
 				0182253B24B3AF1D003EB4BC /* SearchBar.swift */,
 				0162ECD424AE6F330060BBA9 /* Assets.xcassets */,
 				0162ECD924AE6F330060BBA9 /* LaunchScreen.storyboard */,
@@ -360,6 +363,7 @@
 				01E9089F24BD044D0029FC0C /* LaunchScreen.swift in Sources */,
 				01E9089724BCFC180029FC0C /* OnboardSubview.swift in Sources */,
 				01E908A824BD491F0029FC0C /* SignUpSurveyView.swift in Sources */,
+				E4631C2124BE7F0B008E9FCF /* TopicView.swift in Sources */,
 				0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */,
 				01E908A424BD36E30029FC0C /* SignupView.swift in Sources */,
 				01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */,
