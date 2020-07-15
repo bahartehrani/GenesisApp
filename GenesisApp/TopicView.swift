@@ -13,6 +13,9 @@ struct TopicView: View {
     @State var mainTopic : String
     @Binding var toggle : Bool
     
+    @State var mainTopic : String
+    @Binding var toggle : Bool
+    
     var body: some View {
         VStack {
 //            Top section
@@ -98,6 +101,8 @@ struct TopicView_Previews: PreviewProvider {
 }
 
 struct SubTopicView: View {
+    
+    // Name of article var
     
     // Name of article var
     
