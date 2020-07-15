@@ -58,7 +58,7 @@ class UserData: ObservableObject, Identifiable {
         }
     }
     
-    @Published var recentContent : String? {
+    @Published var recentContent : [String]? {
         didSet {
             UserDefaults.standard.set(recentContent, forKey: "recentContent")
         }
@@ -85,7 +85,7 @@ class UserData: ObservableObject, Identifiable {
         self.email = UserDefaults.standard.object(forKey: "email") as? String ?? ""
         self.moneyWeek = UserDefaults.standard.object(forKey: "moneyWeek") as? Int ?? 0
         self.starredContent = UserDefaults.standard.object(forKey: "starredContent") as? String ?? ""
-        self.recentContent = UserDefaults.standard.object(forKey: "recentContent") as? String ?? ""
+        self.recentContent = UserDefaults.standard.object(forKey: "recentContent") as? [String] ?? []
         
         self.ageRange = UserDefaults.standard.object(forKey: "ageRange") as? String ?? "Unknown"
         

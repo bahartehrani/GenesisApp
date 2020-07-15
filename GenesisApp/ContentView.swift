@@ -11,7 +11,11 @@ import SwiftUI
 struct ContentView: View {
     @State var showProfile = false
     
-    // @EnvironmentObject var user info : UserData
+    @EnvironmentObject var userInfo : UserData
+    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var session: SessionStore
+    
+    @State var toggleSpending = false
     
     @State var fillerRS = [
         "Managing" : "Budgeting",
@@ -26,6 +30,12 @@ struct ContentView: View {
             ScrollView {
                 VStack {
                     
+                    NavigationLink(destination: TopicView(mainTopic: "Spending", toggle: self.$toggleSpending)
+                    .environmentObject(userInfo)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$toggleSpending) {
+                            EmptyView()
+                    }.isDetailLink(false)
                     
                     // .font(Font.custom("Lato-Black", size: 20))
                     
@@ -46,10 +56,10 @@ struct ContentView: View {
                     .padding(.top,-30)
                     
                     
-                    VStack {
+                VStack {
                         // Recently Studied - hide if user hasn't clicked on anything
                         // if !recentContent.count == 0 then...
-                        
+                    if self.userInfo.recentContent?.count != 0 {
                         VStack {
                             HStack {
                                 Text("Recently Studied")
@@ -74,6 +84,8 @@ struct ContentView: View {
                             }
                         }
                         
+                    }
+                        
                         
                         // Browse by Topic
                         HStack {
@@ -93,6 +105,11 @@ struct ContentView: View {
                                     .padding(.trailing,11)
                                 
                                 MainTopicCardView(mainTopic: "Spending")
+                                    .onTapGesture {
+                                        withAnimation {
+                                            self.toggleSpending = true
+                                        }
+                                    }
                                 
                             }.padding(.vertical,11)
                             
@@ -116,9 +133,10 @@ struct ContentView: View {
                                 
 
                         }.padding(.top,11)
-                    }
+                }
                     
                     Spacer()
+                
                     
                 }
                 
@@ -143,13 +161,15 @@ struct ContentView: View {
                 })
             )
             
-        }
+        .navigationBarTitle("") //this must be empty
+            .navigationBarBackButtonHidden(true)
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(UserData())
     }
 }
 

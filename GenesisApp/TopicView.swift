@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct TopicView: View {
+    
     @State var mainTopic : String
+    @Binding var toggle : Bool
     
     var body: some View {
         VStack {
@@ -18,13 +20,10 @@ struct TopicView: View {
                 HStack {
                     Text(mainTopic)
                         .font(.custom("Lato-Bold", size: 30))
-                        .padding(.top, 20)
+                        .padding(.vertical, 20)
                     
                     Spacer()
                     
-                    Image(systemName: "house")
-                        .font(.system(size: 20, weight: .light))
-                        .padding(.bottom, 20)
                 }
                 
                 Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.")
@@ -32,20 +31,26 @@ struct TopicView: View {
             }
             .padding(32)
             .frame(maxHeight: 350)
-            .background(Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)))
+            .background(Color.secondaryGold)
             
 //            article selections
             VStack {
                 ScrollView (.horizontal) {
-                    HStack(spacing: 50.0) {
+                    HStack() {
                         Text("Loans")
+                            .padding(.leading)
+                        Spacer()
                         Text("Credit")
+                        Spacer()
                         Text("Debt")
+                        .padding(.trailing)
                     }
+                        .padding(.horizontal)
+                        .frame(width: screen.width)
                     .font(.custom("Lato-Black", size: 24))
                 }
                 .padding(.top, 24)
-                .padding(.horizontal, 32)
+                
                 .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                 .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
                 .offset(x: 0, y: -40)
@@ -67,17 +72,35 @@ struct TopicView: View {
             .frame(height: screen.height * 3/5)
             
         }
+    .navigationBarItems(trailing:
+            
+            Button(action: {
+                withAnimation {
+                    self.toggle = false
+                }
+            },
+                   label: {
+                    Image(systemName: "house")
+                    .font(.system(size: 20, weight: .light))
+                    .padding()
+                        .foregroundColor(.black)
+            })
+        
+        )
         .edgesIgnoringSafeArea(.all)
     }
 }
 
 struct TopicView_Previews: PreviewProvider {
     static var previews: some View {
-        TopicView(mainTopic: "Spending")
+        TopicView(mainTopic: "Spending", toggle: .constant(true))
     }
 }
 
 struct SubTopicView: View {
+    
+    // Name of article var
+    
     var body: some View {
         HStack {
             Image(systemName: "checkmark.circle")
