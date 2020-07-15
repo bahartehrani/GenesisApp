@@ -79,6 +79,8 @@ struct AccountView: View {
 
             )
             
+            Text("\(bottomState.height)").offset(y:-400)
+            
             // Artifacts?
             StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)
                 .offset(x:0, y: screen.height - 205)
@@ -89,8 +91,7 @@ struct AccountView: View {
                         .onChanged({ value in
                             self.bottomState = value.translation
                             if self.showArtifacts {
-                                self.bottomState.height = -605
-                                self.showArtifacts = false
+                                self.bottomState.height += -605
                             }
                         })
                         .onEnded({ value in
@@ -99,7 +100,7 @@ struct AccountView: View {
                                     self.showArtifacts = false
                                 }
                             }
-                            if (self.bottomState.height < -325 && !self.showArtifacts) {
+                            if (self.bottomState.height < -325) {
                                 self.bottomState.height = -605
                                 withAnimation {
                                     self.showArtifacts = true
