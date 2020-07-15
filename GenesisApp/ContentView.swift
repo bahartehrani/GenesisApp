@@ -110,32 +110,32 @@ struct ContentView: View {
                             HStack {
                                 
                                 MainTopicCardView(mainTopic: "Savings", primaryColor: Color.secondaryGold, topicImage: "Home - Savings Illustration", toggle: .constant(false))
-                                    .padding(.trailing,11)
+                                    .padding(.trailing,7)
                                 
                                 MainTopicCardView(mainTopic: "Spending", primaryColor: Color.primaryGreen, topicImage: "Home - Spending Illustration", toggle: self.$toggleSpending)
                                 
-                            }.padding(.vertical,11)
+                            }.padding(.vertical,7)
                             
                             HStack {
                                 
                                 MainTopicCardView(mainTopic: "Managing", primaryColor: Color.secondaryPink, topicImage: "Home - Management Illustration",toggle: .constant(false))
-                                    .padding(.trailing,11)
+                                    .padding(.trailing,7)
                                 
                                 MainTopicCardView(mainTopic: "Investing",primaryColor: Color.secondaryMint, topicImage: "Home - Investing Illustration", toggle: .constant(false))
                                 
-                            }.padding(.vertical,11)
+                            }.padding(.vertical,7)
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Student\nSpecifics", primaryColor: Color.secondaryOrange, topicImage: "Home - Student Spec Illustration", toggle: .constant(false))
-                                    .padding(.horizontal,22)
+                                MainTopicCardView(mainTopic: "Student\nSpecific", primaryColor: Color.secondaryOrange, topicImage: "Home - Student Spec Illustration", toggle: .constant(false))
+                                    .padding(.horizontal,21)
                                 
                                 Spacer()
                                 
-                            }.padding(.vertical,11)
+                            }.padding(.vertical,7)
                                 
 
-                        }.padding(.top,11)
+                        }.padding(.top,7)
                 }
                     
                     Spacer()
