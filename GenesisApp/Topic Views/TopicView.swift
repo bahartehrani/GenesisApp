@@ -67,7 +67,7 @@ struct TopicView: View {
                     Image(systemName: "house")
                     .font(.system(size: 20, weight: .light))
                     .padding()
-                        .foregroundColor(.black)
+                    .foregroundColor(.black)
             })
 
         )
@@ -90,7 +90,7 @@ struct subtopicSelectors : View {
                         self.valueFromParent = index
                     }) {
                         Text(self.subtopicName[index])
-                            .foregroundColor(self.valueFromParent == index ? .secondaryText : .black)
+                            .foregroundColor(self.valueFromParent == index ? .black : .secondaryText)
                     }
                 }
                 
@@ -98,7 +98,7 @@ struct subtopicSelectors : View {
             .frame(width: screen.width)
             .font(.custom("Lato-Black", size: 24))
         }
-        .padding(.top, 24)
+        .padding(.top, 32)
         .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
         .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
         .offset(x: 0, y: -30)
@@ -118,11 +118,7 @@ struct subtopicMainView : View {
                 )
             }
         }
-        
-        
-        
     }
-    
 }
 
 
