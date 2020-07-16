@@ -14,9 +14,11 @@ struct TopicView: View {
     @State private var currentPage = 0
     @State var subtopicNames = ["Loans", "Credit", "Debit"]
     
-    @State var subtopic1 = subTopicData1
-    @State var subtopic2 = subTopicData2
-    @State var subtopic3 = subTopicData3
+    @State var subtopicList = [subTopicData1,subTopicData2, subTopicData3]
+//    @State var subtopic2 = subTopicData2
+//    @State var subtopic3 = subTopicData3
+    
+    @State var toggleArticle = false
     
     var body: some View {
         VStack {
@@ -46,7 +48,7 @@ struct TopicView: View {
                 
                 PagerView(pageCount: self.subtopicNames.count, currentIndex: self.$currentPage) {
                     ForEach(0..<self.subtopicNames.count) {index in
-                        subtopicMainView(subtopic: self.subtopic1)
+                        subtopicMainView(subtopic: self.subtopicList[index])
                     }
                 }
                 
@@ -56,20 +58,19 @@ struct TopicView: View {
             .frame(height: screen.height * 3/5)
             
         }
-    .navigationBarItems(trailing:
+        .navigationBarItems(trailing:
 
             Button(action: {
                 withAnimation {
                     self.toggle = false
                 }
             },
-                   label: {
-                    Image(systemName: "house")
-                    .font(.system(size: 20, weight: .light))
-                    .padding()
-                        .foregroundColor(.black)
+               label: {
+                Image(systemName: "house")
+                .font(.system(size: 20, weight: .light))
+                .padding()
+                .foregroundColor(.black)
             })
-
         )
         .edgesIgnoringSafeArea(.all)
     }
@@ -90,7 +91,7 @@ struct subtopicSelectors : View {
                         self.valueFromParent = index
                     }) {
                         Text(self.subtopicName[index])
-                            .foregroundColor(self.valueFromParent == index ? .secondaryText : .black)
+                            .foregroundColor(self.valueFromParent == index ? .black : .secondaryText)
                     }
                 }
                 
@@ -111,16 +112,18 @@ struct subtopicMainView : View {
     @State var subtopic : [SubTopic]
     
     var body : some View {
-        
         ScrollView {
             ForEach(subtopic.indices, id: \.self) { index in
-                SubTopicView(type: self.subtopic[index].type, title: self.subtopic[index].title
-                )
+                NavigationLink(destination: ArticleView(toggle: .constant(false), toggleStar: false)) {
+                        
+                    SubTopicView(
+                        type: self.subtopic[index].type, title: self.subtopic[index].title
+                    )
+                }
+                .foregroundColor(.black)
+
             }
         }
-        
-        
-        
     }
     
 }
@@ -130,7 +133,11 @@ struct subtopicMainView : View {
 
 struct TopicView_Previews: PreviewProvider {
     static var previews: some View {
-        TopicView(mainTopic: "Spending", toggle: .constant(true))
+        NavigationView{
+            TopicView(mainTopic: "Spending", toggle: .constant(true))
+        }
+        
+//        TopicView(mainTopic: "Spending", toggle: .constant(true))
     }
 }
 
