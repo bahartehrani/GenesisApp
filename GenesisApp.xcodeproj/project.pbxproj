@@ -159,7 +159,10 @@
 				01E9089024BCF8910029FC0C /* SessionStore.swift */,
 				01E9089224BCFB150029FC0C /* MotherView.swift */,
 				0162ECD224AE6F330060BBA9 /* ContentView.swift */,
+<<<<<<< HEAD
 				019CEF9524BF6E0800A34230 /* Profile Views */,
+=======
+>>>>>>> 9856a3ece3c960508ea80731cef7779b2e3a3943
 				019CEF9424BF6DBE00A34230 /* Topic Views */,
 				01E9089524BCFBF80029FC0C /* Onboarding */,
 				01E908A024BD05250029FC0C /* Setup */,
@@ -200,6 +203,7 @@
 			path = "Topic Views";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		019CEF9524BF6E0800A34230 /* Profile Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +215,8 @@
 			path = "Profile Views";
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> 9856a3ece3c960508ea80731cef7779b2e3a3943
 		01E9089524BCFBF80029FC0C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
