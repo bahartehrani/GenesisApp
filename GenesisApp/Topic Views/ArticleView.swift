@@ -25,7 +25,7 @@ struct ArticleView: View {
             .padding(.horizontal, 32)
             .frame(width: screen.width, height: 220)
             .background(Color.secondaryGold)
-            
+            .offset(x: 0, y: -40)
             
             HStack {
                 Text("Different Types of Loans ")
@@ -40,20 +40,20 @@ struct ArticleView: View {
             }
             .font(.custom("Lato-Black", size: 24))
             .padding(32)
-            .padding(.top, 8)
+            .padding(.vertical, 8)
             .frame(width: screen.width)
             .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
-            .offset(x: 0, y: -60)
+            .offset(x: 0, y: -120)
             
             ScrollView {
                 Text("Infoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info  \n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop ")
                     .font(.custom("Lato-Regular", size: 18))
-                    .padding(32)
+                    .padding(.horizontal, 32)
                     .frame(width: screen.width)
             }
-            .offset(x: 0, y: -100)
-            .frame(height: screen.height - 300)
+            .offset(x: 0, y: -150)
+            .frame(height: screen.height - 350)
             
             HStack {
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
@@ -71,20 +71,22 @@ struct ArticleView: View {
             .font(.custom("Lato-Regular", size: 12))
             .foregroundColor(.black)
             .padding(.horizontal, 32)
-            .offset(x: 0, y: -70)
+            .offset(x: 0, y: -120)
             
+                
+            Spacer()
+                
             .navigationBarItems(trailing:
 
                 Button(action: {
                     withAnimation {
                         self.toggle = false
                     }
-                },
-                       label: {
-                        Image(systemName: "house")
-                        .font(.system(size: 20, weight: .light))
-                        .padding()
-                        .foregroundColor(.black)
+                }, label: {
+                    Image(systemName: "house")
+                    .font(.system(size: 20, weight: .light))
+                    .padding()
+                    .foregroundColor(.black)
                 })
 
             )
@@ -94,6 +96,8 @@ struct ArticleView: View {
 
 struct ArticleView_Previews: PreviewProvider {
     static var previews: some View {
+        NavigationView{
         ArticleView(toggle: .constant(false), toggleStar: false)
+        }
     }
 }
