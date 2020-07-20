@@ -49,6 +49,10 @@
 		01E908AA24BD68AF0029FC0C /* SignUpViewCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E908A924BD68AF0029FC0C /* SignUpViewCollect.swift */; };
 		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
 		E4631C2124BE7F0B008E9FCF /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4631C2024BE7F0B008E9FCF /* TopicView.swift */; };
+		E49CED5524C37A6800879047 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CED5424C37A6800879047 /* ArticleView.swift */; };
+		E49CED5724C37A7E00879047 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CED5624C37A7E00879047 /* AddExpenseView.swift */; };
+		E49CED5924C37AF300879047 /* ArticleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CED5824C37AF300879047 /* ArticleStore.swift */; };
+		E49CED5B24C37B7900879047 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CED5A24C37B7900879047 /* Article.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +102,10 @@
 		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.debug.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E4631C2024BE7F0B008E9FCF /* TopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicView.swift; sourceTree = "<group>"; };
+		E49CED5424C37A6800879047 /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleView.swift; path = "GenesisApp/Topic Views/ArticleView.swift"; sourceTree = SOURCE_ROOT; };
+		E49CED5624C37A7E00879047 /* AddExpenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		E49CED5824C37AF300879047 /* ArticleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleStore.swift; sourceTree = "<group>"; };
+		E49CED5A24C37B7900879047 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +203,10 @@
 		019CEF9424BF6DBE00A34230 /* Topic Views */ = {
 			isa = PBXGroup;
 			children = (
+				E49CED5424C37A6800879047 /* ArticleView.swift */,
 				E4631C2024BE7F0B008E9FCF /* TopicView.swift */,
+				E49CED5824C37AF300879047 /* ArticleStore.swift */,
+				E49CED5A24C37B7900879047 /* Article.swift */,
 			);
 			path = "Topic Views";
 			sourceTree = "<group>";
@@ -205,6 +216,7 @@
 			children = (
 				019CEF9624BF6E1800A34230 /* AccountView.swift */,
 				019CEF9C24BF7C6300A34230 /* StarredArtifactsView.swift */,
+				E49CED5624C37A7E00879047 /* AddExpenseView.swift */,
 				019CEF9824BF6EB700A34230 /* WeeklyTipView.swift */,
 				019CEF9A24BF757700A34230 /* WeeklyBudgetView.swift */,
 			);
@@ -408,11 +420,14 @@
 				019CEF9924BF6EB700A34230 /* WeeklyTipView.swift in Sources */,
 				01E908A424BD36E30029FC0C /* SignupView.swift in Sources */,
 				019CEF9724BF6E1800A34230 /* AccountView.swift in Sources */,
+				E49CED5724C37A7E00879047 /* AddExpenseView.swift in Sources */,
 				019CEF9224BF68AD00A34230 /* CommentedOutCode.swift in Sources */,
 				01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */,
+				E49CED5B24C37B7900879047 /* Article.swift in Sources */,
 				01E908A224BD053B0029FC0C /* SetupView.swift in Sources */,
 				01E9088F24BCF75A0029FC0C /* User.swift in Sources */,
 				019CEF9B24BF757700A34230 /* WeeklyBudgetView.swift in Sources */,
+				E49CED5524C37A6800879047 /* ArticleView.swift in Sources */,
 				01E9089124BCF8910029FC0C /* SessionStore.swift in Sources */,
 				0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */,
 				01E9089D24BCFF130029FC0C /* PageControl.swift in Sources */,
@@ -421,6 +436,7 @@
 				0162ECD124AE6F330060BBA9 /* SceneDelegate.swift in Sources */,
 				01E9089924BCFC5E0029FC0C /* OnboardingView.swift in Sources */,
 				01E9089B24BCFCAB0029FC0C /* PageViewController.swift in Sources */,
+				E49CED5924C37AF300879047 /* ArticleStore.swift in Sources */,
 				0162ECD324AE6F330060BBA9 /* ContentView.swift in Sources */,
 				01E9089324BCFB150029FC0C /* MotherView.swift in Sources */,
 			);
