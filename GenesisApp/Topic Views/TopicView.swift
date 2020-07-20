@@ -13,10 +13,9 @@ struct TopicView: View {
     @Binding var toggle : Bool
     @State private var currentPage = 0
     @State var subtopicNames = ["Loans", "Credit", "Debit"]
-    
     @State var subtopicList = [subTopicData1,subTopicData2, subTopicData3]
 //    @State var subtopic2 = subTopicData2
-//    @State var subtopic3 = subTopicData3
+    @State var subtopic3 = subTopicData3
     
     @State var toggleArticle = false
     
@@ -48,7 +47,8 @@ struct TopicView: View {
                 
                 PagerView(pageCount: self.subtopicNames.count, currentIndex: self.$currentPage) {
                     ForEach(0..<self.subtopicNames.count) {index in
-                        subtopicMainView(subtopic: self.subtopicList[index])
+//                        subtopicMainView(subtopic: self.subtopicList[index])
+                        subtopicMainView(subtopic: self.subtopic3)
                     }
                 }
                 
@@ -110,19 +110,27 @@ struct subtopicSelectors : View {
 struct subtopicMainView : View {
     
     @State var subtopic : [SubTopic]
+    @ObservedObject var savings = ArticleStore()
     
     var body : some View {
         ScrollView {
-            ForEach(subtopic.indices, id: \.self) { index in
-                NavigationLink(destination: ArticleView(toggle: .constant(false), toggleStar: false)) {
+            ForEach(savings.longTerm) { article in
+                NavigationLink(destination: ArticleView(
+                    toggle: .constant(false),
+                    toggleStar: false,
+                    name: article.articleName,
+                    date: article.dateCreated,
+                    author: article.author,
+                    topic: article.maintopic)) {
                         
                     SubTopicView(
-                        type: self.subtopic[index].type, title: self.subtopic[index].title
+                        type: article.type, title: article.articleName
                     )
                 }
                 .foregroundColor(.black)
 
             }
+            
         }
     }
     
