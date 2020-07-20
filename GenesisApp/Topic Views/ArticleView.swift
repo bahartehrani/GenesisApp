@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct ArticleView: View {
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @Binding var toggle : Bool
     @State var toggleStar : Bool
     @State var name : String
@@ -88,9 +91,16 @@ struct ArticleView: View {
             
                 
             Spacer()
-                
-            .navigationBarItems(trailing:
-
+            .navigationBarItems(
+                    leading: Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image("Backward arrow small")
+                            .font(.system(size: 24))
+                            .foregroundColor(.secondaryText)
+                            .padding()
+                        
+                }), trailing:
                 Button(action: {
                     withAnimation {
                         self.toggle = false

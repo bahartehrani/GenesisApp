@@ -19,13 +19,12 @@ class ArticleStore : ObservableObject {
         Article(articleBody: "fs", articleName: "awe", author: "cxvc", dateCreated: "vcxvcx", maintopic: "vcx", subtopic: "vcxv", type: "vui")]
     
     var articlesCollectionRef : CollectionReference
-    var db: Firestore!
+    var db = Firestore.firestore()
     
     init() {
         
-        articlesCollectionRef = Firestore.firestore().collection("articles")
+        articlesCollectionRef = db.collection("articles")
         longTermArticles()
-//        db = Firestore.firestore()
     }
 
     func longTermArticles() {
