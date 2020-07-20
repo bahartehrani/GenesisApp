@@ -49,6 +49,8 @@
 		01E908AA24BD68AF0029FC0C /* SignUpViewCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E908A924BD68AF0029FC0C /* SignUpViewCollect.swift */; };
 		01EF054524C6211A00017E5D /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF054424C6211A00017E5D /* AddExpenseView.swift */; };
 		01EF054724C6212800017E5D /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF054624C6212800017E5D /* ArticleView.swift */; };
+		01EF054924C6234100017E5D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF054824C6234100017E5D /* Article.swift */; };
+		01EF054B24C6236200017E5D /* ArticleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF054A24C6236200017E5D /* ArticleStore.swift */; };
 		05BBA1E4EBE16AEB5FB0FF45 /* Pods_GenesisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */; };
 		E4631C2124BE7F0B008E9FCF /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4631C2024BE7F0B008E9FCF /* TopicView.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +100,8 @@
 		01E908A924BD68AF0029FC0C /* SignUpViewCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewCollect.swift; sourceTree = "<group>"; };
 		01EF054424C6211A00017E5D /* AddExpenseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		01EF054624C6212800017E5D /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		01EF054824C6234100017E5D /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		01EF054A24C6236200017E5D /* ArticleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleStore.swift; sourceTree = "<group>"; };
 		36893668E0E2334FE43A55B9 /* Pods-GenesisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.release.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.release.xcconfig"; sourceTree = "<group>"; };
 		A1422C858AAEB49DB82DE80D /* Pods_GenesisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenesisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1537EEB86D8060C0BAF045B /* Pods-GenesisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenesisApp.debug.xcconfig"; path = "Target Support Files/Pods-GenesisApp/Pods-GenesisApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,7 +164,9 @@
 				0162ECCE24AE6F330060BBA9 /* AppDelegate.swift */,
 				0162ECD024AE6F330060BBA9 /* SceneDelegate.swift */,
 				01E9088E24BCF75A0029FC0C /* User.swift */,
+				01EF054824C6234100017E5D /* Article.swift */,
 				01E9089024BCF8910029FC0C /* SessionStore.swift */,
+				01EF054A24C6236200017E5D /* ArticleStore.swift */,
 				01E9089224BCFB150029FC0C /* MotherView.swift */,
 				0162ECD224AE6F330060BBA9 /* ContentView.swift */,
 				019CEF9524BF6E0800A34230 /* Profile Views */,
@@ -417,6 +423,7 @@
 				019CEF9224BF68AD00A34230 /* CommentedOutCode.swift in Sources */,
 				01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */,
 				01E908A224BD053B0029FC0C /* SetupView.swift in Sources */,
+				01EF054924C6234100017E5D /* Article.swift in Sources */,
 				01E9088F24BCF75A0029FC0C /* User.swift in Sources */,
 				019CEF9B24BF757700A34230 /* WeeklyBudgetView.swift in Sources */,
 				01E9089124BCF8910029FC0C /* SessionStore.swift in Sources */,
@@ -430,6 +437,7 @@
 				01E9089924BCFC5E0029FC0C /* OnboardingView.swift in Sources */,
 				01E9089B24BCFCAB0029FC0C /* PageViewController.swift in Sources */,
 				0162ECD324AE6F330060BBA9 /* ContentView.swift in Sources */,
+				01EF054B24C6236200017E5D /* ArticleStore.swift in Sources */,
 				01E9089324BCFB150029FC0C /* MotherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
