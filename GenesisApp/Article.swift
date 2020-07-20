@@ -19,3 +19,13 @@ struct Article : Identifiable {
     var type: String
     
 }
+
+struct MainTopicOverview : Identifiable {
+    
+    var id = UUID()
+    
+    var title: String
+    var subtopics: [String]
+    var description: String
+
+}

@@ -12,83 +12,96 @@ struct TopicView: View {
     @State var mainTopic : String
     @Binding var toggle : Bool
     @State private var currentPage = 0
+    
+    @State var subtopicnames : [String] = []
+    @State var description = ""
+    
+    @EnvironmentObject var topicArticles : ArticleStore
+    
     @State var subtopicNames = ["Loans", "Credit", "Debit"]
     @State var subtopicList = [subTopicData1,subTopicData2, subTopicData3]
-//    @State var subtopic2 = subTopicData2
     @State var subtopic3 = subTopicData3
     
     @State var toggleArticle = false
     
     var body: some View {
-        VStack {
-//            Top section
+        PleaseWaitView(isShowing: .constant(topicArticles.maintopicview.subtopics.count == 0)) {
             VStack {
-                HStack {
-                    Text(mainTopic)
-                        .font(.custom("Lato-Bold", size: 30))
-                        .padding(.vertical, 20)
-                    
-                    Spacer()
-                    
-                }
-                
-                Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.")
-                
-            }
-            .padding(32)
-            .frame(maxHeight: 350)
-            .background(Color.secondaryGold)
-            
-            
-//            article selections
-            VStack {
-//
-                subtopicSelectors(valueFromParent: self.$currentPage, subtopicName: self.subtopicNames)
-                
-                PagerView(pageCount: self.subtopicNames.count, currentIndex: self.$currentPage) {
-                    ForEach(0..<self.subtopicNames.count) {index in
-//                        subtopicMainView(subtopic: self.subtopicList[index])
-                        subtopicMainView(subtopic: self.subtopic3)
+    //            Top section
+                VStack {
+                    HStack {
+                        Text(self.mainTopic)
+                            .font(.custom("Lato-Bold", size: 30))
+                            .padding(.vertical, 20)
+                        
+                        Spacer()
+                        
                     }
+                    
+                    //Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.")
+                    Text(self.topicArticles.maintopicview.description.count == 0 ? "\n\n\n" : self.topicArticles.maintopicview.description)
+                    
                 }
+                .padding(32)
+                .frame(maxHeight: 350)
+                .background(Color.secondaryGold)
                 
- 
-            }
-                //different phones have diff sizes :o ; not sure how to fix; maybe a new view open up the details + a pic?
-            .frame(height: screen.height * 3/5)
-            
-        }
-        .navigationBarItems(trailing:
-
-            Button(action: {
-                withAnimation {
-                    self.toggle = false
+                
+    //            article selections
+                VStack {
+    //
+                    subtopicSelectors(valueFromParent: self.$currentPage, subtopicName: self.$topicArticles.maintopicview.subtopics)
+                    
+                    PagerView(pageCount: self.topicArticles.maintopicview.subtopics.count, currentIndex: self.$currentPage) {
+                        ForEach(0..<self.topicArticles.maintopicview.subtopics.count, id: \.self) {index in
+    //                        subtopicMainView(subtopic: self.subtopicList[index])
+                            subtopicMainView(subtopic: self.subtopic3)
+                        }
+                    }
+                    
+     
                 }
-            },
-               label: {
-                Image(systemName: "house")
-                .font(.system(size: 20, weight: .light))
-                .padding()
-                .foregroundColor(.black)
-            })
-        )
-        .edgesIgnoringSafeArea(.all)
+                    //different phones have diff sizes :o ; not sure how to fix; maybe a new view open up the details + a pic?
+                .frame(height: screen.height * 3/5)
+                
+            }
+    //        .onAppear(perform: {
+    //            self.topicArticles.fetchMainTopic(maintopic: "spending")
+    //        }
+    //        )
+            .navigationBarItems(trailing:
+
+                Button(action: {
+                    withAnimation {
+                        self.toggle = false
+                    }
+                },
+                   label: {
+                    Image(systemName: "house")
+                    .font(.system(size: 20, weight: .light))
+                    .padding()
+                    .foregroundColor(.black)
+                })
+            )
+                .edgesIgnoringSafeArea(.all)
+        }
     }
 }
 
 struct subtopicSelectors : View {
     
     @Binding var valueFromParent : Int
-    @State var subtopicName : [String]
+    @Binding var subtopicName : [String]
     
     var body : some View {
         ScrollView (.horizontal) {
             HStack(spacing: 50) {
                 
-                ForEach(0..<self.subtopicName.count) { index in
+                ForEach(0..<self.subtopicName.count, id: \.self) { index in
                     
                     Button(action: {
                         self.valueFromParent = index
+                        print(self.subtopicName)
                     }) {
                         Text(self.subtopicName[index])
                             .foregroundColor(self.valueFromParent == index ? .black : .secondaryText)
@@ -102,19 +115,30 @@ struct subtopicSelectors : View {
         .padding(.top, 24)
         .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
         .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
+        .frame(maxWidth: .infinity)
         .offset(x: 0, y: -30)
+    .onAppear(
+        perform: {
+            print(self.subtopicName.count)
+    })
     }
     
 }
 
 struct subtopicMainView : View {
     
+    @State var savings = ArticleStore()
     @State var subtopic : [SubTopic]
-    @ObservedObject var savings = ArticleStore()
+    
+    func tester() {
+        print("test test test")
+        print(savings.longTerm)
+    }
     
     var body : some View {
         ScrollView {
             ForEach(savings.longTerm) { article in
+                
                 NavigationLink(destination: ArticleView(
                     toggle: .constant(false),
                     toggleStar: false,
@@ -131,7 +155,8 @@ struct subtopicMainView : View {
 
             }
             
-        }
+        }.onAppear(perform: tester
+        )
     }
     
 }

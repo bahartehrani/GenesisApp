@@ -15,6 +15,8 @@ struct ContentView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var session: SessionStore
     
+    @EnvironmentObject var topicArticles : ArticleStore
+    
     @State var toggleSpending = false
     @State var toggleProfile = false
     
@@ -33,6 +35,7 @@ struct ContentView: View {
                     
                     NavigationLink(destination: TopicView(mainTopic: "Spending", toggle: self.$toggleSpending)
                     .environmentObject(userInfo)
+                        .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
                     , isActive: self.$toggleSpending) {
                             EmptyView()
@@ -114,6 +117,7 @@ struct ContentView: View {
                                 
                                 MainTopicCardView(mainTopic: "Spending", primaryColor: Color.primaryGreen, topicImage: "Home - Spending Illustration", toggle: self.$toggleSpending)
                                 
+                                
                             }.padding(.bottom,7)
                             
                             HStack {
@@ -141,7 +145,15 @@ struct ContentView: View {
                     Spacer()
                 
                     
+                }.onDisappear(perform: {
+                    if self.toggleSpending {
+                        self.topicArticles.fetchMainTopic(maintopic: "spending") { rt in
+                            print("complete: ")
+                            print(rt)
+                        }
+                    }
                 }
+                )
                 
             }
             .navigationBarItems(

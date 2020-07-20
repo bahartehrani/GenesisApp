@@ -14,6 +14,8 @@ struct MotherView : View {
     @EnvironmentObject var viewRouter: ViewRouter
     
     @EnvironmentObject var session: SessionStore
+    
+    var topicArticles = ArticleStore()
     var userInfo = UserData()
     
     func getUser () {
@@ -40,6 +42,7 @@ struct MotherView : View {
         }
         //.transition(.slide)
         .environmentObject(userInfo)
+        .environmentObject(topicArticles)
         .onAppear(perform: getUser)
         .onAppear {
             // 6.
