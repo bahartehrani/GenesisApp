@@ -47,7 +47,7 @@ struct WeeklyExpensesView: View {
             HStack {
                 
                 Text("Weekly Expenses")
-                    .font(Font.custom("Lato-Black", size: 24))
+                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 30 : 24))
                     .foregroundColor(.white)
                     .onTapGesture {
                         self.showFull.toggle()
@@ -104,11 +104,11 @@ struct WeeklyExpensesView: View {
                             VStack {
                                 
                                 Text("$63")
-                                    .font(Font.custom("Lato-Black", size: 30))
+                                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 34 : 30))
                                     .foregroundColor(.white)
                                 
                                 Text("spent")
-                                    .font(Font.custom("Lato-Black", size: 18))
+                                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 20 : 18))
                                     .foregroundColor(.white)
                             }
                             
@@ -117,11 +117,11 @@ struct WeeklyExpensesView: View {
                             VStack {
                                 
                                 Text("$37")
-                                    .font(Font.custom("Lato-Black", size: 30))
+                                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 34 : 30))
                                     .foregroundColor(.white)
                                 
                                 Text("left")
-                                    .font(Font.custom("Lato-Black", size: 18))
+                                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 20 : 18))
                                     .foregroundColor(.white)
                             }
                             
@@ -130,11 +130,11 @@ struct WeeklyExpensesView: View {
                             VStack {
                                 
                                 Text("$100")
-                                    .font(Font.custom("Lato-Black", size: 30))
+                                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 34 : 30))
                                     .foregroundColor(.white)
                                 
                                 Text("weekly")
-                                    .font(Font.custom("Lato-Black", size: 18))
+                                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 20 : 18))
                                     .foregroundColor(.white)
                             }
                             

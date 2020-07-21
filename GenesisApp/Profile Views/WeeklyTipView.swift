@@ -18,7 +18,7 @@ struct WeeklyTipView: View {
             HStack {
                 
                 Text("Weekly Tip")
-                    .font(Font.custom("Lato-Black", size: 24))
+                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 30 : 24))
                     .foregroundColor(.white)
                 
                 Spacer()
@@ -49,7 +49,9 @@ struct WeeklyTipView: View {
             ScrollView {
                 
                 Text("Did you know it’s almost 5 times more expensive to order from a restaurant than it is to cook at home? We love eating out too, but staying in is sure to result in tastier savings.")
-                    .font(Font.custom("Lato-Regular", size: screen.height < 800 ? 16 : 18))
+                    .font(Font.custom("Lato-Regular", size:
+                        screen.height > 850 ? 20 :
+                        screen.height < 800 ? 16 : 18))
                     .foregroundColor(.white)
                 
             }.padding(.horizontal,4)

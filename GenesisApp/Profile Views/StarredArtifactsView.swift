@@ -18,7 +18,7 @@ struct StarredArtifactsView: View {
             HStack {
                 
                 Text("Starred Artifacts")
-                    .font(Font.custom("Lato-Black", size: 24))
+                    .font(Font.custom("Lato-Black", size: screen.height > 850 ? 28 : 24))
                     .foregroundColor(.white)
                     .padding(.vertical,18)
                     .padding(.horizontal,32)
