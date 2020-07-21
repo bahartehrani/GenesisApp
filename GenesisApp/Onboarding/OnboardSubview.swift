@@ -15,7 +15,7 @@ struct OnboardSubview: View {
         Image(imageString)
             //.resizable()
             .frame(width: UIScreen.main.bounds.width)
-            .aspectRatio(contentMode: .fit)
+            .aspectRatio(contentMode: .fill)
             .clipped()
             .edgesIgnoringSafeArea(.all)
             
