@@ -208,8 +208,8 @@
 		019CEF9424BF6DBE00A34230 /* Topic Views */ = {
 			isa = PBXGroup;
 			children = (
-				01EF054624C6212800017E5D /* ArticleView.swift */,
 				E4631C2024BE7F0B008E9FCF /* TopicView.swift */,
+				01EF054624C6212800017E5D /* ArticleView.swift */,
 			);
 			path = "Topic Views";
 			sourceTree = "<group>";

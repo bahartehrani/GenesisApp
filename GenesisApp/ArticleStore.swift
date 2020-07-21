@@ -15,31 +15,49 @@ import FirebaseFirestore
 class ArticleStore : ObservableObject {
     
     var longTerm: [Article] = [
-        Article(articleBody: "abc", articleName: "def", author: "ghi", dateCreated: "jkl", maintopic: "mno", subtopic: "por", type: "stu"),
-        Article(articleBody: "fs", articleName: "awe", author: "cxvc", dateCreated: "vcxvcx", maintopic: "vcx", subtopic: "vcxv", type: "vui")]
+    Article(articleBody: "abc", articleName: "def", author: "ghi", dateCreated: "jkl", maintopic: "mno", subtopic: "por", type: "stu"),
+    Article(articleBody: "fs", articleName: "awe", author: "cxvc", dateCreated: "vcxvcx", maintopic: "vcx", subtopic: "vcxv", type: "vui")]
     
-    var articlesCollectionRef : CollectionReference
     var db = Firestore.firestore()
-    
-    init() {
-        
-        articlesCollectionRef = db.collection("articles")
-        longTermArticles()
-    }
+    var subtopicArticles : [Article] = []
+    @Published var maintopicview = MainTopicOverview(title: "", subtopics: [], description: "")
 
-    func longTermArticles() {
+    func fetchMainTopic (maintopic: String, completion: @escaping (Bool) -> Void) {
         
-//        articlesCollectionRef.whereField("subtopic", isEqualTo: "long-term").getDocuments
-//        let articlesCollectionRef = db.collection("articles")
+        // , completion: @escaping (MainTopicOverview) -> Void
+        db.collection(maintopic).document("maintopicview")
+            .getDocument { (doc, error) in
+                
+                if let err = error {
+                    print(err)
+                   completion(false)
+                } else {
+                    let mainTitle = doc?.get("title") as! String
+                    let mainDescript = doc?.get("description") as! String
+                    let mainSubtopics = doc?.get("subtopics") as! [String]
+                    
+                    self.maintopicview = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript)
+                    
+                    print(mainDescript)
+                    completion(true)
+                    
+                }
+        }
+    }
+    
+    
+    func fetchArticles(maintopic : String, subtopic : String, completion: @escaping (Bool) -> Void) {
         
-        
-        //First testing if the right data is called
-        articlesCollectionRef.getDocuments(completion: { (snapshot, error) in
+        db.collection(maintopic).whereField("subtopic", isEqualTo: subtopic)
+            .getDocuments(completion: { (querySnapshot, error) in
             if let err = error {
-                debugPrint("Error in fetching docs: \(err)")
+                print("Error in fetching docs: \(err)")
+                completion(false)
             } else {
-                guard let snap = snapshot else { return }
-                for document in snap.documents {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                
+                    print("reached?")
                     let data = document.data()
                     let articleBody = data["articleBody"] as? String ?? "Word...s..."
                     let articleName = data["articleName"] as? String ?? "Title"
@@ -52,11 +70,10 @@ class ArticleStore : ObservableObject {
                     
                     let newArticle = Article(articleBody: articleBody, articleName: articleName, author: author, dateCreated: dateCreated, maintopic: maintopic, subtopic: subtopic, type: type)
                     
-                    self.longTerm.append(newArticle)
-                    
-                    print("\(document.documentID) => \(document.data())")
+                    self.subtopicArticles.append(newArticle)
             
                 }
+                completion(true)
             }
         })
     }
