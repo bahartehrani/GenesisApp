@@ -104,7 +104,7 @@ struct WeeklyExpensesView: View {
                             VStack {
                                 
                                 Text("$63")
-                                    .font(Font.custom("Lato-Black", size: 32))
+                                    .font(Font.custom("Lato-Black", size: 30))
                                     .foregroundColor(.white)
                                 
                                 Text("spent")
@@ -117,7 +117,7 @@ struct WeeklyExpensesView: View {
                             VStack {
                                 
                                 Text("$37")
-                                    .font(Font.custom("Lato-Black", size: 32))
+                                    .font(Font.custom("Lato-Black", size: 30))
                                     .foregroundColor(.white)
                                 
                                 Text("left")
@@ -130,7 +130,7 @@ struct WeeklyExpensesView: View {
                             VStack {
                                 
                                 Text("$100")
-                                    .font(Font.custom("Lato-Black", size: 32))
+                                    .font(Font.custom("Lato-Black", size: 30))
                                     .foregroundColor(.white)
                                 
                                 Text("weekly")

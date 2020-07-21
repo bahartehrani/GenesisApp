@@ -49,10 +49,11 @@ struct WeeklyTipView: View {
             ScrollView {
                 
                 Text("Did you know it’s almost 5 times more expensive to order from a restaurant than it is to cook at home? We love eating out too, but staying in is sure to result in tastier savings.")
-                    .font(Font.custom("Lato-Regular", size: 18))
+                    .font(Font.custom("Lato-Regular", size: screen.height < 800 ? 16 : 18))
                     .foregroundColor(.white)
                 
-            }.padding(.horizontal,6)
+            }.padding(.horizontal,4)
+                .padding(.top,-6)
             
         }
         .frame(maxWidth: .infinity)

@@ -101,7 +101,12 @@ struct AccountView: View {
                         .onChanged({ value in
                             self.bottomState = value.translation
                             if self.showArtifacts {
-                                self.bottomState.height += -screen.height / 1.35
+                                
+                                if screen.height < 800 {
+                                    self.bottomState.height += -screen.height / 1.3
+                                } else {
+                                    self.bottomState.height += -screen.height / 1.35
+                                }
                             }
                         })
                         .onEnded({ value in
@@ -111,7 +116,14 @@ struct AccountView: View {
                                 }
                             }
                             if (self.bottomState.height < -325) {
-                                self.bottomState.height = -screen.height / 1.35
+                                
+                                if screen.height < 800 {
+                                    self.bottomState.height = -screen.height / 1.3
+                                } else {
+                                    self.bottomState.height = -screen.height / 1.35
+                                }
+                                
+                                //self.bottomState.height = -screen.height / 1.35
                                 withAnimation {
                                     self.showArtifacts = true
                                 }
