@@ -13,8 +13,7 @@ struct AddExpenseView: View {
     @State var month: String = ""
     @State var day: String = ""
     @State var amount: String = ""
-//    @State var toggleAdd = false
-    @State var toggleClose : Bool
+    @Binding var toggleAdd : Bool
     
     func hideKeyboard(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -27,13 +26,16 @@ struct AddExpenseView: View {
                 Text("Add Expense")
                     .font(Font.custom("Lato-Black", size: 25))
                 Spacer()
-                Image(systemName: "xmark")
-                    .font(.system(size: 16, weight: .bold))
-                    .padding(.bottom, 16)
-                    .foregroundColor(Color.primaryBlue)
-                    .onTapGesture {
-                        self.toggleClose.toggle()
+                
+                Button(action: {
+                    self.toggleAdd.toggle()
+                }) {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 18, weight: .bold))
+                        .padding(.bottom, 16)
+                        .foregroundColor(Color.primaryBlue)
                 }
+                
             }
             
             TextField("Transaction Name", text: $transaction)
@@ -91,13 +93,14 @@ struct AddExpenseView: View {
             .shadow(color: Color.gray, radius: 1, x: 2, y: 2)
         }
         .padding(32)
+        .background(Color(.white))
         .frame(width: 360, height: 300)
-        .overlay(
-            RoundedRectangle(cornerRadius: 30)
-                .stroke(Color.black)
-        )
-            .offset(x: 0, y: toggleClose ? 1000 : 0)
-            .animation(.spring(response: 0.8))
+        .clipShape(RoundedRectangle(cornerRadius: 40, style: .continuous))
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 30)
+//                .stroke(Color.black)
+//        )
+            .shadow(color: .gray, radius: 3, x: 1, y: 1)
         .onTapGesture {
             self.hideKeyboard()
         }
@@ -107,6 +110,6 @@ struct AddExpenseView: View {
 
 struct AddExpenseView_Previews: PreviewProvider {
     static var previews: some View {
-        AddExpenseView(toggleClose: false)
+        AddExpenseView(toggleAdd: .constant(true))
     }
 }

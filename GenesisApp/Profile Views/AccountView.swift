@@ -56,6 +56,7 @@ struct AccountView: View {
                 
                 // Weekly Expenses
                 WeeklyBudgetView()
+                    .shadow(color: .gray, radius: 4, x: 2, y: 2)
                 
                 // Starred Artifacts from underneath
                 
@@ -78,10 +79,11 @@ struct AccountView: View {
                 })
 
             )
+//            Text("\(bottomState.height)").offset(y: -300)
             
             // Artifacts?
             StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)
-                .offset(x:0, y: screen.height - 205)
+                .offset(x:0, y: screen.height * 0.75)
                 .offset(y: bottomState.height)
                 .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.4))
                 .gesture(
@@ -91,6 +93,9 @@ struct AccountView: View {
                             if self.showArtifacts {
                                 self.bottomState.height += -605
                             }
+                            if self.bottomState.height < -625 {
+                                self.bottomState.height = -615
+                            }
                         })
                         .onEnded({ value in
                             if (self.bottomState.height > -240) {
@@ -98,7 +103,7 @@ struct AccountView: View {
                                     self.showArtifacts = false
                                 }
                             }
-                            if (self.bottomState.height < -325) {
+                            if (self.bottomState.height < -375) {
                                 self.bottomState.height = -605
                                 withAnimation {
                                     self.showArtifacts = true
@@ -119,6 +124,8 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
+        NavigationView{
         AccountView(toggle: .constant(false)).environmentObject(UserData())
+    }
     }
 }
