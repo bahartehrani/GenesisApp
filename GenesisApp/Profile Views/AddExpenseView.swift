@@ -83,12 +83,9 @@ struct AddExpenseView: View {
             
             Button(action: {}) {
                 Text("Add Expense")
+                    .roundedButtonFilledStyle()
             }
-            .foregroundColor(.white)
-            .font(Font.custom("Lato-Black", size: 16))
-            .padding(.vertical, 16)
             .frame(maxWidth: 200, maxHeight: 50)
-            .background(Color.primaryBlue)
             .clipShape(RoundedRectangle(cornerRadius: 40, style: .continuous))
             .shadow(color: Color.gray, radius: 1, x: 2, y: 2)
         }
