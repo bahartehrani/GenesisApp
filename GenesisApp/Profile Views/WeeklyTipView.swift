@@ -18,7 +18,7 @@ struct WeeklyTipView: View {
             HStack {
                 
                 Text("Weekly Tip")
-                    .font(Font.custom("Lato-Black", size: 28))
+                    .font(Font.custom("Lato-Black", size: 24))
                     .foregroundColor(.white)
                 
                 Spacer()

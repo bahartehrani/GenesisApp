@@ -19,76 +19,82 @@ struct AccountView: View {
     @State var bottomState = CGSize.zero
     
     var body: some View {
-        
+        GeometryReader { geometry in
         ZStack {
-            GeometryReader { geometry in
-                VStack(alignment: .center) {
-                    // Name
-                    HStack {
-                        Text("Daisy Zhang")
-                        .font(Font.custom("Lato-Bold", size: 32))
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal,20)
-                    .padding(.top,8)
-                    
-                    // Edit Account
-                    
-                    HStack {
-                        
-                        Button(action: {
-                            //
-                        }, label: {
-                            Text(self.showArtifacts ? " " : "Edit Account")
-                            .font(Font.custom("Lato-Regular", size: 18))
-                            .foregroundColor(.secondaryText)
-                        })
-                        
-                        Spacer()
-                    }
-                    .padding(.vertical,6)
-                    .padding(.horizontal,20)
-                    
-                    
-                    // Weekly Tip
-                    WeeklyTipView()
-                        .padding(.bottom,8)
-                    
-                    // Weekly Expenses
-                    WeeklyBudgetView()
-                        .padding(.bottom, screen.height / 4)
-                    
-                    // Starred Artifacts from underneath
-                    
-                    //Spacer()
-                    
-                }
-                //.edgesIgnoringSafeArea(.all)
-                    //frame(maxHeight: geometry.size.height)
-                    .frame(height: geometry.size.height)
-                .offset(x:0, y: (geometry.size.height * 0.006))
-                .navigationBarItems(trailing:
-
-                    Button(action: {
-                        withAnimation {
-                            self.toggle = false
+            //GeometryReader { geometry in
+                ScrollView(.vertical) {
+                    VStack(alignment: .center) {
+                        // Name
+                        HStack {
+                            Text("Daisy Zhang")
+                            .font(Font.custom("Lato-Bold", size: 32))
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                withAnimation {
+                                    self.toggle = false
+                                }
+                            },
+                                   label: {
+                                    Image(systemName: "house")
+                                        .font(.system(size: 20, weight: .light))
+                                        .foregroundColor(.black)
+                                        .padding(.bottom,4)
+                            })
                         }
-                    },
-                           label: {
-                            Image(systemName: "house")
-                                .font(.system(size: 20, weight: .light))
-                                .padding([.horizontal,.bottom])
-                                .foregroundColor(.black)
-                    })
-
-                )
+                        .padding(.horizontal,20)
+                        .padding(.top)
+                        
+                        // Edit Account
+                        
+                        HStack {
+                            
+                            Button(action: {
+                                print("y is this broken wtffffff")
+                                print(screen.height)
+                            }, label: {
+                                Text(self.showArtifacts ? " " : "Edit Account")
+                                .font(Font.custom("Lato-Regular", size: 18))
+                                .foregroundColor(.secondaryText)
+                            })
+                            
+                            Spacer()
+                        }
+                        .padding(.bottom,6)
+                        .padding(.horizontal,20)
+                        
+                        
+                        // Weekly Tip
+                        WeeklyTipView()
+                            .padding(.bottom,8)
+                        
+                        // Weekly Expenses
+                        WeeklyBudgetView()
+                        //.padding(.bottom, screen.height / 4)
+                        
+                        // Starred Artifacts from underneath
+                        
+//                        Rectangle()
+//                            .frame(height: screen.height/4)
+                        Spacer()
+                        
+                        }
+                    .padding(.top,4)
+                        
+                        
+                    //.edgesIgnoringSafeArea(.all)
+                        //frame(maxHeight: geometry.size.height)
+                        .frame(maxHeight: .infinity)
+                    //.frame(height: geometry.size.height)
+                       
+                }.frame(height: geometry.size.height)
             }
             
             // Artifacts?
             StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)
-                .offset(x:0, y: screen.height * 1.065)
-                .offset(y: bottomState.height)
+                .offset(x:0, y: screen.height < 800 ? screen.height / 1.125 : screen.height / 1.2)
+                .offset(y: self.bottomState.height)
                 .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.4))
                 .gesture(
                     DragGesture()

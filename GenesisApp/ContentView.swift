@@ -43,6 +43,8 @@ struct ContentView: View {
                     
                     NavigationLink(destination: AccountView(toggle: self.$toggleProfile)
                     .environmentObject(userInfo)
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true)
                     , isActive: self.$toggleProfile) {
                             EmptyView()

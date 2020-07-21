@@ -18,9 +18,9 @@ struct StarredArtifactsView: View {
             HStack {
                 
                 Text("Starred Artifacts")
-                    .font(Font.custom("Lato-Black", size: 28))
+                    .font(Font.custom("Lato-Black", size: 24))
                     .foregroundColor(.white)
-                    .padding(.vertical,24)
+                    .padding(.vertical,18)
                     .padding(.horizontal,32)
                 
                 
@@ -41,6 +41,7 @@ struct StarredArtifactsView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity)
+        .frame(height: 800)
         .background(Color.primaryArtifact)
         .cornerRadius(50)
         .edgesIgnoringSafeArea(.all)

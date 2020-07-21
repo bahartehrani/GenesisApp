@@ -47,7 +47,7 @@ struct WeeklyExpensesView: View {
             HStack {
                 
                 Text("Weekly Expenses")
-                    .font(Font.custom("Lato-Black", size: 28))
+                    .font(Font.custom("Lato-Black", size: 24))
                     .foregroundColor(.white)
                     .onTapGesture {
                         self.showFull.toggle()
@@ -81,15 +81,15 @@ struct WeeklyExpensesView: View {
                             .foregroundColor(.white)
                             .font(Font.custom("Lato-Black", size: 26))
                     }
-                    .padding(.leading,10)
+                    .padding(.leading,6 )
                 }
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 6)
                 
             }
             .padding(.horizontal,6)
             
             GeometryReader { geometry in
-                ScrollView (.vertical) {
+                //ScrollView (.vertical) {
                     
                     VStack {
                         
@@ -143,7 +143,8 @@ struct WeeklyExpensesView: View {
                         
                     }.frame(height: geometry.size.height)
                     
-                }.padding(.horizontal,6)
+                //}
+                .padding(.horizontal,6)
             }
             
         }
