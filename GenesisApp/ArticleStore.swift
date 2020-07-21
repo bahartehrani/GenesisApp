@@ -20,10 +20,10 @@ class ArticleStore : ObservableObject {
     
     var db = Firestore.firestore()
     var subtopicArticles : [Article] = []
-    @Published var maintopicview = MainTopicOverview(title: "", subtopics: [], description: "")
+    @Published var maintopicview = MainTopicOverview(title: "", subtopics: [], description: "", subtopicArtifacts : [:])
 
     func fetchMainTopic (maintopic: String, completion: @escaping (Bool) -> Void) {
-        
+        //self.maintopicview.subtopicArtifacts.removeAll()
         // , completion: @escaping (MainTopicOverview) -> Void
         db.collection(maintopic).document("maintopicview")
             .getDocument { (doc, error) in
@@ -35,8 +35,27 @@ class ArticleStore : ObservableObject {
                     let mainTitle = doc?.get("title") as! String
                     let mainDescript = doc?.get("description") as! String
                     let mainSubtopics = doc?.get("subtopics") as! [String]
+                    let mainSubtopicPreArtifacts = doc?.get("subtopicArtifacts") as! [String : [String]]
                     
-                    self.maintopicview = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript)
+                    var mainSubtopicArtifacts : [String : [SubTopic]] = [:]
+                    var SubTopicArr : [SubTopic] = []
+                    
+                    for (subtopic, subtopArtifacts) in mainSubtopicPreArtifacts {
+                        for artifact in subtopArtifacts {
+                            let subarr = artifact.components(separatedBy: ",")
+                            let subtopic_item = SubTopic(type: subarr[0], title: subarr[1])
+                            print(subarr)
+                            
+                            SubTopicArr.append(subtopic_item)
+                        }
+                        mainSubtopicArtifacts[subtopic] = SubTopicArr
+                        SubTopicArr.removeAll()
+                    }
+                    
+                    print("Artifacts?")
+                    print(mainSubtopicArtifacts)
+                    
+                    self.maintopicview = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)
                     
                     print(mainDescript)
                     completion(true)

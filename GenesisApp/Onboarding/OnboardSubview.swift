@@ -15,7 +15,10 @@ struct OnboardSubview: View {
         Image(imageString)
             //.resizable()
             .frame(width: UIScreen.main.bounds.width)
-            .aspectRatio(contentMode: .fill)
+            .aspectRatio(contentMode: .fit)
+            
+            // this looks weird on the bigger phone sizes
+            // .aspectRatio(contentMode: .fill)
             .clipped()
             .edgesIgnoringSafeArea(.all)
             

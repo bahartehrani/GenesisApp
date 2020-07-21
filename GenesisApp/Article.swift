@@ -27,5 +27,13 @@ struct MainTopicOverview : Identifiable {
     var title: String
     var subtopics: [String]
     var description: String
+    var subtopicArtifacts : [String : [SubTopic]]
 
+}
+
+
+struct SubTopic : Identifiable {
+    var id = UUID()
+    var type: String
+    var title: String
 }

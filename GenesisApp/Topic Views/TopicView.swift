@@ -55,7 +55,7 @@ struct TopicView: View {
                     PagerView(pageCount: self.topicArticles.maintopicview.subtopics.count, currentIndex: self.$currentPage) {
                         ForEach(0..<self.topicArticles.maintopicview.subtopics.count, id: \.self) {index in
     //                        subtopicMainView(subtopic: self.subtopicList[index])
-                            subtopicMainView(subtopic: self.subtopic3)
+                            subtopicMainView(subtopic: (self.topicArticles.maintopicview.subtopicArtifacts[self.topicArticles.maintopicview.subtopics[index]] ?? self.subtopic3))
                         }
                     }
                     
@@ -132,31 +132,31 @@ struct subtopicMainView : View {
     
     func tester() {
         print("test test test")
-        print(savings.longTerm)
+        print(subtopic)
     }
     
     var body : some View {
         ScrollView {
-            ForEach(savings.longTerm) { article in
+            ForEach(subtopic) { article in
                 
-                NavigationLink(destination: ArticleView(
-                    toggle: .constant(false),
-                    toggleStar: false,
-                    name: article.articleName,
-                    date: article.dateCreated,
-                    author: article.author,
-                    topic: article.maintopic)) {
-                        
+//                NavigationLink(destination: ArticleView(
+//                    toggle: .constant(false),
+//                    toggleStar: false,
+//                    name: article.title,
+//                    date: article.dateCreated,
+//                    author: article.author,
+//                    topic: article.maintopic))
+                NavigationLink(destination: AccountView(toggle: .constant(false)))
+                {
                     SubTopicView(
-                        type: article.type, title: article.articleName
+                        type: article.type, title: article.title
                     )
                 }
                 .foregroundColor(.black)
 
             }
             
-        }.onAppear(perform: tester
-        )
+        }.onAppear(perform: tester)
     }
     
 }
@@ -198,13 +198,6 @@ struct SubTopicView: View {
         .padding(.bottom, 16)
         .frame(maxWidth: .infinity)
     }
-}
-
-
-struct SubTopic : Identifiable {
-    var id = UUID()
-    var type: String
-    var title: String
 }
 
 let subTopicData1 = [
