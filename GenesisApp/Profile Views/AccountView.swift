@@ -21,69 +21,73 @@ struct AccountView: View {
     var body: some View {
         
         ZStack {
-            VStack {
-                // Name
-                HStack {
-                    Text("Daisy Zhang")
-                    .font(Font.custom("Lato-Bold", size: 32))
-                    
-                    Spacer()
-                }
-                .padding(.horizontal,20)
-                .padding(.top,8)
-                
-                // Edit Account
-                
-                HStack {
-                    
-                    Button(action: {
-                        //
-                    }, label: {
-                        Text(self.showArtifacts ? " " : "Edit Account")
-                        .font(Font.custom("Lato-Regular", size: 18))
-                        .foregroundColor(.secondaryText)
-                    })
-                    
-                    Spacer()
-                }
-                .padding(.vertical,6)
-                .padding(.horizontal,20)
-                
-                
-                // Weekly Tip
-                WeeklyTipView()
-                    .padding(.vertical,8)
-                
-                // Weekly Expenses
-                WeeklyBudgetView()
-                    .shadow(color: .gray, radius: 4, x: 2, y: 2)
-                
-                // Starred Artifacts from underneath
-                
-                Spacer()
-                
-            }
-            .offset(x:0, y: -75)
-            .navigationBarItems(trailing:
-
-                Button(action: {
-                    withAnimation {
-                        self.toggle = false
+            GeometryReader { geometry in
+                VStack(alignment: .center) {
+                    // Name
+                    HStack {
+                        Text("Daisy Zhang")
+                        .font(Font.custom("Lato-Bold", size: 32))
+                        
+                        Spacer()
                     }
-                },
-                       label: {
-                        Image(systemName: "house")
-                            .font(.system(size: 20, weight: .light))
-                            .padding()
-                            .foregroundColor(.black)
-                })
+                    .padding(.horizontal,20)
+                    .padding(.top,8)
+                    
+                    // Edit Account
+                    
+                    HStack {
+                        
+                        Button(action: {
+                            //
+                        }, label: {
+                            Text(self.showArtifacts ? " " : "Edit Account")
+                            .font(Font.custom("Lato-Regular", size: 18))
+                            .foregroundColor(.secondaryText)
+                        })
+                        
+                        Spacer()
+                    }
+                    .padding(.vertical,6)
+                    .padding(.horizontal,20)
+                    
+                    
+                    // Weekly Tip
+                    WeeklyTipView()
+                        .padding(.bottom,8)
+                    
+                    // Weekly Expenses
+                    WeeklyBudgetView()
+                        .padding(.bottom, screen.height / 4)
+                    
+                    // Starred Artifacts from underneath
+                    
+                    //Spacer()
+                    
+                }
+                //.edgesIgnoringSafeArea(.all)
+                    //frame(maxHeight: geometry.size.height)
+                    .frame(height: geometry.size.height)
+                .offset(x:0, y: (geometry.size.height * 0.006))
+                .navigationBarItems(trailing:
 
-            )
-//            Text("\(bottomState.height)").offset(y: -300)
+                    Button(action: {
+                        withAnimation {
+                            self.toggle = false
+                        }
+                    },
+                           label: {
+                            Image(systemName: "house")
+                                .font(.system(size: 20, weight: .light))
+                                .padding([.horizontal,.bottom])
+                                .foregroundColor(.black)
+                    })
+
+                )
+            }
             
             // Artifacts?
             StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)
-                .offset(x:0, y: screen.height * 0.75)
+                .offset(x:0, y: screen.height * 1.065)
                 .offset(y: bottomState.height)
                 .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.4))
                 .gesture(
@@ -91,10 +95,7 @@ struct AccountView: View {
                         .onChanged({ value in
                             self.bottomState = value.translation
                             if self.showArtifacts {
-                                self.bottomState.height += -605
-                            }
-                            if self.bottomState.height < -625 {
-                                self.bottomState.height = -615
+                                self.bottomState.height += -screen.height / 1.35
                             }
                         })
                         .onEnded({ value in
@@ -103,8 +104,8 @@ struct AccountView: View {
                                     self.showArtifacts = false
                                 }
                             }
-                            if (self.bottomState.height < -375) {
-                                self.bottomState.height = -605
+                            if (self.bottomState.height < -325) {
+                                self.bottomState.height = -screen.height / 1.35
                                 withAnimation {
                                     self.showArtifacts = true
                                 }
@@ -124,8 +125,6 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
         AccountView(toggle: .constant(false)).environmentObject(UserData())
-    }
     }
 }

@@ -32,7 +32,7 @@ struct StarredArtifactsView: View {
                 if !self.showArtifacts {
                     self.bottomState = .zero
                 } else {
-                    self.bottomState.height += -605
+                    self.bottomState.height += -screen.height / 1.35
                 }
                 print(self.showArtifacts)
             }
