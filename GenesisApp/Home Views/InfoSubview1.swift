@@ -14,12 +14,13 @@ struct InfoSubview1: View {
     
     var body: some View {
            ZStack {
-            NavigationLink(destination: InfoView(toggle: self.$toggle)
-                .navigationBarBackButtonHidden(true)
-                .statusBar(hidden: true)
-                ,isActive: self.$toggleInfo){
-                    EmptyView()
-            }.isDetailLink(false)
+            
+                NavigationLink(destination: InfoView(toggle: self.$toggle)
+                    .navigationBarBackButtonHidden(true)
+                    .statusBar(hidden: true)
+                    ,isActive: self.$toggleInfo){
+                        EmptyView()
+                }.isDetailLink(false)
             
                 Image("TutorialHome")
                 .resizable()
@@ -43,7 +44,6 @@ struct InfoSubview1: View {
                             .font(Font.custom("Lato-Bold", size: 16))
                             .foregroundColor(.white)
                             .padding(.vertical, 14.5)
-                            .padding(.horizontal, 20)
                             .frame(width: 160)
                             .background(Color.primaryBlue)
                             .cornerRadius(24)
@@ -60,7 +60,6 @@ struct InfoSubview1: View {
                             .font(Font.custom("Lato-Bold", size: 18))
                             .foregroundColor(.primaryBlue)
                             .padding(.vertical, 12)
-                            .padding(.horizontal, 20)
                             .frame(width: 160)
                             .background(Color.white)
                             .cornerRadius(24)
@@ -78,7 +77,7 @@ struct InfoSubview1: View {
                 .frame(width: screen.width, height: 300, alignment: .top)
                 .background(Color(.white))
                 .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
-           .offset(x: 0, y: 370)
+                .offset(x: 0, y: screen.height / 2.5)
             }
             .statusBar(hidden: true)
             .edgesIgnoringSafeArea(.all)

@@ -18,7 +18,7 @@ struct InfoSubview: View {
                 .frame(width: screen.width)
 
                 Image(woman)
-                .offset(x: 90, y: 350)
+                .offset(x: 90, y: screen.height / 2.5)
             }
 //            .statusBar(hidden: true)
             .edgesIgnoringSafeArea(.all)
