@@ -28,7 +28,7 @@ struct MotherView : View {
                 if viewRouter.currentPage == "onboardingView" {
                     OnboardingView()
                 } else if viewRouter.currentPage == "contentView" && session.session != nil {
-                    ContentView()
+                    ContentView(toggleInfo: false)
                 } else {
                     SetupView()
                 }

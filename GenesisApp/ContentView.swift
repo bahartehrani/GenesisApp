@@ -19,6 +19,7 @@ struct ContentView: View {
     
     @State var toggleSpending = false
     @State var toggleProfile = false
+    @State var toggleInfo = false
     
     @State var fillerRS = [
         "Managing" : "Budgeting",
@@ -40,6 +41,13 @@ struct ContentView: View {
                     , isActive: self.$toggleSpending) {
                             EmptyView()
                     }.isDetailLink(false)
+                    
+                    NavigationLink(destination: InfoSubview1(toggle: self.$toggleInfo).environmentObject(userInfo).navigationBarBackButtonHidden(true)
+//                        .statusBar(hidden: true)
+                        ,isActive: self.$toggleInfo){
+                            EmptyView()
+                    }.isDetailLink(false)
+                    
                     
                     NavigationLink(destination: AccountView(toggle: self.$toggleProfile)
                     .environmentObject(userInfo)
@@ -160,7 +168,7 @@ struct ContentView: View {
             }
             .navigationBarItems(
                 leading: Button(action: {
-                    // Actions
+                    self.toggleInfo = true
                 }, label: {
                     Image(systemName: "questionmark.circle")
                         .font(.system(size: 24))
@@ -177,16 +185,17 @@ struct ContentView: View {
                     
                 })
             )
-            
-        .navigationBarTitle("") //this must be empty
+            .navigationBarTitle("") //this must be empty
             .navigationBarBackButtonHidden(true)
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .statusBar(hidden: toggleInfo ? true : false)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(UserData())
+        ContentView(toggleInfo: false).environmentObject(UserData())
     }
 }
 
