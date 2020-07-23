@@ -28,20 +28,20 @@ struct WeeklyTipView: View {
                         //
                     }) {
                         Image("Backward arrow small")
-                            .foregroundColor(.secondaryText)
+                            .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
                     }
                     
-                    Text("7/03 - 7/10")
+                    Text("This Week")
                         .font(Font.custom("Lato-Black", size: 18))
-                        .foregroundColor(.secondaryText)
+                        .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
                     
-                    Button(action: {
-                        //
-                    }) {
-                        Image("Backward arrow small")
-                            .foregroundColor(.secondaryText)
-                            .rotationEffect(.degrees(180))
-                    }
+//                    Button(action: {
+//                        //
+//                    }) {
+//                        Image("Backward arrow small")
+//                            .foregroundColor(.secondaryText)
+//                            .rotationEffect(.degrees(180))
+//                    }
                 }
                 
             }.padding(.horizontal,6)

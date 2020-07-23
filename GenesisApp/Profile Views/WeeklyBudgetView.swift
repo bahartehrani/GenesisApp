@@ -60,14 +60,16 @@ struct WeeklyExpensesView: View {
                         //
                     }) {
                         Image("Backward arrow small")
-                            .foregroundColor(.white)
+                            
+                            //This color is slllighttly less harsh than white o-o
+                            .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
                     }.padding(.trailing,3)
                     
                     Button(action: {
                         //
                     }) {
                         Image("Backward arrow small")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
                             .rotationEffect(.degrees(180))
                     }.padding(.leading,3)
                     
@@ -78,7 +80,7 @@ struct WeeklyExpensesView: View {
                             //                    OR these:
                             //                       Image(systemName: "plus.square")
                             //                       Image(systemName: "plus.circle")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
                             .font(Font.custom("Lato-Black", size: 26))
                     }
                     .padding(.leading,6 )

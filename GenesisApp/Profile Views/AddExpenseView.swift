@@ -97,7 +97,7 @@ struct AddExpenseView: View {
 //            RoundedRectangle(cornerRadius: 30)
 //                .stroke(Color.black)
 //        )
-            .shadow(color: .gray, radius: 3, x: 1, y: 1)
+            .shadow(color: .gray, radius: 3)
         .onTapGesture {
             self.hideKeyboard()
         }

@@ -11,6 +11,12 @@ import SwiftUI
 struct StarredArtifactsView: View {
     @Binding var showArtifacts : Bool
     @Binding var bottomState : CGSize
+    
+    @State var subtopic = [
+        SubTopic(type: "apple", title: "Bananas"),
+        SubTopic(type: "potatos", title: "Tomatoes"),
+        SubTopic(type: "rainbows", title: "Unicorns")
+    ]
 
     var body: some View {
         
@@ -43,14 +49,29 @@ struct StarredArtifactsView: View {
                 print(self.showArtifacts)
             }
             
+            ScrollView {
+                ForEach(subtopic) { article in
+                    
+                    NavigationLink(destination: AccountView(toggle: .constant(false)))
+                    {
+                        SubTopicView(
+                            type: article.type, title: article.title
+                        )
+                    }
+                    .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
+
+                }
+            }
             
             Spacer()
         }
         .frame(maxWidth: .infinity)
         .frame(height: 800)
         .background(Color.primaryArtifact)
-        .cornerRadius(50)
+        .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
+//        .cornerRadius(50)
         .edgesIgnoringSafeArea(.all)
+        .shadow(radius: 2)
         
     }
 }
