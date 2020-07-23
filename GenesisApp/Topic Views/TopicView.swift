@@ -18,6 +18,7 @@ struct TopicView: View {
 //    @State var description = ""
     
     @EnvironmentObject var topicArticles : ArticleStore
+    @Binding var maintopicview : MainTopicOverview
     
     @State var subtopicNames = []
     @State var subtopic3 = subTopicData3
@@ -29,7 +30,15 @@ struct TopicView: View {
        }
     
     var body: some View {
-        PleaseWaitView(isShowing: .constant(topicArticles.maintopicview.subtopics.count == 0)) {
+        PleaseWaitView(isShowing: .constant(
+//            mainTopic == "Spending" ?
+//                self.topicArticles.maintopicviewSpending.subtopicArtifacts.count == 0
+//            : mainTopic == "Savings" ?
+//                self.topicArticles.maintopicviewSavings.subtopicArtifacts.count == 0
+//            : self.topicArticles.maintopicview.subtopicArtifacts.count == 0
+            
+            self.maintopicview.subtopicArtifacts.count == 0
+            )) {
             VStack {
     //            Top section
                 VStack {
@@ -43,7 +52,8 @@ struct TopicView: View {
                     }
                     
                     //Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.")
-                    Text(self.topicArticles.maintopicview.description.count == 0 ? "\n\n\n" : self.topicArticles.maintopicview.description)
+//                    Text(self.topicArticles.maintopicview.description.count == 0 ? "\n\n\n" : self.topicArticles.maintopicview.description)
+                    Text(self.maintopicview.description.count == 0 ? "\n\n\n" : self.maintopicview.description)
                     
                 }
                 .padding(32)
@@ -54,14 +64,21 @@ struct TopicView: View {
     //            article selections
                 VStack {
     //
-                    subtopicSelectors(valueFromParent: self.$currentPage, subtopicName: self.$topicArticles.maintopicview.subtopics)
+                    subtopicSelectors(valueFromParent: self.$currentPage, subtopicName: //self.$topicArticles.maintopicview.subtopics)
+                        self.$maintopicview.subtopics)
                     
-                    PagerView(pageCount: self.topicArticles.maintopicview.subtopics.count, currentIndex: self.$currentPage) {
-                        ForEach(0..<self.topicArticles.maintopicview.subtopics.count, id: \.self) {index in
-    //                        subtopicMainView(subtopic: self.subtopicList[index])
-                            subtopicMainView(subtopic: (self.topicArticles.maintopicview.subtopicArtifacts[self.topicArticles.maintopicview.subtopics[index]] ?? self.subtopic3))
+//                    PagerView(pageCount: self.topicArticles.maintopicview.subtopics.count, currentIndex: self.$currentPage) {
+//                        ForEach(0..<self.topicArticles.maintopicview.subtopics.count, id: \.self) {index in
+//    //                        subtopicMainView(subtopic: self.subtopicList[index])
+//                            subtopicMainView(subtopic: (self.topicArticles.maintopicview.subtopicArtifacts[self.topicArticles.maintopicview.subtopics[index]] ?? self.subtopic3))
+//                        }
+//                    }
+                    PagerView(pageCount: self.maintopicview.subtopics.count, currentIndex: self.$currentPage) {
+                            ForEach(0..<self.maintopicview.subtopics.count, id: \.self) {index in
+        //                        subtopicMainView(subtopic: self.subtopicList[index])
+                                subtopicMainView(subtopic: (self.maintopicview.subtopicArtifacts[self.maintopicview.subtopics[index]] ?? self.subtopic3))
+                            }
                         }
-                    }
                     
      
                 }
@@ -88,9 +105,10 @@ struct TopicView: View {
             )
             .onAppear(perform: self.tester1)
             .edgesIgnoringSafeArea(.all)
+                //.animation(.default)
 //                .animation(.easeOut(duration: 0.5))
 //                .animation(.easeInOut(duration: 0.5))
-            .animation(.spring(response: 0.5, dampingFraction: 0.8, blendDuration: 0))
+            //.animation(.spring(response: 0.5, dampingFraction: 0.8, blendDuration: 0))
         }
     }
 }
@@ -163,7 +181,7 @@ struct subtopicMainView : View {
             }
             
         }
-        .offset(x: 0, y: -30)
+        .offset(x: 0, y: -20)
         .onAppear(perform: self.tester)
 
     }
@@ -173,13 +191,13 @@ struct subtopicMainView : View {
 
 
 
-struct TopicView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView{
-            TopicView(mainTopic: "Spending", backgroundColor: "secondaryGold", toggle: .constant(true))
-        }
-    }
-}
+//struct TopicView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView{
+//            TopicView(mainTopic: "Spending", backgroundColor: "secondaryGold", toggle: .constant(true), maintopicview: )
+//        }
+//    }
+//}
 
 struct SubTopicView: View {
     var type : String

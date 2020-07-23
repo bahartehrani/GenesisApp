@@ -41,7 +41,7 @@ struct ContentView: View {
             ScrollView {
                 VStack {
                     //Navigation for each page
-                    NavigationLink(destination: TopicView(mainTopic: "Savings", backgroundColor: "secondaryGold", toggle: self.$toggleSavings)
+                    NavigationLink(destination: TopicView(mainTopic: "Savings", backgroundColor: "secondaryGold", toggle: self.$toggleSavings, maintopicview: self.$topicArticles.maintopicviewSavings)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
@@ -50,7 +50,7 @@ struct ContentView: View {
                     }.isDetailLink(false)
                     
                     
-                    NavigationLink(destination: TopicView(mainTopic: "Spending", backgroundColor: "primaryGreen", toggle: self.$toggleSpending)
+                    NavigationLink(destination: TopicView(mainTopic: "Spending", backgroundColor: "primaryGreen", toggle: self.$toggleSpending, maintopicview: self.$topicArticles.maintopicviewSpending)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
@@ -58,7 +58,7 @@ struct ContentView: View {
                             EmptyView()
                     }.isDetailLink(false)
                     
-                    NavigationLink(destination: TopicView(mainTopic: "Managing", backgroundColor: "secondaryPink", toggle: self.$toggleManaging)
+                    NavigationLink(destination: TopicView(mainTopic: "Managing", backgroundColor: "secondaryPink", toggle: self.$toggleManaging, maintopicview: self.$topicArticles.maintopicviewSpending)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
@@ -66,7 +66,7 @@ struct ContentView: View {
                             EmptyView()
                     }.isDetailLink(false)
                     
-                    NavigationLink(destination: TopicView(mainTopic: "Investing", backgroundColor: "secondaryMint", toggle: self.$toggleInvesting)
+                    NavigationLink(destination: TopicView(mainTopic: "Investing", backgroundColor: "secondaryMint", toggle: self.$toggleInvesting, maintopicview: self.$topicArticles.maintopicviewSpending)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
@@ -74,7 +74,7 @@ struct ContentView: View {
                             EmptyView()
                     }.isDetailLink(false)
                     
-                    NavigationLink(destination: TopicView(mainTopic: "Student Specific", backgroundColor: "secondaryOrange", toggle: self.$toggleStudents)
+                    NavigationLink(destination: TopicView(mainTopic: "Student Specific", backgroundColor: "secondaryOrange", toggle: self.$toggleStudents, maintopicview: self.$topicArticles.maintopicviewSpending)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
@@ -198,16 +198,16 @@ struct ContentView: View {
                     
                 }
                 //clears old subtopics so it doesn't get messy
-                .onAppear(perform:{
-
-                print("removing..")
-                self.topicArticles.maintopicview.subtopics.removeAll()
-                self.topicArticles.maintopicview.description.removeAll()
-                print(self.topicArticles.maintopicview.subtopics)
-                    
-                }
-                    
-                )
+//                .onAppear(perform:{
+//
+//                print("removing..")
+//                self.topicArticles.maintopicview.subtopics.removeAll()
+//                self.topicArticles.maintopicview.description.removeAll()
+//                print(self.topicArticles.maintopicview.subtopics)
+//
+//                }
+//
+//                )
                 .onDisappear(perform: {
                     self.toggleTopic.toggle()
                     let choose = true

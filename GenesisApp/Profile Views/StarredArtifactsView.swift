@@ -34,7 +34,9 @@ struct StarredArtifactsView: View {
             }
             .contentShape(Rectangle())
             .onTapGesture {
-                self.showArtifacts.toggle()
+                //withAnimation {
+                    self.showArtifacts.toggle()
+                //}
                 if !self.showArtifacts {
                     self.bottomState = .zero
                 } else {
@@ -49,17 +51,19 @@ struct StarredArtifactsView: View {
                 print(self.showArtifacts)
             }
             
-            ScrollView {
-                ForEach(subtopic) { article in
-                    
-                    NavigationLink(destination: AccountView(toggle: .constant(false)))
-                    {
-                        SubTopicView(
-                            type: article.type, title: article.title
-                        )
-                    }
-                    .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
+            if self.bottomState != .zero {
+                ScrollView {
+                    ForEach(subtopic) { article in
+                        
+                        NavigationLink(destination: AccountView(toggle: .constant(false)))
+                        {
+                            SubTopicView(
+                                type: article.type, title: article.title
+                            )
+                        }
+                        .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
 
+                    }
                 }
             }
             

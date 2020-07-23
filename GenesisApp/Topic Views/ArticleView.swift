@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ArticleView: View {
-    @EnvironmentObject var article : ArticleStore
+    @EnvironmentObject var topicArticles : ArticleStore
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     

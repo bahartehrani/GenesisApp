@@ -20,11 +20,17 @@ class ArticleStore : ObservableObject {
     
     var db = Firestore.firestore()
     var subtopicArticles : [Article] = []
+    // dont need anymore i think, but keepin it for now
     @Published var maintopicview = MainTopicOverview(title: "", subtopics: [], description: "", subtopicArtifacts : [:])
+    
+    @Published var maintopicviewSpending = MainTopicOverview(title: "spending", subtopics: [], description: "", subtopicArtifacts : [:])
+    @Published var maintopicviewSavings = MainTopicOverview(title: "savings", subtopics: [], description: "", subtopicArtifacts : [:])
 
     func fetchMainTopic (maintopic: String, completion: @escaping (Bool) -> Void) {
         //self.maintopicview.subtopicArtifacts.removeAll()
         // , completion: @escaping (MainTopicOverview) -> Void
+        //self.maintopicview = MainTopicOverview(title: "", subtopics: [], description: "", subtopicArtifacts : [:])
+        
         db.collection(maintopic).document("maintopicview")
             .getDocument { (doc, error) in
                 
@@ -55,7 +61,14 @@ class ArticleStore : ObservableObject {
                     print("Artifacts?")
                     print(mainSubtopicArtifacts)
                     
-                    self.maintopicview = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)
+                    if maintopic == "spending" {
+                        self.maintopicviewSpending = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)
+                    }
+                    if maintopic == "savings" {
+                        self.maintopicviewSavings = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)
+                    }
+                    
+//                    self.maintopicview = MainTopicOverview(title: mainTitle, subtopics:   mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)
                     
                     print(mainDescript)
                     completion(true)
