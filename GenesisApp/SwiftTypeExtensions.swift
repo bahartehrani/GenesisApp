@@ -244,6 +244,7 @@ struct PleaseWaitView<Content>: View where Content: View {
 
                 VStack {
                     Text("Please wait...")
+                    .font(Font.custom("Lato-Bold", size: 20))
                     ActivityIndicator(isAnimating: .constant(true), style: .medium)
                 }
                 .frame(width: geometry.size.width / 2,

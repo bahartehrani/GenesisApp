@@ -17,7 +17,14 @@ struct ContentView: View {
     
     @EnvironmentObject var topicArticles : ArticleStore
     
+    @State var toggleSavings = false
     @State var toggleSpending = false
+    @State var toggleManaging = false
+    @State var toggleInvesting = false
+    @State var toggleStudents = false
+    @State var toggleTopic = false
+    @State var currentTopic = " "
+    
     @State var toggleProfile = false
     @State var toggleInfo = false
     
@@ -33,8 +40,17 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 VStack {
+                    //Navigation for each page
+                    NavigationLink(destination: TopicView(mainTopic: "Savings", backgroundColor: "secondaryGold", toggle: self.$toggleSavings)
+                    .environmentObject(userInfo)
+                        .environmentObject(topicArticles)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$toggleSavings) {
+                            EmptyView()
+                    }.isDetailLink(false)
                     
-                    NavigationLink(destination: TopicView(mainTopic: "Spending", toggle: self.$toggleSpending)
+                    
+                    NavigationLink(destination: TopicView(mainTopic: "Spending", backgroundColor: "primaryGreen", toggle: self.$toggleSpending)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
@@ -42,6 +58,31 @@ struct ContentView: View {
                             EmptyView()
                     }.isDetailLink(false)
                     
+                    NavigationLink(destination: TopicView(mainTopic: "Managing", backgroundColor: "secondaryPink", toggle: self.$toggleManaging)
+                    .environmentObject(userInfo)
+                        .environmentObject(topicArticles)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$toggleManaging) {
+                            EmptyView()
+                    }.isDetailLink(false)
+                    
+                    NavigationLink(destination: TopicView(mainTopic: "Investing", backgroundColor: "secondaryMint", toggle: self.$toggleInvesting)
+                    .environmentObject(userInfo)
+                        .environmentObject(topicArticles)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$toggleInvesting) {
+                            EmptyView()
+                    }.isDetailLink(false)
+                    
+                    NavigationLink(destination: TopicView(mainTopic: "Student Specific", backgroundColor: "secondaryOrange", toggle: self.$toggleStudents)
+                    .environmentObject(userInfo)
+                        .environmentObject(topicArticles)
+                    .navigationBarBackButtonHidden(true)
+                    , isActive: self.$toggleStudents) {
+                            EmptyView()
+                    }.isDetailLink(false)
+                    
+                    //Navigation for profile + info
                     NavigationLink(destination: InfoSubview1(toggle: self.$toggleInfo).environmentObject(userInfo).navigationBarBackButtonHidden(true)
 //                        .statusBar(hidden: true)
                         ,isActive: self.$toggleInfo){
@@ -122,7 +163,7 @@ struct ContentView: View {
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Savings", primaryColor: Color.secondaryGold, topicImage: "Home - Savings Illustration", toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Savings", primaryColor: Color.secondaryGold, topicImage: "Home - Savings Illustration", toggle: self.$toggleSavings)
                                     .padding(.trailing,7)
                                 
                                 MainTopicCardView(mainTopic: "Spending", primaryColor: Color.primaryGreen, topicImage: "Home - Spending Illustration", toggle: self.$toggleSpending)
@@ -132,16 +173,16 @@ struct ContentView: View {
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Managing", primaryColor: Color.secondaryPink, topicImage: "Home - Management Illustration",toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Managing", primaryColor: Color.secondaryPink, topicImage: "Home - Management Illustration",toggle: self.$toggleManaging)
                                     .padding(.trailing,7)
                                 
-                                MainTopicCardView(mainTopic: "Investing",primaryColor: Color.secondaryMint, topicImage: "Home - Investing Illustration", toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Investing",primaryColor: Color.secondaryMint, topicImage: "Home - Investing Illustration", toggle: self.$toggleInvesting)
                                 
                             }.padding(.vertical,7)
                             
                             HStack {
                                 
-                                MainTopicCardView(mainTopic: "Student\nSpecific", primaryColor: Color.secondaryOrange, topicImage: "Home - Student Spec Illustration", toggle: .constant(false))
+                                MainTopicCardView(mainTopic: "Student\nSpecific", primaryColor: Color.secondaryOrange, topicImage: "Home - Student Spec Illustration", toggle: self.$toggleStudents)
                                     .padding(.horizontal,21)
                                 
                                 Spacer()
@@ -155,13 +196,52 @@ struct ContentView: View {
                     Spacer()
                 
                     
-                }.onDisappear(perform: {
-                    if self.toggleSpending {
-                        self.topicArticles.fetchMainTopic(maintopic: "spending") { rt in
-                            print("complete: ")
+                }
+                //clears old subtopics so it doesn't get messy
+                .onAppear(perform:{
+
+                print("removing..")
+                self.topicArticles.maintopicview.subtopics.removeAll()
+                self.topicArticles.maintopicview.description.removeAll()
+                print(self.topicArticles.maintopicview.subtopics)
+                    
+                }
+                    
+                )
+                .onDisappear(perform: {
+                    self.toggleTopic.toggle()
+                    let choose = true
+                    
+                    switch choose {
+                    case self.toggleSavings :
+                        self.currentTopic = "savings"
+                    case self.toggleSpending :
+                        self.currentTopic = "spending"
+                    case self.toggleManaging :
+                        self.currentTopic = "spending"
+                    case self.toggleInvesting :
+                        self.currentTopic = "spending"
+                    case self.toggleStudents :
+                        self.currentTopic = "spending"
+                    default :
+                        self.toggleTopic.toggle()
+                        print("Nothing huehue")
+                    }
+
+                    if self.toggleTopic {
+                        self.topicArticles.fetchMainTopic(maintopic: self.currentTopic) { rt in
+                            print("complete: Topic Found")
                             print(rt)
+                            self.toggleTopic.toggle()
                         }
                     }
+                    
+//                    if self.toggleSpending {
+//                        self.topicArticles.fetchMainTopic(maintopic: "spending") { rt in
+//                            print("complete: Spending")
+//                            print(rt)
+//                        }
+//                    }
                 }
                 )
                 

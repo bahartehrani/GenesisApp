@@ -10,19 +10,23 @@ import SwiftUI
 
 struct TopicView: View {
     @State var mainTopic : String
+    @State var backgroundColor : String
     @Binding var toggle : Bool
     @State private var currentPage = 0
     
     @State var subtopicnames : [String] = []
-    @State var description = ""
+//    @State var description = ""
     
     @EnvironmentObject var topicArticles : ArticleStore
     
-    @State var subtopicNames = ["Loans", "Credit", "Debit"]
-    @State var subtopicList = [subTopicData1,subTopicData2, subTopicData3]
+    @State var subtopicNames = []
     @State var subtopic3 = subTopicData3
     
     @State var toggleArticle = false
+    
+    func tester1() {
+           print("Starting build topicview")
+       }
     
     var body: some View {
         PleaseWaitView(isShowing: .constant(topicArticles.maintopicview.subtopics.count == 0)) {
@@ -44,7 +48,7 @@ struct TopicView: View {
                 }
                 .padding(32)
                 .frame(maxHeight: 350)
-                .background(Color.secondaryGold)
+                .background(Color(self.backgroundColor))
                 
                 
     //            article selections
@@ -61,7 +65,6 @@ struct TopicView: View {
                     
      
                 }
-                    //different phones have diff sizes :o ; not sure how to fix; maybe a new view open up the details + a pic?
                 .frame(height: screen.height * 3/5)
                 
             }
@@ -83,7 +86,11 @@ struct TopicView: View {
                     .foregroundColor(.black)
                 })
             )
-                .edgesIgnoringSafeArea(.all)
+            .onAppear(perform: self.tester1)
+            .edgesIgnoringSafeArea(.all)
+//                .animation(.easeOut(duration: 0.5))
+//                .animation(.easeInOut(duration: 0.5))
+            .animation(.spring(response: 0.5, dampingFraction: 0.8, blendDuration: 0))
         }
     }
 }
@@ -94,7 +101,7 @@ struct subtopicSelectors : View {
     @Binding var subtopicName : [String]
     
     var body : some View {
-        ScrollView (.horizontal) {
+        ScrollView (.horizontal, showsIndicators: false) {
             HStack(spacing: 50) {
                 
                 ForEach(0..<self.subtopicName.count, id: \.self) { index in
@@ -109,25 +116,24 @@ struct subtopicSelectors : View {
                 }
                 
             }
-            .frame(width: screen.width)
             .font(.custom("Lato-Black", size: 24))
         }
         .padding(.top, 24)
+        .padding(.horizontal, 24)
         .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
         .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
         .frame(maxWidth: .infinity)
-        .offset(x: 0, y: -30)
-    .onAppear(
-        perform: {
-            print(self.subtopicName.count)
-    })
+        .offset(x: 0, y: -40)
+        .onAppear(
+            perform: {
+                print(self.subtopicName.count)
+        })
     }
     
 }
 
 struct subtopicMainView : View {
-    
-    @State var savings = ArticleStore()
+
     @State var subtopic : [SubTopic]
     
     func tester() {
@@ -156,7 +162,10 @@ struct subtopicMainView : View {
 
             }
             
-        }.onAppear(perform: tester)
+        }
+        .offset(x: 0, y: -30)
+        .onAppear(perform: self.tester)
+
     }
     
 }
@@ -167,17 +176,14 @@ struct subtopicMainView : View {
 struct TopicView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            TopicView(mainTopic: "Spending", toggle: .constant(true))
+            TopicView(mainTopic: "Spending", backgroundColor: "secondaryGold", toggle: .constant(true))
         }
-        
-//        TopicView(mainTopic: "Spending", toggle: .constant(true))
     }
 }
 
 struct SubTopicView: View {
     var type : String
     var title: String
-    // Name of article var
     
     var body: some View {
         HStack {

@@ -23,7 +23,7 @@ struct SignUpSurveyView: View {
     
     func finishSignUp() {
         
-        self.userInfo.ageRange = self.ageRange
+        self.userInfo.ageRange = self.ageRange 
         self.userInfo.firstTime = self.firstTime == "Yes" ? true : false
         self.userInfo.moneyWeek = Int(self.amountPerWeek) ?? 0
         
