@@ -22,12 +22,15 @@ struct SearchBar: View {
                 .background(Color(.systemGray6))
                 
                 .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.black, lineWidth: 1))
+
                 .overlay(
                     HStack {
                         
                         if isEditing {
                             Button(action: {
+                                self.isEditing = false
                                 self.text = ""
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             }) {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(.gray)

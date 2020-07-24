@@ -35,6 +35,14 @@ struct ContentView: View {
     ]
     
     @State var searchQuery = ""
+    
+    //will replace w subtopicarticles from database later
+    //this is tester: TYPE IN SEARCH "Apples" huehue ;)
+    @State var searchTest =
+    [Article(articleBody: "Apples and bananas and stuff to look for", articleName: "Article 1", author: "c", dateCreated: "d", maintopic: "e", subtopic: "f", type: "Im"),
+    Article(articleBody: "helps and stuff Apples", articleName: "Article 2", author: "j", dateCreated: "k", maintopic: "l", subtopic: "m", type: "Pretty"),
+    Article(articleBody: "Apples and stuff", articleName: "Article 3", author: "c", dateCreated: "d", maintopic: "e", subtopic: "f", type: "Hungers"),
+    Article(articleBody: "Apples and look for", articleName: "Article 4", author: "c", dateCreated: "d", maintopic: "e", subtopic: "f", type: "WBU")]
 
     var body: some View {
         NavigationView {
@@ -114,6 +122,24 @@ struct ContentView: View {
                         
                         // Search Bar
                         SearchBar(text: $searchQuery)
+                        
+                        if !searchQuery.isEmpty {
+                            ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
+                                HStack {
+                                    VStack (alignment: .leading){
+                                        Text(article.type.uppercased())
+                                        .font(Font.custom("Lato-Bold", size: 16))
+                                        Text(article.articleName)
+                                        .font(Font.custom("Lato-Bold", size: 20))
+                                    }
+                                    Spacer()
+                                }
+                                .padding()
+                                .padding(.horizontal, 32)
+                            }
+                            .frame(width: screen.width)
+                        
+                        }
                     }
                     .padding(.top,-30)
                     
@@ -193,7 +219,7 @@ struct ContentView: View {
                         }.padding(.top,7)
                 }
                     
-                    Spacer()
+                 Spacer()
                 
                     
                 }
