@@ -11,6 +11,14 @@ import SwiftUI
 
 // checking is git is messing up
 
+let colorToTopic = [
+    "Spending" : Color.primaryGreen,
+    "Savings" : Color.secondaryGold,
+    "Student Specific" : Color.secondaryOrange,
+    "Investing" : Color.secondaryMint,
+    "Managing" : Color.secondaryPink
+]
+
 extension TextField {
     
     func signUpTFStyle() -> some View {

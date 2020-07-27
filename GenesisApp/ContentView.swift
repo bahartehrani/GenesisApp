@@ -112,7 +112,7 @@ struct ContentView: View {
                     VStack {
                         
                         // Welcome Sign
-                        Text("Welcome, " + "Daisy")
+                        Text("Welcome, " + self.userInfo.firstName)
                         .font(Font.custom("Lato-Bold", size: 30))
                         
                         Text("What would you like to learn today?")
@@ -161,8 +161,11 @@ struct ContentView: View {
                             ScrollView (.horizontal) {
                                 
                                 HStack {
-                                    ForEach(self.fillerRS.map{$0.key}.indices) { index in
-                                        RecentlyStudiedCardView(mainTopic: (self.fillerRS.map{$0.key})[index], subTopic: (self.fillerRS.map{$0.value})[index])
+                                    ForEach(self.userInfo.recentContent!.indices, id: \.self) { index in
+                                        RecentlyStudiedCardView(
+                                            mainTopic: self.userInfo.recentContentMod[index].maintopic,
+                                            subTopic: self.userInfo.recentContentMod[index].subtopic,
+                                            primaryColor: colorToTopic[self.userInfo.recentContentMod[index].maintopic] ?? Color.primaryGreen)
                                             .padding(.horizontal,6)
                                     }
                                 }
@@ -302,6 +305,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(toggleInfo: false).environmentObject(UserData())
+        .environmentObject(ViewRouter())
+        .environmentObject(ArticleStore())
     }
 }
 

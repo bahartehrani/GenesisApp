@@ -26,7 +26,7 @@ struct AccountView: View {
                     VStack(alignment: .center) {
                         // Name
                         HStack {
-                            Text("Daisy Zhang")
+                            Text(self.userInfo.firstName + " " + self.userInfo.lastName)
                             .font(Font.custom("Lato-Bold", size: 32))
                             
                             Spacer()

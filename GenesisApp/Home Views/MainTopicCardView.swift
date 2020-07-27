@@ -68,7 +68,7 @@ struct MainTopicCardView: View {
             
         }
             .frame(width: (UIScreen.main.bounds.width - 56)/2, height: (UIScreen.main.bounds.width - 56)/2)
-            .background(primaryColor.cornerRadius(20))
+            .background(primaryColor.cornerRadius(20).shadow(radius: 1))
         
     }
 }

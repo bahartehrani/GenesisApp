@@ -11,6 +11,7 @@ import SwiftUI
 struct RecentlyStudiedCardView: View {
     @State var mainTopic : String
     @State var subTopic : String
+    @State var primaryColor : Color
     
     
     var body: some View {
@@ -25,9 +26,11 @@ struct RecentlyStudiedCardView: View {
             }
                 .foregroundColor(.black)
                 .frame(width: 240, height: 80)
+                .background(primaryColor.cornerRadius(20).shadow(radius: 1))
                 .overlay(
             
-                    RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 20).stroke(primaryColor, lineWidth: 1)
+                    
             
                 )
         }
@@ -36,6 +39,6 @@ struct RecentlyStudiedCardView: View {
 
 struct RecentlyStudiedCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RecentlyStudiedCardView(mainTopic: "Managing", subTopic: "Budgeting")
+        RecentlyStudiedCardView(mainTopic: "Managing", subTopic: "Budgeting", primaryColor: .secondaryGold)
     }
 }

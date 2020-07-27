@@ -76,6 +76,7 @@ class UserData: ObservableObject, Identifiable {
         }
     }
     
+    @Published var recentContentMod : [recentlyViewed]
     
     init() {
         
@@ -85,11 +86,14 @@ class UserData: ObservableObject, Identifiable {
         self.email = UserDefaults.standard.object(forKey: "email") as? String ?? ""
         self.moneyWeek = UserDefaults.standard.object(forKey: "moneyWeek") as? Int ?? 0
         self.starredContent = UserDefaults.standard.object(forKey: "starredContent") as? String ?? ""
+        
         self.recentContent = UserDefaults.standard.object(forKey: "recentContent") as? [String] ?? []
         
         self.ageRange = UserDefaults.standard.object(forKey: "ageRange") as? String ?? "Unknown"
         
         self.firstTime = UserDefaults.standard.object(forKey: "firstTime") as? Bool ?? true
+        
+        self.recentContentMod = []
     }
     
 }

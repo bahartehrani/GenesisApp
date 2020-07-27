@@ -37,3 +37,9 @@ struct SubTopic : Identifiable {
     var type: String
     var title: String
 }
+
+struct recentlyViewed : Identifiable {
+    var id = UUID()
+    var maintopic: String
+    var subtopic : String
+}

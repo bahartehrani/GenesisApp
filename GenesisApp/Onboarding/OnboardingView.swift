@@ -36,13 +36,13 @@ struct OnboardingView: View {
             VStack {
                 Group {
                     Text(titles[currentPageIndex])
-                        .font(Font.custom("Lato-Bold", size: 28))
+                        .font(Font.custom("Lato-Bold", size: 32))
                         .padding(.bottom)
                         //.padding(.top,6)
                         .padding(.horizontal,28)
                     
                     Text(captions[currentPageIndex])
-                        .font(Font.custom("Lato-Regular", size: 18))
+                        .font(Font.custom("Lato-Regular", size: 20))
                         .lineSpacing(2)
                         .multilineTextAlignment(.center)
                         .padding(.top,8)
@@ -74,7 +74,10 @@ struct OnboardingView: View {
             
             Spacer()
             
-        }.onTapGesture {
+        }
+        .offset(x:0,y: screen.height > 800 ? -60 : 0)
+        .edgesIgnoringSafeArea(.top)
+        .onTapGesture {
             if self.currentPageIndex != 2 {
                 if self.currentPageIndex+1 == self.subviews.count {
                     self.currentPageIndex = 0

@@ -12,7 +12,6 @@ struct MotherView : View {
     
     @State var isActive = false
     @EnvironmentObject var viewRouter: ViewRouter
-    
     @EnvironmentObject var session: SessionStore
     
     var topicArticles = ArticleStore()
@@ -37,6 +36,13 @@ struct MotherView : View {
                 // splash screen
                 LaunchScreen()
                     .transition(.opacity)
+                    .onAppear(perform: {
+                        for str in self.userInfo.recentContent! {
+                            let subarr = str.components(separatedBy: ",")
+                            let recview = recentlyViewed(maintopic: subarr[0], subtopic: subarr[1])
+                            self.userInfo.recentContentMod.append(recview)
+                        }
+                    })
                 
             }
         }

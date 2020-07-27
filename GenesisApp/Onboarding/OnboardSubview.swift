@@ -13,7 +13,7 @@ struct OnboardSubview: View {
     
     var body: some View {
         Image(imageString)
-            //.resizable()
+            .resizable()
             .frame(width: UIScreen.main.bounds.width)
             .aspectRatio(contentMode: .fit)
             

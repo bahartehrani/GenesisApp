@@ -49,6 +49,16 @@ struct LoginView: View {
                     
                     self.userInfo.ageRange = document?.get("ageRange") as? String ?? "Unknown"
                     self.userInfo.firstTime = document?.get("firstTime") as? Bool ?? true
+                    let rc = document?.get("recentContent") as? [String] ?? []
+                    self.userInfo.recentContent = document?.get("recentContent") as? [String] ?? []
+                    
+                    self.userInfo.recentContentMod = []
+                    for str in rc {
+                        let subarr = str.components(separatedBy: ",")
+                        let recview = recentlyViewed(maintopic: subarr[0], subtopic: subarr[1])
+                        self.userInfo.recentContentMod.append(recview)
+                    }
+                    
                     withAnimation {
                         self.loading = false
                     }
