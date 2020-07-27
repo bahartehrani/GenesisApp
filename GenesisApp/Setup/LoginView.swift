@@ -51,6 +51,7 @@ struct LoginView: View {
                     self.userInfo.firstTime = document?.get("firstTime") as? Bool ?? true
                     let rc = document?.get("recentContent") as? [String] ?? []
                     self.userInfo.recentContent = document?.get("recentContent") as? [String] ?? []
+                    self.userInfo.moneyWeek = document?.get("moneyWeek") as? Int ?? 0
                     
                     self.userInfo.recentContentMod = []
                     for str in rc {
@@ -119,6 +120,11 @@ struct LoginView: View {
                         Text("Log In")
                         .roundedSmallButtonFilledStyle()
                     }).padding(.vertical)
+                .alert(isPresented: self.$showAlert) {
+                Alert(title: Text("Error "), message:
+                        Text(self.alertMessage), dismissButton:
+                        .default(Text("OK")))
+                }
                     
                     
                     Spacer()

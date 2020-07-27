@@ -16,6 +16,7 @@ struct AccountView: View {
     @Binding var toggle : Bool
     
     @State var showArtifacts = false
+    @State var showEditAccount = false
     @State var bottomState = CGSize.zero
     
     var body: some View {
@@ -24,6 +25,16 @@ struct AccountView: View {
             //GeometryReader { geometry in
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .center) {
+                        
+                        NavigationLink(destination: EditAccountView(showEditAccount: self.$showEditAccount)
+                            .environmentObject(self.userInfo)
+                            .navigationBarTitle("")
+                            .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
+                        , isActive: self.$showEditAccount) {
+                                EmptyView()
+                        }.isDetailLink(false)
+                        
                         // Name
                         HStack {
                             Text(self.userInfo.firstName + " " + self.userInfo.lastName)
@@ -40,7 +51,7 @@ struct AccountView: View {
                                     Image(systemName: "house")
                                         .font(.system(size: 20, weight: .light))
                                         .foregroundColor(.black)
-                                        .padding(.bottom,4)
+                                        .padding(.bottom,6)
                             })
                         }
                         .padding(.horizontal,20)
@@ -51,7 +62,7 @@ struct AccountView: View {
                         HStack {
                             
                             Button(action: {
-                                print("y is this broken wtffffff")
+                                self.showEditAccount.toggle()
                                 print(screen.height)
                             }, label: {
                                 Text(self.showArtifacts ? " " : "Edit Account")

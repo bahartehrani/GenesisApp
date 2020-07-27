@@ -27,6 +27,8 @@
 		0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */; };
 		0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */; };
 		0182253C24B3AF1D003EB4BC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0182253B24B3AF1D003EB4BC /* SearchBar.swift */; };
+		019980AE24CF58C5006D61C1 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019980AD24CF58C5006D61C1 /* EditAccountView.swift */; };
+		019980B024CF6224006D61C1 /* EditAccountTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019980AF24CF6224006D61C1 /* EditAccountTextView.swift */; };
 		019CEF9224BF68AD00A34230 /* CommentedOutCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9124BF68AD00A34230 /* CommentedOutCode.swift */; };
 		019CEF9724BF6E1800A34230 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9624BF6E1800A34230 /* AccountView.swift */; };
 		019CEF9924BF6EB700A34230 /* WeeklyTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019CEF9824BF6EB700A34230 /* WeeklyTipView.swift */; };
@@ -81,6 +83,8 @@
 		0172390624B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyStudiedCardView.swift; sourceTree = "<group>"; };
 		0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopicCardView.swift; sourceTree = "<group>"; };
 		0182253B24B3AF1D003EB4BC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		019980AD24CF58C5006D61C1 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
+		019980AF24CF6224006D61C1 /* EditAccountTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountTextView.swift; sourceTree = "<group>"; };
 		019CEF9124BF68AD00A34230 /* CommentedOutCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentedOutCode.swift; sourceTree = "<group>"; };
 		019CEF9624BF6E1800A34230 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		019CEF9824BF6EB700A34230 /* WeeklyTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTipView.swift; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				019CEF9624BF6E1800A34230 /* AccountView.swift */,
+				019980AD24CF58C5006D61C1 /* EditAccountView.swift */,
+				019980AF24CF6224006D61C1 /* EditAccountTextView.swift */,
 				019CEF9C24BF7C6300A34230 /* StarredArtifactsView.swift */,
 				01EF054424C6211A00017E5D /* AddExpenseView.swift */,
 				019CEF9824BF6EB700A34230 /* WeeklyTipView.swift */,
@@ -430,6 +436,7 @@
 				0172390724B3C0C000A9CCA9 /* RecentlyStudiedCardView.swift in Sources */,
 				019CEF9924BF6EB700A34230 /* WeeklyTipView.swift in Sources */,
 				01E908A424BD36E30029FC0C /* SignupView.swift in Sources */,
+				019980B024CF6224006D61C1 /* EditAccountTextView.swift in Sources */,
 				019CEF9724BF6E1800A34230 /* AccountView.swift in Sources */,
 				019CEF9224BF68AD00A34230 /* CommentedOutCode.swift in Sources */,
 				01E9088B24BCF7260029FC0C /* SwiftTypeExtensions.swift in Sources */,
@@ -450,6 +457,7 @@
 				0162ECD324AE6F330060BBA9 /* ContentView.swift in Sources */,
 				E41C1A3C24C7769F00E35BDA /* InfoSubview.swift in Sources */,
 				01EF054B24C6236200017E5D /* ArticleStore.swift in Sources */,
+				019980AE24CF58C5006D61C1 /* EditAccountView.swift in Sources */,
 				01E9089324BCFB150029FC0C /* MotherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.genesis.GenesisApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.genesis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -620,7 +628,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.genesis.GenesisApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.genesis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

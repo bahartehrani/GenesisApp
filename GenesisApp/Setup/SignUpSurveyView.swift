@@ -21,6 +21,9 @@ struct SignUpSurveyView: View {
     @State var firstTime = ""
     @State var amountPerWeek = ""
     
+    @State var showAlert = false
+    @State var alertMessage = "Enter a numeric value please. "
+    
     func finishSignUp() {
         
         self.userInfo.ageRange = self.ageRange 
@@ -129,7 +132,14 @@ struct SignUpSurveyView: View {
                 }
                 
                 Button(action: {
-                    self.finishSignUp()
+                    if (Int(self.amountPerWeek) != nil) && self.amountPerWeek != "" {
+                        self.showAlert = true
+                    }
+                    
+                    if !self.showAlert {
+                        self.finishSignUp()
+                    }
+                    
                     withAnimation {
                         self.viewRouter.currentPage = "contentView"
                     }
@@ -137,8 +147,15 @@ struct SignUpSurveyView: View {
                     Text("Sign Up")
                     .roundedSmallButtonFilledStyle()
                 }).padding(.top,32)
+                    .alert(isPresented: self.$showAlert) {
+                    Alert(title: Text("Error "), message:
+                            Text(self.alertMessage), dismissButton:
+                            .default(Text("OK")))
+                    }
                 
-            }.offset(x: 0, y:-40)
+            }
+            .offset(x: 0, y:-40)
+            .modifier(AdaptsToKeyboard())
             
                
 

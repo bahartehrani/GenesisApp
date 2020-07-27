@@ -149,6 +149,11 @@ struct SignupView: View {
                         Text("Next")
                         .roundedSmallButtonHollowStyle()
                     }).padding(.vertical)
+                    .alert(isPresented: self.$showAlert) {
+                    Alert(title: Text("Error "), message:
+                            Text(self.alertMessage), dismissButton:
+                            .default(Text("OK")))
+                    }
                 }
                 
                 
