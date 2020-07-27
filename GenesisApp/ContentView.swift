@@ -39,10 +39,10 @@ struct ContentView: View {
     //will replace w subtopicarticles from database later
     //this is tester: TYPE IN SEARCH "Apples" huehue ;)
     @State var searchTest =
-    [Article(articleBody: "Apples and bananas and stuff to look for", articleName: "Article 1", author: "c", dateCreated: "d", maintopic: "e", subtopic: "f", type: "Im"),
-    Article(articleBody: "helps and stuff Apples", articleName: "Article 2", author: "j", dateCreated: "k", maintopic: "l", subtopic: "m", type: "Pretty"),
-    Article(articleBody: "Apples and stuff", articleName: "Article 3", author: "c", dateCreated: "d", maintopic: "e", subtopic: "f", type: "Hungers"),
-    Article(articleBody: "Apples and look for", articleName: "Article 4", author: "c", dateCreated: "d", maintopic: "e", subtopic: "f", type: "WBU")]
+    [Article(articleBody: "Apples and bananas and stuff to look for", articleName: "Article 1", author: "c", dateCreated: "d", maintopic: "Eats", subtopic: "f", type: "Im"),
+    Article(articleBody: "helps and stuff Apples", articleName: "Article 2", author: "j", dateCreated: "k", maintopic: "Pie", subtopic: "m", type: "Pretty"),
+    Article(articleBody: "Apples and stuff", articleName: "Article 3", author: "c", dateCreated: "d", maintopic: "Eats", subtopic: "f", type: "Hungers"),
+    Article(articleBody: "Apples and look for", articleName: "Article 4", author: "c", dateCreated: "d", maintopic: "Eats", subtopic: "f", type: "WBU")]
 
     var body: some View {
         NavigationView {
@@ -124,20 +124,60 @@ struct ContentView: View {
                         SearchBar(text: $searchQuery)
                         
                         if !searchQuery.isEmpty {
-                            ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
-                                HStack {
-                                    VStack (alignment: .leading){
-                                        Text(article.type.uppercased())
-                                        .font(Font.custom("Lato-Bold", size: 16))
-                                        Text(article.articleName)
-                                        .font(Font.custom("Lato-Bold", size: 20))
-                                    }
+                            VStack {
+                                HStack{
+                                    Text("Related Topics")
+                                    .font(Font.custom("Lato-Bold", size: 25))
                                     Spacer()
                                 }
-                                .padding()
                                 .padding(.horizontal, 32)
+                                
+                                ScrollView (.horizontal){
+                                HStack{
+                                    ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
+                                            VStack (alignment: .leading){
+                                                MainTopicCardView(mainTopic:article.maintopic , primaryColor: .primaryGreen, topicImage: "Home - Investing Illustration" , toggle: .constant(false))
+                                                    .offset(x: 0, y: 0)
+//                                                Text(article.articleName)
+//                                                .font(Font.custom("Lato-Bold", size: 20))
+                                            }
+                                            .padding(.leading, 20)
+                                    }
+//                                    .background(Color(.gray))
+                                }
+                                .padding(.leading, 12)
+                                }
+                                    
+                                
+                                HStack {
+                                    Text("Artifacts")
+                                    .font(Font.custom("Lato-Bold", size: 25))
+                                    Spacer()
+                                }
+                                .padding(.top, 16)
+                                .padding(.horizontal, 32)
+                                
+                                ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
+                                    HStack {
+                                        VStack (alignment: .leading){
+                                            Text(article.type.uppercased())
+                                            .font(Font.custom("Lato-Bold", size: 16))
+                                            Text(article.articleName)
+                                            .font(Font.custom("Lato-Regular", size: 20))
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(.top, 12)
+                                    .padding(.horizontal, 32)
+                                }
+                                .frame(width: screen.width)
+                                
+                                Text("End of Search Results")
+                                .font(Font.custom("Lato-Bold", size: 16))
+                                .foregroundColor(Color(#colorLiteral(red: 0.5019607843, green: 0.5058823529, blue: 0.5176470588, alpha: 1)))
+                                .padding(32)
+                                
                             }
-                            .frame(width: screen.width)
                         
                         }
                     }

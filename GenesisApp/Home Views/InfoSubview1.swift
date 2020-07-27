@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct InfoSubview1: View {
+    @EnvironmentObject var userInfo : UserData
+    
     @Binding var toggle : Bool
     @State var toggleInfo = false
     
@@ -30,7 +32,7 @@ struct InfoSubview1: View {
                 .offset(x: 90, y: 150)
             
             VStack(alignment: .leading, spacing: 10.0) {
-                    Text("Hey, Daisy!")
+                    Text("Hey, " + self.userInfo.firstName + "!")
                         .font(Font.custom("Lato-Bold", size: 30))
                 
                     Text("Would you like a quick tour?")

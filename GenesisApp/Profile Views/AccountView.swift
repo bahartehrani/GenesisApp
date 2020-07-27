@@ -106,7 +106,7 @@ struct AccountView: View {
             StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)
                 .offset(x:0, y: screen.height < 800 ? screen.height / 1.125 : screen.height / 1.2)
                 .offset(y: self.bottomState.height)
-                .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.4))
+                .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.6))
                 .gesture(
                     DragGesture()
                         .onChanged({ value in
