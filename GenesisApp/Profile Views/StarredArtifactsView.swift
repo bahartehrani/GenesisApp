@@ -52,7 +52,7 @@ struct StarredArtifactsView: View {
             }
             
             if self.bottomState != .zero {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(subtopic) { article in
                         
                         NavigationLink(destination: AccountView(toggle: .constant(false)))

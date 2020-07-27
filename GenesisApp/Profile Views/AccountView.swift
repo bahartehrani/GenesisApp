@@ -22,7 +22,7 @@ struct AccountView: View {
         GeometryReader { geometry in
         ZStack {
             //GeometryReader { geometry in
-                ScrollView(.vertical) {
+                ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .center) {
                         // Name
                         HStack {

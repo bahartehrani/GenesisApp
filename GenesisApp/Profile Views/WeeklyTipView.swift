@@ -46,7 +46,7 @@ struct WeeklyTipView: View {
                 
             }.padding(.horizontal,6)
             
-            ScrollView {
+            ScrollView (showsIndicators: false) {
                 
                 Text("Did you know it’s almost 5 times more expensive to order from a restaurant than it is to cook at home? We love eating out too, but staying in is sure to result in tastier savings.")
                     .font(Font.custom("Lato-Regular", size:

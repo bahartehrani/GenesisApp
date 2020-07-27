@@ -165,7 +165,7 @@ struct subtopicMainView : View {
     }
     
     var body : some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             ForEach(subtopic) { article in
                 
 //                NavigationLink(destination: ArticleView(

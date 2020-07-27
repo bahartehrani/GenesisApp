@@ -46,7 +46,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
+            ScrollView (showsIndicators: false) {
                 VStack {
                     //Navigation for each page
                     NavigationLink(destination: TopicView(mainTopic: "Savings", backgroundColor: "secondaryGold", toggle: self.$toggleSavings, maintopicview: self.$topicArticles.maintopicviewSavings)
@@ -158,7 +158,7 @@ struct ContentView: View {
                                 Spacer()
                             }
                             
-                            ScrollView (.horizontal) {
+                            ScrollView (.horizontal, showsIndicators: false) {
                                 
                                 HStack {
                                     ForEach(self.userInfo.recentContent!.indices, id: \.self) { index in
