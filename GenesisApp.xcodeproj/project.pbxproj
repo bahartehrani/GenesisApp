@@ -57,6 +57,7 @@
 		E41C1A3A24C76B3F00E35BDA /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C1A3924C76B3F00E35BDA /* InfoView.swift */; };
 		E41C1A3C24C7769F00E35BDA /* InfoSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C1A3B24C7769F00E35BDA /* InfoSubview.swift */; };
 		E41C1A3E24C7848E00E35BDA /* InfoSubview1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C1A3D24C7848E00E35BDA /* InfoSubview1.swift */; };
+		E43C20C124CF9D6000583982 /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C20C024CF9D6000583982 /* SearchItems.swift */; };
 		E4631C2124BE7F0B008E9FCF /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4631C2024BE7F0B008E9FCF /* TopicView.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		E41C1A3924C76B3F00E35BDA /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		E41C1A3B24C7769F00E35BDA /* InfoSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSubview.swift; sourceTree = "<group>"; };
 		E41C1A3D24C7848E00E35BDA /* InfoSubview1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSubview1.swift; sourceTree = "<group>"; };
+		E43C20C024CF9D6000583982 /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 		E4631C2024BE7F0B008E9FCF /* TopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 				E41C1A3D24C7848E00E35BDA /* InfoSubview1.swift */,
 				0172390824B3C9AD00A9CCA9 /* MainTopicCardView.swift */,
 				0182253B24B3AF1D003EB4BC /* SearchBar.swift */,
+				E43C20C024CF9D6000583982 /* SearchItems.swift */,
 			);
 			path = "Home Views";
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				01EF054924C6234100017E5D /* Article.swift in Sources */,
 				01E9088F24BCF75A0029FC0C /* User.swift in Sources */,
 				019CEF9B24BF757700A34230 /* WeeklyBudgetView.swift in Sources */,
+				E43C20C124CF9D6000583982 /* SearchItems.swift in Sources */,
 				01E9089124BCF8910029FC0C /* SessionStore.swift in Sources */,
 				0172390924B3C9AD00A9CCA9 /* MainTopicCardView.swift in Sources */,
 				01EF054524C6211A00017E5D /* AddExpenseView.swift in Sources */,

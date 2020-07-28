@@ -83,7 +83,7 @@ struct EditAccountView: View {
                         Spacer()
                     }
                         .padding(.horizontal,36)
-                        .padding(.vertical)
+                        .padding(.bottom, 16)
                     
                     
                     
@@ -107,8 +107,8 @@ struct EditAccountView: View {
                             .padding(.vertical,8)
                     }
                 }
-                    .padding(.bottom)
-                    .modifier(AdaptsToKeyboard())
+//                .padding(.bottom)
+                .modifier(AdaptsToKeyboard())
                     
                 
                 Button(action: {
@@ -138,10 +138,12 @@ struct EditAccountView: View {
                 }, label: {
                     Text("Save Edits")
                     .roundedSmallButtonFilledStyle()
-                }).padding(.vertical)
+                })
+                .padding(.vertical)
+                .padding(.bottom, 16)
                 
                 
-                //Spacer()
+                Spacer()
                     
             }
             .onAppear(perform: {
@@ -150,7 +152,7 @@ struct EditAccountView: View {
                 self.email = self.userInfo.email
                 self.amountPerWeek = "\(self.userInfo.moneyWeek ?? 20)"
             })
-            .offset(y: -30)
+//            .offset(y: -30)
         .navigationBarBackButtonHidden(true)
         .alert(isPresented: self.$showAlert) {
             Alert(title: Text("Error "), message:
