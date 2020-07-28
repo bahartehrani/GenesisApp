@@ -32,7 +32,7 @@ struct SearchItems: View {
                 .font(Font.custom("Lato-Bold", size: 25))
                 Spacer()
             }
-            .padding(.horizontal, 18)
+            .padding(.horizontal, 24)
             
             ScrollView (.horizontal, showsIndicators: false){
             HStack{
@@ -43,10 +43,10 @@ struct SearchItems: View {
 //                        Text(article.articleName)
 //                        .font(Font.custom("Lato-Bold", size: 20))
                     }
-                    .padding(.horizontal, 6)
+                    .padding(.horizontal, 8)
                 }
             }
-            .padding(.horizontal, 12)
+            .padding(.horizontal, 16)
             .padding(.bottom, 16)
             }
                 
@@ -55,7 +55,7 @@ struct SearchItems: View {
                 .font(Font.custom("Lato-Bold", size: 25))
                 Spacer()
             }
-            .padding(.horizontal, 18)
+            .padding(.horizontal, 24)
             
             ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
                 HStack {
@@ -71,7 +71,7 @@ struct SearchItems: View {
                         .font(.custom("Lato-Regular", size: 25))
                 }
                 .padding(.bottom, 8)
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 24)
                 .onAppear {
                     if !(self.searchTopics.contains(article.maintopic)){
                         self.addTopic(maintopic: article.maintopic)
