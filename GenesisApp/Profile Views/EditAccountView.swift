@@ -152,7 +152,7 @@ struct EditAccountView: View {
                 self.email = self.userInfo.email
                 self.amountPerWeek = "\(self.userInfo.moneyWeek ?? 20)"
             })
-//            .offset(y: -30)
+                .offset(y: screen.height > 800 ? -30 : 0)
         .navigationBarBackButtonHidden(true)
         .alert(isPresented: self.$showAlert) {
             Alert(title: Text("Error "), message:
