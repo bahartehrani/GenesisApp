@@ -32,21 +32,33 @@ struct SearchItems: View {
                 .font(Font.custom("Lato-Bold", size: 25))
                 Spacer()
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 28)
             
             ScrollView (.horizontal, showsIndicators: false){
             HStack{
                 ForEach(self.searchTopics, id: \.self) { topic in
-                    VStack (alignment: .leading){
+                    ZStack (alignment: .leading){
+                        Text("")
+                        .frame(width: (UIScreen.main.bounds.width - 56)/2, height: (UIScreen.main.bounds.width - 56)/2)
+                            .background(Color(.gray).opacity(0.7))
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .offset(x: 1, y: 2)
+                        
                         MainTopicCardView(mainTopic: topic, primaryColor: .primaryGreen, topicImage: "Home - Investing Illustration" , toggle: .constant(false))
                             .offset(x: 0, y: 0)
 //                        Text(article.articleName)
 //                        .font(Font.custom("Lato-Bold", size: 20))
+                        
+                        Text("")
+                        .frame(width: (UIScreen.main.bounds.width - 56)/2, height: (UIScreen.main.bounds.width - 56)/2)
+                            .background(Color(.white).opacity(0.15))
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .offset(x: 1, y: 1)
                     }
-                    .padding(.horizontal, 8)
+                    .padding(.horizontal, 10)
                 }
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 18)
             .padding(.bottom, 16)
             }
                 
@@ -55,7 +67,7 @@ struct SearchItems: View {
                 .font(Font.custom("Lato-Bold", size: 25))
                 Spacer()
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 28)
             
             ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
                 HStack {
@@ -71,7 +83,7 @@ struct SearchItems: View {
                         .font(.custom("Lato-Regular", size: 25))
                 }
                 .padding(.bottom, 8)
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 28)
                 .onAppear {
                     if !(self.searchTopics.contains(article.maintopic)){
                         self.addTopic(maintopic: article.maintopic)
