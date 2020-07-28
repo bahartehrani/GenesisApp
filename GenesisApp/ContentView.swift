@@ -50,7 +50,6 @@ struct ContentView: View {
                             EmptyView()
                     }.isDetailLink(false)
                     
-                    
                     NavigationLink(destination: TopicView(mainTopic: "Spending", backgroundColor: "primaryGreen", toggle: self.$toggleSpending, maintopicview: self.$topicArticles.maintopicviewSpending)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)

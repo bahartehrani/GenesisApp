@@ -59,7 +59,10 @@ struct TopicView: View {
                 }
                 .padding(32)
                 .frame(maxHeight: 350)
-                .background(Color(self.backgroundColor))
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [Color(self.backgroundColor), Color(.primaryGreen)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//                    Color(self.backgroundColor)
+                )
                 
                 
     //            article selections
