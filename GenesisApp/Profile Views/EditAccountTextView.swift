@@ -20,14 +20,14 @@ struct EditAccountTextView: View {
             HStack {
                 Text(self.descriptor)
                     .foregroundColor(.secondaryText)
-                .font(Font.custom("Lato-Thin", size: 13))
+                    .font(Font.custom("Lato-Thin", size: screen.height > 800 ? 13 : 10))
                     .padding(.top,6)
                 .padding(.horizontal,12)
                 Spacer()
             }
             if isSecure {
                 SecureField("", text: self.$text)
-                .font(Font.custom("Lato-Thin", size: 18))
+                .font(Font.custom("Lato-Thin", size: screen.height > 800 ? 18 : 15))
                 .foregroundColor(.primaryBlue)
                 .padding(.horizontal)
                 .padding(.bottom,8)
@@ -36,7 +36,7 @@ struct EditAccountTextView: View {
                 .disableAutocorrection(true)
             } else {
                 TextField("", text: self.$text)
-                .font(Font.custom("Lato-Thin", size: 18))
+                .font(Font.custom("Lato-Thin", size: screen.height > 800 ? 18 : 15))
                 .foregroundColor(.primaryBlue)
                 .padding(.horizontal)
                 .padding(.bottom,8)

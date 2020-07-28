@@ -54,7 +54,7 @@ struct SetupView: View {
                 }.padding(.top)
                 .offset(x:0,y:-40)
                 
-                Spacer()
+                //Spacer()
                 
                 
                 VStack {
@@ -80,6 +80,7 @@ struct SetupView: View {
                     
                     
                 }.padding(.bottom,50)
+                    .offset(y: screen.height > 800 ? 0 : -10)
                 
             }
             .offset(x:0,y:-10)
