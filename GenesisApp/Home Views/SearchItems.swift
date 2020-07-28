@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SearchItems: View {
     @Binding var searchQuery : String
+    @Binding var toggleSearch : Bool
     
     //will replace w subtopicarticles from database later
     //this is tester: TYPE IN SEARCH "Apples" huehue ;)
@@ -26,84 +27,108 @@ struct SearchItems: View {
     
     var body: some View {
 
-        VStack {
-            HStack{
-                Text("Related Topics")
-                .font(Font.custom("Lato-Bold", size: 25))
-                Spacer()
-            }
-            .padding(.horizontal, 28)
-            
-            ScrollView (.horizontal, showsIndicators: false){
-            HStack{
-                ForEach(self.searchTopics, id: \.self) { topic in
-                    ZStack (alignment: .leading){
-                        Text("")
-                        .frame(width: (UIScreen.main.bounds.width - 56)/2, height: (UIScreen.main.bounds.width - 56)/2)
-                            .background(Color(.gray).opacity(0.7))
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .offset(x: 1, y: 2)
-                        
-                        MainTopicCardView(mainTopic: topic, primaryColor: .primaryGreen, topicImage: "Home - Investing Illustration" , toggle: .constant(false))
-                            .offset(x: 0, y: 0)
-//                        Text(article.articleName)
-//                        .font(Font.custom("Lato-Bold", size: 20))
-                        
-                        Text("")
-                        .frame(width: (UIScreen.main.bounds.width - 56)/2, height: (UIScreen.main.bounds.width - 56)/2)
-                            .background(Color(.white).opacity(0.15))
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .offset(x: 1, y: 1)
-                    }
-                    .padding(.horizontal, 10)
-                }
-            }
-            .padding(.horizontal, 18)
-            .padding(.bottom, 16)
-            }
-                
-            HStack {
-                Text("Artifacts")
-                .font(Font.custom("Lato-Bold", size: 25))
-                Spacer()
-            }
-            .padding(.horizontal, 28)
-            
-            ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
+        ScrollView (showsIndicators: false){
+            VStack {
                 HStack {
-                    VStack (alignment: .leading){
-                        Text(article.type.uppercased())
-                        .font(Font.custom("Lato-Bold", size: 16))
-                        Text(article.articleName)
-                        .font(Font.custom("Lato-Regular", size: 20))
+                    Button(action: {
+                        self.toggleSearch = false
+                        self.searchQuery = ""
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
+                            .font(Font.custom("Lato-Regular", size: 20))
+                        
                     }
-                    Spacer()
+//                    .padding(.trailing, 10)
+                    .frame(width: 20, height: 20)
                     
-                    Image(systemName: "chevron.right")
-                        .font(.custom("Lato-Regular", size: 25))
+                    SearchBar(text: $searchQuery, toggleSearch: $toggleSearch)
                 }
-                .padding(.bottom, 8)
+                .padding(.trailing, 10)
                 .padding(.horizontal, 28)
-                .onAppear {
-                    if !(self.searchTopics.contains(article.maintopic)){
-                        self.addTopic(maintopic: article.maintopic)
+                
+                HStack{
+                    Text("Related Topics")
+                    .font(Font.custom("Lato-Bold", size: 25))
+                    Spacer()
+                }
+                .padding(.top, 16)
+                .padding(.horizontal, 28)
+                
+                ScrollView (.horizontal, showsIndicators: false){
+                HStack{
+                    ForEach(self.searchTopics, id: \.self) { topic in
+                        ZStack (alignment: .leading){
+                            Text("")
+                            .frame(width: (UIScreen.main.bounds.width - 56)/2, height: (UIScreen.main.bounds.width - 56)/2)
+                                .background(Color(.gray).opacity(0.7))
+                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                .offset(x: 1, y: 2)
+                            
+                            MainTopicCardView(mainTopic: topic, primaryColor: .primaryGreen, topicImage: "Home - Investing Illustration" , toggle: .constant(false))
+                                .offset(x: 0, y: 0)
+    //                        Text(article.articleName)
+    //                        .font(Font.custom("Lato-Bold", size: 20))
+                            
+                            Text("")
+                            .frame(width: (UIScreen.main.bounds.width - 56)/2, height: (UIScreen.main.bounds.width - 56)/2)
+                                .background(Color(.white).opacity(0.1))
+                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                .offset(x: 1, y: 1)
+                        }
+                        .padding(.horizontal, 10)
                     }
                 }
+                .padding(.horizontal, 18)
+                .padding(.bottom, 16)
+                }
+                    
+                HStack {
+                    Text("Artifacts")
+                    .font(Font.custom("Lato-Bold", size: 25))
+                    Spacer()
+                }
+                .padding(.top, 16)
+                .padding(.horizontal, 28)
+                
+                ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
+                    HStack {
+                        VStack (alignment: .leading){
+                            Text(article.type.uppercased())
+                            .font(Font.custom("Lato-Bold", size: 16))
+                            Text(article.articleName)
+                            .font(Font.custom("Lato-Regular", size: 20))
+                        }
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.custom("Lato-Regular", size: 25))
+                    }
+                    .padding(.bottom, 8)
+                    .padding(.horizontal, 28)
+                    .onAppear {
+                        if !(self.searchTopics.contains(article.maintopic)){
+                            self.addTopic(maintopic: article.maintopic)
+                        }
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width)
+                
+                Text("End of Search Results")
+                .font(Font.custom("Lato-Bold", size: 16))
+                .foregroundColor(Color(#colorLiteral(red: 0.5019607843, green: 0.5058823529, blue: 0.5176470588, alpha: 1)))
+                .padding(.top, 40)
+                
+                Spacer()
             }
-            .frame(width: UIScreen.main.bounds.width)
-            
-            Text("End of Search Results")
-            .font(Font.custom("Lato-Bold", size: 16))
-            .foregroundColor(Color(#colorLiteral(red: 0.5019607843, green: 0.5058823529, blue: 0.5176470588, alpha: 1)))
-            .padding(32)
-            
+            .padding(.vertical, 20)
         }
     }
 }
 
 struct SearchItems_Previews: PreviewProvider {
     static var previews: some View {
-        SearchItems(searchQuery: .constant(""))
+        SearchItems(searchQuery: .constant(""), toggleSearch: .constant(true))
     }
 }
 

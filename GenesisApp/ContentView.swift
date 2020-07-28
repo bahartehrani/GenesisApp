@@ -27,6 +27,7 @@ struct ContentView: View {
     
     @State var toggleProfile = false
     @State var toggleInfo = false
+    @State var toggleSearch = false
     
     @State var fillerRS = [
         "Managing" : "Budgeting",
@@ -99,6 +100,14 @@ struct ContentView: View {
                             EmptyView()
                     }.isDetailLink(false)
                     
+                    NavigationLink(destination: SearchItems(searchQuery: $searchQuery, toggleSearch: $toggleSearch)
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
+                        , isActive: self.$toggleSearch){
+                        EmptyView()
+                    }
+                    
                     // .font(Font.custom("Lato-Black", size: 20))
                     
                     VStack {
@@ -113,11 +122,7 @@ struct ContentView: View {
                         
                         
                         // Search Bar
-                        SearchBar(text: $searchQuery)
-                        
-                        if !searchQuery.isEmpty {
-                            SearchItems(searchQuery: self.$searchQuery)
-                        }
+                        SearchBar(text: $searchQuery, toggleSearch: $toggleSearch)
                         
                         
                     }
@@ -200,10 +205,9 @@ struct ContentView: View {
                                 
 
                         }.padding(.top,7)
-                }
+                    }
                     
-                 Spacer()
-                
+//                    Spacer()
                     
                 }
                 //clears old subtopics so it doesn't get messy
