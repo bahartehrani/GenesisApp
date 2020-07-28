@@ -16,15 +16,15 @@ struct WeeklyBudgetView: View {
 //    @EnvironmentObject var session: SessionStore
     
     var body: some View {
+        
         ZStack {
             
             WeeklyExpensesView(toggleAdd: $toggleAdd, showFull: $showFull)
-            .offset(x: toggleAdd ? 700 : 0, y: 0)
-            .animation(.spring(response: 0.7))
-            
+                .offset(x: toggleAdd ? 700 : 0, y: 0)
+                .animation(.spring(response: 0.7))
             AddExpenseView(toggleAdd: $toggleAdd)
                 .offset(x: toggleAdd ? 0 : -700, y: 0)
-                .animation(.spring(response: 0.7))  
+                .animation(.spring(response: 0.7))
         
             
         }

@@ -44,7 +44,7 @@ struct AddExpenseView: View {
                 .padding(.horizontal, 8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black)
+                        .stroke(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
                 )
             
             HStack {
@@ -64,7 +64,7 @@ struct AddExpenseView: View {
                 .frame( maxHeight: 50)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black)
+                        .stroke(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
                 )
                 
                 Spacer()
@@ -76,7 +76,7 @@ struct AddExpenseView: View {
                 .frame( maxHeight: 50)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black)
+                        .stroke(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
                 )
                 
             }
@@ -89,15 +89,17 @@ struct AddExpenseView: View {
             .clipShape(RoundedRectangle(cornerRadius: 40, style: .continuous))
             .shadow(color: Color.gray, radius: 1, x: 2, y: 2)
         }
-        .padding(32)
+        .padding(.vertical, 42)
+        .padding(.horizontal, 32)
         .background(Color(.white))
-        .frame(width: 360, height: 300)
-        .clipShape(RoundedRectangle(cornerRadius: 40, style: .continuous))
+        .frame(width: screen.width - 30, height: 300)
+        .clipShape(RoundedRectangle(cornerRadius: 21, style: .continuous))
 //        .overlay(
 //            RoundedRectangle(cornerRadius: 30)
 //                .stroke(Color.black)
 //        )
             .shadow(color: .gray, radius: 3)
+            .offset(x: 0, y: -10)
         .onTapGesture {
             self.hideKeyboard()
         }
