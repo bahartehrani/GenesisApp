@@ -25,79 +25,77 @@ struct ArticleView: View {
         VStack {
             HStack{
                 Text(self.currentArt.maintopic)
-                    .padding(.top, 30)
-                
+                    .padding(.top, screen.height > 850 ? 10 : 5)
                 Spacer()
             }
-            .font(.custom("Lato-Bold", size: 30))
+            .font(.custom("Lato-Bold", size: 32))
             .padding(.horizontal, 32)
             .frame(width: screen.width, height: 220)
             .background(Color.secondaryGold)
-            .offset(x: 0, y: -40)
+            .offset(x: 0, y: screen.height > 850 ? -30 : -35)
             
-            VStack(alignment: .leading, spacing: 4.0) {
+            VStack {
+                ScrollView {
+                VStack(alignment: .leading, spacing: 4.0) {
+                    HStack {
+                        Text(self.currentArt.articleName)
+                        
+                        Spacer()
+                        
+                        Image(systemName: toggleStar ? "star.fill" : "star")
+                            .onTapGesture {
+                                self.toggleStar.toggle()
+                        }
+                        .padding(.top, 20)
+                        
+                    }
+                    .font(.custom("Lato-Black", size: 24))
+                    
+                    Text(self.currentArt.author)
+                    
+                    Text(self.currentArt.dateCreated)
+                }
+                .font(.custom("Lato-Light", size: 16))
+                .padding(.horizontal, 30)
+                .frame(width: screen.width)
+            
+                    Text(self.currentArt.articleBody)
+                        .font(.custom("Lato-Regular", size: 18))
+                        .padding(.top, 12)
+                        .padding(.horizontal, 30)
+                        .frame(width: screen.width)
+                }
+                .padding(.top, 32)
+                .frame(height: screen.height - 220)
+                
                 HStack {
-                    Text(self.currentArt.articleName)
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Image(systemName: "chevron.left")
+                    Text("Introduction to Loans")
+                    }
                     
                     Spacer()
                     
-                    Image(systemName: toggleStar ? "star.fill" : "star")
-                        .onTapGesture {
-                            self.toggleStar.toggle()
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Text("Which Loan Fits?")
+                    Image(systemName: "chevron.right")
                     }
-                    .padding(.top, 20)
-                    
                 }
-                .font(.custom("Lato-Black", size: 24))
-                
-                Text(self.currentArt.author)
-                
-                Text(self.currentArt.dateCreated)
-                
+                .font(.custom("Lato-Regular", size: 12))
+                .foregroundColor(.black)
+                .padding(.horizontal, 32)
+    //                .offset(x: 0, y: -120)
+            
             }
-            .font(.custom("Lato-Light", size: 16))
-            .padding(32)
-            .frame(width: screen.width)
             .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
-            .offset(x: 0, y: -120)
+            .offset(x: 0, y: screen.height > 850 ? -95 : -120)
             
-            
-            ScrollView {
-                Text(self.currentArt.articleBody
-//                    "Infoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info  \n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop "
-                )
-                    .font(.custom("Lato-Regular", size: 18))
-                    .padding(.horizontal, 30)
-                    .frame(width: screen.width)
-            }
-            .offset(x: 0, y: -150)
-            .frame(height: screen.height - 350)
-            
-            HStack {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                Image(systemName: "chevron.left")
-                Text("Introduction to Loans")
-                }
-                
-                Spacer()
-                
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                Text("Which Loan Fits?")
-                Image(systemName: "chevron.right")
-                }
-            }
-            .font(.custom("Lato-Regular", size: 12))
-            .foregroundColor(.black)
-            .padding(.horizontal, 32)
-            .offset(x: 0, y: -120)
-            
-                
             Spacer()
             .navigationBarItems(
                     leading: Button(action: {
-                        //self.presentationMode.wrappedValue.dismiss()
-                        self.toggle.toggle()
+                        self.presentationMode.wrappedValue.dismiss()
+                            self.toggle.toggle()
                     }, label: {
                         Image("Backward arrow small")
                             .font(.system(size: 24))
@@ -108,7 +106,7 @@ struct ArticleView: View {
                 }), trailing:
                 Button(action: {
                     withAnimation {
-                        self.toggle = false
+                            self.toggle = false
                     }
                 }, label: {
                     Image(systemName: "house")
