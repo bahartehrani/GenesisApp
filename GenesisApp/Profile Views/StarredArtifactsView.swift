@@ -65,6 +65,7 @@ struct StarredArtifactsView: View {
 
                     }
                 }
+                .animation(nil)
             }
             
             Spacer()
