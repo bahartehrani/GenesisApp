@@ -16,10 +16,10 @@ struct SearchItems: View {
     //this is tester: TYPE IN SEARCH "Apples" huehue ;)
     @State var searchTopics: [String] = []
     @State var searchTest =
-    [Article(articleBody: "Apples and bananas and stuff to look for", articleName: "Article 1", author: "c", dateCreated: "d", maintopic: "Eats", subtopic: "f", type: "Im"),
-    Article(articleBody: "helps and stuff Apples", articleName: "Article 2", author: "j", dateCreated: "k", maintopic: "Pie", subtopic: "m", type: "Pretty"),
-    Article(articleBody: "Apples and stuff", articleName: "Article 3", author: "c", dateCreated: "d", maintopic: "Eats", subtopic: "f", type: "Hungers"),
-    Article(articleBody: "Apples and look for", articleName: "Article 4", author: "c", dateCreated: "d", maintopic: "Eats", subtopic: "f", type: "WBU")]
+    [Article(articleBody: "Apples and bananas and stuff to look for", articleName: "Apples and bananas eats", author: "c", dateCreated: "d", maintopic: "eats", subtopic: "f", type: "Im"),
+    Article(articleBody: "helps and stuff Apples", articleName: "stuff Apples", author: "j", dateCreated: "k", maintopic: "pie", subtopic: "m", type: "Pretty"),
+    Article(articleBody: "Apples and stuff", articleName: "Apples and stuff eats", author: "c", dateCreated: "d", maintopic: "eats", subtopic: "f", type: "Hungers"),
+    Article(articleBody: "Apples and look for", articleName: "Apples and look", author: "c", dateCreated: "d", maintopic: "eats", subtopic: "f", type: "WBU")]
     
     func addTopic(maintopic : String){
         searchTopics.append(maintopic)
@@ -91,7 +91,8 @@ struct SearchItems: View {
                 .padding(.top, 16)
                 .padding(.horizontal, 28)
                 
-                ForEach (searchTest.filter({ $0.articleBody.contains(searchQuery) })) { article in
+                ForEach (searchTest.filter({ $0.articleName.contains(searchQuery) || $0.maintopic.contains(searchQuery)}))
+                { article in
                     HStack {
                         VStack (alignment: .leading){
                             Text(article.type.uppercased())
