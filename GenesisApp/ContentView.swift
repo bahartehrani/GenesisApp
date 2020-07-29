@@ -92,6 +92,7 @@ struct ContentView: View {
                     
                     NavigationLink(destination: AccountView(toggle: self.$toggleProfile)
                     .environmentObject(userInfo)
+                    .environmentObject(topicArticles)
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true)
@@ -269,7 +270,10 @@ struct ContentView: View {
                     
                 }),
                 trailing: Button(action: {
-                    self.toggleProfile = true
+                    
+                    self.topicArticles.fetchWeeklyTip { str in
+                        self.toggleProfile = true
+                    }
                 }, label: {
                     Image("TopProfileIcon")
                         .foregroundColor(.black)

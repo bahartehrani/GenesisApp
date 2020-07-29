@@ -10,6 +10,7 @@ import SwiftUI
 
 struct WeeklyTipView: View {
     @State var toggleTip = false
+    @EnvironmentObject var topicArticles : ArticleStore
     
     var body: some View {
         
@@ -17,10 +18,12 @@ struct WeeklyTipView: View {
             oldTipView(toggleTip: self.$toggleTip)
                 .offset(x: toggleTip ? 0 : -700, y: 0)
                 .animation(.spring(response: 0.7))
+                .environmentObject(topicArticles)
             
             currentTipView(toggleTip: self.$toggleTip)
                 .offset(x: toggleTip ? 700 : 0, y: 0)
                 .animation(.spring(response: 0.7))
+                .environmentObject(topicArticles)
         }
     
     }
@@ -34,6 +37,7 @@ struct WeeklyTipView_Previews: PreviewProvider {
 
 struct currentTipView: View {
     @Binding var toggleTip : Bool
+    @EnvironmentObject var topicArticles : ArticleStore
     
     var body: some View {
         VStack {
@@ -63,7 +67,7 @@ struct currentTipView: View {
             
             ScrollView (showsIndicators: false) {
                 
-                Text("Did you know it’s almost 5 times more expensive to order from a restaurant than it is to cook at home? We love eating out too, but staying in is sure to result in tastier savings.")
+                Text(self.topicArticles.weeklyTipThisandLast[0])
                     .font(Font.custom("Lato-Regular", size:
                         screen.height > 850 ? 20 :
                         screen.height < 800 ? 16 : 18))
@@ -88,6 +92,7 @@ struct currentTipView: View {
 
 struct oldTipView: View {
     @Binding var toggleTip : Bool
+    @EnvironmentObject var topicArticles : ArticleStore
     
     var body: some View {
         VStack {
@@ -118,7 +123,7 @@ struct oldTipView: View {
             
             ScrollView (showsIndicators: false) {
                 
-                Text("#OLDNEWS Did you know giraffes can run as fast as 35 miles an hour over short distances, or cruise at 10 mph over longer distances and their necks are too short to reach the ground 🧐.")
+                Text("#OLDNEWS\n" + self.topicArticles.weeklyTipThisandLast[1])
                     .font(Font.custom("Lato-Regular", size:
                         screen.height > 850 ? 20 :
                             screen.height < 800 ? 16 : 18))

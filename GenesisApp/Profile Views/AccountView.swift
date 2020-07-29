@@ -12,6 +12,7 @@ struct AccountView: View {
     
     @EnvironmentObject var userInfo : UserData
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var topicArticles : ArticleStore
     
     @Binding var toggle : Bool
     
@@ -78,6 +79,7 @@ struct AccountView: View {
                         
                         // Weekly Tip
                         WeeklyTipView()
+                            .environmentObject(self.topicArticles)
                             .padding(.bottom,8)
                         
                         // Weekly Expenses

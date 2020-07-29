@@ -21,6 +21,10 @@ class ArticleStore : ObservableObject {
     var db = Firestore.firestore()
     var subtopicArticles : [Article] = []
     var currentArticle : Article = Article(articleBody: "", articleName: "", author: "", dateCreated: "", maintopic: "", subtopic: "", type: "")
+    
+    var weeklyTipThisandLast : [String] = ["thisweek", "lastweek"]
+    
+    
     // dont need anymore i think, but keepin it for now
     @Published var maintopicview = MainTopicOverview(title: "", subtopics: [], description: "", subtopicArtifacts : [:])
     
@@ -134,5 +138,22 @@ class ArticleStore : ObservableObject {
                 completion(true)
             }
         })
+    }
+    
+    func fetchWeeklyTip(completion: @escaping ([String]) -> Void) {
+        db.collection("weekly tips").document("weeklytip").addSnapshotListener { (document, error) in
+            if let err = error {
+                print("Error in fetching docs: \(err)")
+            } else {
+                let data = document!.data()
+                let thisWeek = data!["thisWeek"] as? String ?? "Couldn't load tip :("
+                let lastWeek = data!["lastWeek"] as? String ?? "Couldn't load tip :("
+                self.weeklyTipThisandLast[0] = thisWeek
+                self.weeklyTipThisandLast[1] = lastWeek
+                
+                completion(self.weeklyTipThisandLast)
+            }
+            
+        }
     }
 }
