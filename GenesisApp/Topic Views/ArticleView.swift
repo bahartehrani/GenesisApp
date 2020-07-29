@@ -10,21 +10,21 @@ import SwiftUI
 
 struct ArticleView: View {
     @EnvironmentObject var topicArticles : ArticleStore
-    
+    @Binding var currentArt : Article
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @Binding var toggle : Bool
-    @State var toggleStar : Bool
-    @State var name : String
-    @State var date : String
-    @State var author : String
-    @State var topic : String
+    @State var toggleStar = false
+//    @State var name : String
+//    @State var date : String
+//    @State var author : String
+//    @State var topic : String
     
     var body: some View {
         
         VStack {
             HStack{
-                Text(topic)
+                Text(self.currentArt.maintopic)
                     .padding(.top, 30)
                 
                 Spacer()
@@ -37,7 +37,7 @@ struct ArticleView: View {
             
             VStack(alignment: .leading, spacing: 4.0) {
                 HStack {
-                    Text(name)
+                    Text(self.currentArt.articleName)
                     
                     Spacer()
                     
@@ -50,9 +50,9 @@ struct ArticleView: View {
                 }
                 .font(.custom("Lato-Black", size: 24))
                 
-                Text(author)
+                Text(self.currentArt.author)
                 
-                Text(date)
+                Text(self.currentArt.dateCreated)
                 
             }
             .font(.custom("Lato-Light", size: 16))
@@ -64,7 +64,9 @@ struct ArticleView: View {
             
             
             ScrollView {
-                Text("Infoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info  \n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop ")
+                Text(self.currentArt.articleBody
+//                    "Infoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info  \n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content infoInfoinfo info more info on loand and wow we are learning good one beep boop learning info info fino content info\n\nInfoinfo info more info on loand and wow we are learning good one beep boop "
+                )
                     .font(.custom("Lato-Regular", size: 18))
                     .padding(.horizontal, 30)
                     .frame(width: screen.width)
@@ -94,11 +96,13 @@ struct ArticleView: View {
             Spacer()
             .navigationBarItems(
                     leading: Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
+                        //self.presentationMode.wrappedValue.dismiss()
+                        self.toggle.toggle()
                     }, label: {
                         Image("Backward arrow small")
                             .font(.system(size: 24))
-                            .foregroundColor(.secondaryText)
+                            //.foregroundColor(.secondaryText)
+                            .foregroundColor(.black)
                             .padding()
                         
                 }), trailing:
@@ -118,10 +122,10 @@ struct ArticleView: View {
     }
 }
 
-struct ArticleView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView{
-            ArticleView(toggle: .constant(false), toggleStar: false, name: "The Name of Article", date: "12-20-2020", author: "Yomama Teehee", topic: "Spending")
-        }
-    }
-}
+//struct ArticleView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView{
+//            ArticleView(toggle: .constant(false), toggleStar: false, name: "The Name of Article", date: "12-20-2020", author: "Yomama Teehee", topic: "Spending")
+//        }
+//    }
+//}

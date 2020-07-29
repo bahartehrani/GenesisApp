@@ -20,6 +20,7 @@ class ArticleStore : ObservableObject {
     
     var db = Firestore.firestore()
     var subtopicArticles : [Article] = []
+    var currentArticle : Article = Article(articleBody: "", articleName: "", author: "", dateCreated: "", maintopic: "", subtopic: "", type: "")
     // dont need anymore i think, but keepin it for now
     @Published var maintopicview = MainTopicOverview(title: "", subtopics: [], description: "", subtopicArtifacts : [:])
     
@@ -75,6 +76,31 @@ class ArticleStore : ObservableObject {
                     
                 }
         }
+    }
+    
+    
+    func fetchArticle(givenmaintopic: String, title: String, completion: @escaping (Article) -> Void) {
+        db.collection("artifacts").document(givenmaintopic + "," + title).addSnapshotListener {(snapshot, error) in
+            if let err = error {
+                print("Error fetching: \(err)")
+                completion(self.currentArticle)
+            } else {
+                let data = snapshot!.data()
+                let articleBody = data!["articleBody"] as? String ?? "Word...s..."
+                let articleName = data!["articleName"] as? String ?? "Title"
+                let author = data!["author"] as? String ?? "Author"
+                let dateCreated = data!["dateCreated"] as? String ?? "Today"
+                let maintopic = data!["maintopic"] as? String ?? "Topic"
+                let subtopic = data!["subtopic"] as? String ?? "Subtopics"
+                let type = data!["type"] as? String ?? "Type"
+                
+                let nAr = Article(articleBody: articleBody, articleName: articleName, author: author, dateCreated: dateCreated, maintopic: maintopic, subtopic: subtopic, type: type)
+                self.currentArticle = nAr
+                completion(nAr)
+            }
+        }
+        
+        
     }
     
     

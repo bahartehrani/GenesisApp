@@ -12,6 +12,7 @@ struct TopicView: View {
     @State var mainTopic : String
     @State var backgroundColor : String
     @Binding var toggle : Bool
+    @State var toggleView = false
     @State private var currentPage = 0
     
     @State var subtopicnames : [String] = []
@@ -42,6 +43,17 @@ struct TopicView: View {
             )) {
             VStack {
     //            Top section
+                
+                NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleView)
+                    .environmentObject(self.userInfo)
+                    .environmentObject(self.topicArticles)
+                        .navigationBarBackButtonHidden(true)
+                    , isActive: self.$toggleView)
+                {
+                    EmptyView()
+                }
+                
+                
                 VStack {
                     HStack {
                         Text(self.mainTopic)
@@ -71,16 +83,9 @@ struct TopicView: View {
                     subtopicSelectors(valueFromParent: self.$currentPage, subtopicName: //self.$topicArticles.maintopicview.subtopics)
                         self.$maintopicview.subtopics)
                     
-//                    PagerView(pageCount: self.topicArticles.maintopicview.subtopics.count, currentIndex: self.$currentPage) {
-//                        ForEach(0..<self.topicArticles.maintopicview.subtopics.count, id: \.self) {index in
-//    //                        subtopicMainView(subtopic: self.subtopicList[index])
-//                            subtopicMainView(subtopic: (self.topicArticles.maintopicview.subtopicArtifacts[self.topicArticles.maintopicview.subtopics[index]] ?? self.subtopic3))
-//                        }
-//                    }
                     PagerView(pageCount: self.maintopicview.subtopics.count, currentIndex: self.$currentPage) {
                             ForEach(0..<self.maintopicview.subtopics.count, id: \.self) {index in
-        //                        subtopicMainView(subtopic: self.subtopicList[index])
-                                subtopicMainView(maintopicStore: self.mainTopic, subtopicStore: self.maintopicview.subtopics[index],
+                                subtopicMainView(toggleView: self.$toggleView, maintopicStore: self.mainTopic, subtopicStore: self.maintopicview.subtopics[index],
                                     subtopic: (self.maintopicview.subtopicArtifacts[self.maintopicview.subtopics[index]] ?? self.subtopic3))
                                     .environmentObject(self.userInfo)
                             }
@@ -157,10 +162,13 @@ struct subtopicSelectors : View {
 }
 
 struct subtopicMainView : View {
+    
+    @Binding var toggleView : Bool
     @State var maintopicStore : String
     @State var subtopicStore : String
     @State var subtopic : [SubTopic]
     @EnvironmentObject var userInfo : UserData
+    @EnvironmentObject var topicArticles : ArticleStore
     
     func tester() {
         print("test test test")
@@ -178,18 +186,22 @@ struct subtopicMainView : View {
 //                    date: article.dateCreated,
 //                    author: article.author,
 //                    topic: article.maintopic))
-                NavigationLink(destination: AccountView(toggle: .constant(false)))
-                {
-                    SubTopicView(
-                        type: article.type, title: article.title
-                    )
-                        .onTapGesture {
-                            if self.userInfo.recentContentMod.count > 4 {
-                                self.userInfo.recentContentMod.remove(at: 0)
-                            }
-                            self.userInfo.recentContentMod.append(recentlyViewed(maintopic: self.maintopicStore, subtopic: self.subtopicStore))
+
+                    
+                SubTopicView(
+                    type: article.type, title: article.title
+                )
+                    .onTapGesture {
+                        if self.userInfo.recentContentMod.count > 4 {
+                            self.userInfo.recentContentMod.remove(at: 0)
                         }
-                }
+                        self.userInfo.recentContentMod.append(recentlyViewed(maintopic: self.maintopicStore, subtopic: self.subtopicStore))
+                        
+                        self.topicArticles.fetchArticle(givenmaintopic: self.maintopicStore, title: article.title) { arti in
+                            self.toggleView.toggle()
+                            print(arti)
+                        }
+                    }
                 .foregroundColor(.black)
 
             }
