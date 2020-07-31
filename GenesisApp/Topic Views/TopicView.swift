@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct TopicView: View {
     @State var mainTopic : String
@@ -195,7 +196,23 @@ struct subtopicMainView : View {
                         if self.userInfo.recentContentMod.count > 4 {
                             self.userInfo.recentContentMod.remove(at: 0)
                         }
-                        self.userInfo.recentContentMod.append(recentlyViewed(maintopic: self.maintopicStore, subtopic: self.subtopicStore))
+                        if !self.userInfo.recentContentMod.contains(recentlyViewed(maintopic: self.maintopicStore, subtopic: self.subtopicStore)) {
+                            
+                            self.userInfo.recentContentMod.append(recentlyViewed(maintopic: self.maintopicStore, subtopic: self.subtopicStore))
+                        }
+                        
+                        if self.userInfo.recentContent?.count ?? 0 > 4 {
+                            self.userInfo.recentContent?.remove(at: 0)
+                        }
+                        if !(self.userInfo.recentContent?.contains(self.maintopicStore + "," + self.subtopicStore) ?? true) {
+                            
+                            self.userInfo.recentContent?.append(self.maintopicStore + "," + self.subtopicStore)
+                        }
+                        
+                        
+                        Firestore.firestore().collection("users").document(self.userInfo.uid).setData([
+                            "recentContent" : self.userInfo.recentContent ?? []
+                        ],merge:true)
                         
                         self.topicArticles.fetchArticle(givenmaintopic: self.maintopicStore, title: article.title) { arti in
                             self.toggleView.toggle()

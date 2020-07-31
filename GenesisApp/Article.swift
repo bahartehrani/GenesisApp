@@ -38,7 +38,12 @@ struct SubTopic : Identifiable {
     var title: String
 }
 
-struct recentlyViewed : Identifiable {
+struct recentlyViewed : Identifiable, Equatable {
+    
+    static func == (lhs: recentlyViewed, rhs: recentlyViewed) -> Bool {
+      return lhs.subtopic == rhs.subtopic && lhs.maintopic == rhs.maintopic
+    }
+    
     var id = UUID()
     var maintopic: String
     var subtopic : String

@@ -132,17 +132,17 @@ struct SignUpSurveyView: View {
                 }
                 
                 Button(action: {
-                    if (Int(self.amountPerWeek) != nil) && self.amountPerWeek != "" {
+                    if (Int(self.amountPerWeek) == nil) && self.amountPerWeek != "" {
                         self.showAlert = true
                     }
                     
                     if !self.showAlert {
                         self.finishSignUp()
+                        withAnimation {
+                            self.viewRouter.currentPage = "contentView"
+                        }
                     }
                     
-                    withAnimation {
-                        self.viewRouter.currentPage = "contentView"
-                    }
                 }, label: {
                     Text("Sign Up")
                     .roundedSmallButtonFilledStyle()
