@@ -11,6 +11,7 @@ import SwiftUI
 struct StarredArtifactsView: View {
     @Binding var showArtifacts : Bool
     @Binding var bottomState : CGSize
+    @Binding var subtopicSA : [StarredArtifact]
     
     @State var subtopic = [
         SubTopic(type: "apple", title: "Bananas"),
@@ -26,7 +27,7 @@ struct StarredArtifactsView: View {
                 Text("Starred Artifacts")
                     .font(Font.custom("Lato-Black", size: screen.height > 850 ? 28 : 24))
                     .foregroundColor(.white)
-                    .padding(.vertical,18)
+                    .padding(.vertical,screen.height > 850 ? 22 : 18)
                     .padding(.horizontal,32)
                 
                 
@@ -53,12 +54,12 @@ struct StarredArtifactsView: View {
             
             if self.bottomState != .zero {
                 ScrollView(showsIndicators: false) {
-                    ForEach(subtopic) { article in
+                    ForEach(subtopicSA) { article in
                         
                         NavigationLink(destination: AccountView(toggle: .constant(false)))
                         {
-                            SubTopicView(
-                                type: article.type, title: article.title
+                            StarredContentView(
+                                type: article.type, maintopic: article.maintopic, title: article.title
                             )
                         }
                         .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
@@ -81,8 +82,31 @@ struct StarredArtifactsView: View {
     }
 }
 
-struct StarredArtifactsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StarredArtifactsView(showArtifacts: .constant(false),bottomState: .constant(.zero))
+struct StarredContentView: View {
+    var type : String
+    var maintopic : String
+    var title: String
+    
+    var body: some View {
+        HStack {
+            
+            VStack(alignment: .leading) {
+                Text(type.uppercased())
+                    .font(.custom("Lato-Black", size: 16))
+                
+                Text(maintopic + ": " + title)
+                .font(.custom("Lato-Regular", size: 20))
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 32)
+        .padding(.bottom, 16)
+        .frame(maxWidth: .infinity)
     }
 }
+
+//struct StarredArtifactsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StarredArtifactsView(showArtifacts: .constant(false),bottomState: .constant(.zero), subtopicSA: )
+//    }
+//}

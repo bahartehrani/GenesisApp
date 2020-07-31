@@ -42,6 +42,12 @@ struct MotherView : View {
                             let recview = recentlyViewed(maintopic: subarr[0], subtopic: subarr[1])
                             self.userInfo.recentContentMod.append(recview)
                         }
+                        
+                        for str in self.userInfo.starredContent! {
+                            let subarr = str.components(separatedBy: ",")
+                            let recview = StarredArtifact(type: subarr[0], maintopic: subarr[1], title: subarr[2])
+                            self.userInfo.starredContentMod.append(recview)
+                        }
                     })
                 
             }

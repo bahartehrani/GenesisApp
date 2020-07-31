@@ -105,7 +105,7 @@ struct AccountView: View {
             }
             
             // Artifacts?
-            StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState)
+            StarredArtifactsView(showArtifacts: self.$showArtifacts, bottomState: self.$bottomState, subtopicSA: self.$userInfo.starredContentMod)
                 .offset(x:0, y: screen.height < 800 ? screen.height / 1.125 : screen.height / 1.2)
                 .offset(y: self.bottomState.height)
                 .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.6))

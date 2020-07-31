@@ -52,7 +52,7 @@ class UserData: ObservableObject, Identifiable {
         }
     }
     
-    @Published var starredContent : String? {
+    @Published var starredContent : [String]? {
         didSet {
             UserDefaults.standard.set(starredContent, forKey: "starredContent")
         }
@@ -77,6 +77,7 @@ class UserData: ObservableObject, Identifiable {
     }
     
     @Published var recentContentMod : [recentlyViewed]
+    @Published var starredContentMod : [StarredArtifact]
     
     init() {
         
@@ -85,7 +86,7 @@ class UserData: ObservableObject, Identifiable {
         self.lastName = UserDefaults.standard.object(forKey: "lastName") as? String ?? ""
         self.email = UserDefaults.standard.object(forKey: "email") as? String ?? ""
         self.moneyWeek = UserDefaults.standard.object(forKey: "moneyWeek") as? Int ?? 0
-        self.starredContent = UserDefaults.standard.object(forKey: "starredContent") as? String ?? ""
+        self.starredContent = UserDefaults.standard.object(forKey: "starredContent") as? [String] ?? []
         
         self.recentContent = UserDefaults.standard.object(forKey: "recentContent") as? [String] ?? []
         
@@ -94,6 +95,7 @@ class UserData: ObservableObject, Identifiable {
         self.firstTime = UserDefaults.standard.object(forKey: "firstTime") as? Bool ?? true
         
         self.recentContentMod = []
+        self.starredContentMod = []
     }
     
 }

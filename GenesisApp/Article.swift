@@ -31,6 +31,17 @@ struct MainTopicOverview : Identifiable {
 
 }
 
+struct StarredArtifact : Identifiable, Equatable {
+    static func == (lhs: StarredArtifact, rhs: StarredArtifact) -> Bool {
+      return lhs.title == rhs.title
+    }
+    
+    var id = UUID()
+    var type: String
+    var maintopic: String
+    var title: String
+}
+
 
 struct SubTopic : Identifiable {
     var id = UUID()

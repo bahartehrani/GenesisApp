@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ArticleView: View {
     @EnvironmentObject var topicArticles : ArticleStore
+    @EnvironmentObject var userInfo : UserData
     @Binding var currentArt : Article
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -46,6 +48,38 @@ struct ArticleView: View {
                         Image(systemName: toggleStar ? "star.fill" : "star")
                             .onTapGesture {
                                 self.toggleStar.toggle()
+                                
+                                if self.toggleStar {
+                                    
+                                    if !(self.userInfo.starredContent?.contains(self.currentArt.type + "," + self.currentArt.maintopic + "," + self.currentArt.articleName) ?? true) {
+                                        self.userInfo.starredContent?.append(self.currentArt.type + "," + self.currentArt.maintopic + "," + self.currentArt.articleName)
+                                    }
+                                    
+                                    if !self.userInfo.starredContentMod.contains(StarredArtifact(type : self.currentArt.type, maintopic:  self.currentArt.maintopic, title: self.currentArt.articleName)) {
+                                        
+                                        self.userInfo.starredContentMod.append(StarredArtifact(type : self.currentArt.type, maintopic:  self.currentArt.maintopic, title: self.currentArt.articleName))
+                                    }
+                                    
+                                    Firestore.firestore().collection("users").document(self.userInfo.uid).setData([
+                                        "starredContent" : self.userInfo.starredContent ?? []
+                                    ],merge:true)
+                                    
+                                } else {
+                                    
+                                    if let idx = self.userInfo.starredContent?.firstIndex(of: (self.currentArt.type + "," + self.currentArt.maintopic + "," + self.currentArt.articleName)) {
+                                        self.userInfo.starredContent?.remove(at: idx)
+                                    }
+                                    if let idx2 = self.userInfo.starredContentMod.firstIndex(of: StarredArtifact(type : self.currentArt.type, maintopic:  self.currentArt.maintopic, title: self.currentArt.articleName)) {
+                                        self.userInfo.starredContentMod.remove(at: idx2)
+                                    }
+                                    
+                                    Firestore.firestore().collection("users").document(self.userInfo.uid).setData([
+                                        "starredContent" : self.userInfo.starredContent ?? []
+                                    ],merge:true)
+                                    
+                                }
+                                
+                                
                         }
                         .padding(.top, 20)
                         

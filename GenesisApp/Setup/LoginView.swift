@@ -50,7 +50,9 @@ struct LoginView: View {
                     self.userInfo.ageRange = document?.get("ageRange") as? String ?? "Unknown"
                     self.userInfo.firstTime = document?.get("firstTime") as? Bool ?? true
                     let rc = document?.get("recentContent") as? [String] ?? []
+                    let sa = document?.get("starredContent") as? [String] ?? []
                     self.userInfo.recentContent = document?.get("recentContent") as? [String] ?? []
+                    self.userInfo.starredContent = document?.get("starredContent") as? [String] ?? []
                     self.userInfo.moneyWeek = document?.get("moneyWeek") as? Int ?? 0
                     
                     self.userInfo.recentContentMod = []
@@ -58,6 +60,13 @@ struct LoginView: View {
                         let subarr = str.components(separatedBy: ",")
                         let recview = recentlyViewed(maintopic: subarr[0], subtopic: subarr[1])
                         self.userInfo.recentContentMod.append(recview)
+                    }
+                    
+                    self.userInfo.starredContentMod = []
+                    for str in sa {
+                        let subarr = str.components(separatedBy: ",")
+                        let recview = StarredArtifact(type: subarr[0], maintopic: subarr[1], title: subarr[2])
+                        self.userInfo.starredContentMod.append(recview)
                     }
                     
                     withAnimation {
