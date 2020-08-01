@@ -90,13 +90,13 @@ class ArticleStore : ObservableObject {
                 completion(self.currentArticle)
             } else {
                 let data = snapshot!.data()
-                let articleBody = data!["articleBody"] as? String ?? "Word...s..."
-                let articleName = data!["articleName"] as? String ?? "Title"
-                let author = data!["author"] as? String ?? "Author"
-                let dateCreated = data!["dateCreated"] as? String ?? "Today"
-                let maintopic = data!["maintopic"] as? String ?? "Topic"
-                let subtopic = data!["subtopic"] as? String ?? "Subtopics"
-                let type = data!["type"] as? String ?? "Type"
+                let articleBody = data?["articleBody"] as? String ?? "Can't find the words..."
+                let articleName = data?["articleName"] as? String ?? "TBD someday 👀"
+                let author = data?["author"] as? String ?? "Anonymous"
+                let dateCreated = data?["dateCreated"] as? String ?? "Tomorrow"
+                let maintopic = data?["maintopic"] as? String ?? "Topic"
+                let subtopic = data?["subtopic"] as? String ?? "Subtopics"
+                let type = data?["type"] as? String ?? "Type"
                 
                 let nAr = Article(articleBody: articleBody, articleName: articleName, author: author, dateCreated: dateCreated, maintopic: maintopic, subtopic: subtopic, type: type)
                 self.currentArticle = nAr

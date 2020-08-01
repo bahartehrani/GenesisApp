@@ -196,17 +196,17 @@ struct subtopicMainView : View {
                         if self.userInfo.recentContentMod.count > 4 {
                             self.userInfo.recentContentMod.remove(at: 0)
                         }
-                        if !self.userInfo.recentContentMod.contains(recentlyViewed(maintopic: self.maintopicStore, subtopic: self.subtopicStore)) {
+                        if !self.userInfo.recentContentMod.contains(recentlyViewed(maintopic: self.maintopicStore, title: article.title)) {
                             
-                            self.userInfo.recentContentMod.append(recentlyViewed(maintopic: self.maintopicStore, subtopic: self.subtopicStore))
+                            self.userInfo.recentContentMod.append(recentlyViewed(maintopic: self.maintopicStore, title: article.title))
                         }
                         
                         if self.userInfo.recentContent?.count ?? 0 > 4 {
                             self.userInfo.recentContent?.remove(at: 0)
                         }
-                        if !(self.userInfo.recentContent?.contains(self.maintopicStore + "," + self.subtopicStore) ?? true) {
+                        if !(self.userInfo.recentContent?.contains(self.maintopicStore + "," + article.title) ?? true) {
                             
-                            self.userInfo.recentContent?.append(self.maintopicStore + "," + self.subtopicStore)
+                            self.userInfo.recentContent?.append(self.maintopicStore + "," + article.title)
                         }
                         
                         

@@ -39,7 +39,7 @@ struct MotherView : View {
                     .onAppear(perform: {
                         for str in self.userInfo.recentContent! {
                             let subarr = str.components(separatedBy: ",")
-                            let recview = recentlyViewed(maintopic: subarr[0], subtopic: subarr[1])
+                            let recview = recentlyViewed(maintopic: subarr[0], title: subarr[1])
                             self.userInfo.recentContentMod.append(recview)
                         }
                         

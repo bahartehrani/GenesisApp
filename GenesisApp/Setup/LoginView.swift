@@ -58,7 +58,7 @@ struct LoginView: View {
                     self.userInfo.recentContentMod = []
                     for str in rc {
                         let subarr = str.components(separatedBy: ",")
-                        let recview = recentlyViewed(maintopic: subarr[0], subtopic: subarr[1])
+                        let recview = recentlyViewed(maintopic: subarr[0], title: subarr[1])
                         self.userInfo.recentContentMod.append(recview)
                     }
                     

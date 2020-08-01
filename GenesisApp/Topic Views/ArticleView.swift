@@ -141,7 +141,7 @@ struct ArticleView: View {
                 }), trailing:
                 Button(action: {
                     withAnimation {
-                            self.toggleHome = false
+                        self.toggleHome.toggle()
                     }
                 }, label: {
                     Image(systemName: "house")

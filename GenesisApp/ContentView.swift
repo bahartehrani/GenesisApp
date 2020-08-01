@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var showProfile = false
-    
+//    @State var showProfile = false
     @EnvironmentObject var userInfo : UserData
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var session: SessionStore
@@ -28,6 +27,8 @@ struct ContentView: View {
     @State var toggleProfile = false
     @State var toggleInfo = false
     @State var toggleSearch = false
+    @State var toggleArticle = false
+    @State var toggleHome = true
     
     @State var fillerRS = [
         "Managing" : "Budgeting",
@@ -108,6 +109,11 @@ struct ContentView: View {
                         EmptyView()
                     }
                     
+//                    NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleHome: self.$toggleHome)
+//                        , isActive: self.$toggleArticle){
+//                        EmptyView()
+//                    }
+                    
                     // .font(Font.custom("Lato-Black", size: 20))
                     
                     VStack {
@@ -128,37 +134,13 @@ struct ContentView: View {
                     }
                     .padding(.top,-30)
                     
-                    
+                    //Error extra argument in call when trying to add Nav link for recently studied
                 VStack {
                         // Recently Studied - hide if user hasn't clicked on anything
                         // if !recentContent.count == 0 then...
                     if self.userInfo.recentContent?.count != 0 {
-                        VStack {
-                            HStack {
-                                Text("Recently Studied")
-                                    .font(Font.custom("Lato-Bold", size: 24))
-                                    .padding(.horizontal,16)
-                                    .padding(.top,11)
-                                
-                                Spacer()
-                            }
-                            
-                            ScrollView (.horizontal, showsIndicators: false) {
-                                
-                                HStack {
-                                    ForEach(self.userInfo.recentContent!.indices, id: \.self) { index in
-                                        RecentlyStudiedCardView(
-                                            mainTopic: self.userInfo.recentContentMod[index].maintopic,
-                                            subTopic: self.userInfo.recentContentMod[index].subtopic,
-                                            primaryColor: colorToTopic[self.userInfo.recentContentMod[index].maintopic] ?? Color.primaryGreen)
-                                            .padding(.horizontal,6)
-                                    }
-                                }
-                                    .padding(.horizontal)
-                                    .padding(.vertical,11)
-                                
-                            }
-                        }
+                        
+                        RecentlyStudiedView(toggleArticle: self.$toggleArticle, toggleHome: self.$toggleHome)
                         
                     }
                         
@@ -173,38 +155,7 @@ struct ContentView: View {
                             Spacer()
                         }
                         
-                        VStack {
-                            
-                            HStack {
-                                
-                                MainTopicCardView(mainTopic: "Savings", primaryColor: Color.secondaryGold, topicImage: "Home - Savings Illustration", toggle: self.$toggleSavings)
-                                    .padding(.trailing,7)
-                                
-                                MainTopicCardView(mainTopic: "Spending", primaryColor: Color.primaryGreen, topicImage: "Home - Spending Illustration", toggle: self.$toggleSpending)
-                                
-                                
-                            }.padding(.bottom,7)
-                            
-                            HStack {
-                                
-                                MainTopicCardView(mainTopic: "Managing", primaryColor: Color.secondaryPink, topicImage: "Home - Management Illustration",toggle: self.$toggleManaging)
-                                    .padding(.trailing,7)
-                                
-                                MainTopicCardView(mainTopic: "Investing",primaryColor: Color.secondaryMint, topicImage: "Home - Investing Illustration", toggle: self.$toggleInvesting)
-                                
-                            }.padding(.vertical,7)
-                            
-                            HStack {
-                                
-                                MainTopicCardView(mainTopic: "Student\nSpecific", primaryColor: Color.secondaryOrange, topicImage: "Home - Student Spec Illustration", toggle: self.$toggleStudents)
-                                    .padding(.horizontal,21)
-                                
-                                Spacer()
-                                
-                            }.padding(.vertical,7)
-                                
-
-                        }.padding(.top,7)
+                    MainTopicView(toggleSavings: self.$toggleSavings, toggleSpending: self.$toggleSpending, toggleManaging: self.$toggleManaging, toggleInvesting: self.$toggleInvesting, toggleStudents: self.$toggleStudents)
                     }
                     
 //                    Spacer()
@@ -248,16 +199,7 @@ struct ContentView: View {
                             self.toggleTopic.toggle()
                         }
                     }
-                    
-//                    if self.toggleSpending {
-//                        self.topicArticles.fetchMainTopic(maintopic: "spending") { rt in
-//                            print("complete: Spending")
-//                            print(rt)
-//                        }
-//                    }
-                }
-                )
-                
+                })
             }
             .navigationBarItems(
                 leading: Button(action: {
@@ -297,4 +239,90 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
 let screen = UIScreen.main.bounds
+
+
+struct RecentlyStudiedView: View {
+    @EnvironmentObject var userInfo : UserData
+    @EnvironmentObject var topicArticles : ArticleStore
+    
+    @Binding var toggleArticle : Bool
+    @Binding var toggleHome : Bool
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Recently Studied")
+                    .font(Font.custom("Lato-Bold", size: 24))
+                    .padding(.horizontal,16)
+                    .padding(.top,11)
+                
+                Spacer()
+            }
+            
+            ScrollView (.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(self.userInfo.recentContent!.indices, id: \.self) { index in
+                        RecentlyStudiedCardView(
+                            mainTopic: self.userInfo.recentContentMod[index].maintopic,
+                            title: self.userInfo.recentContentMod[index].title,
+                            primaryColor: colorToTopic[self.userInfo.recentContentMod[index].maintopic] ?? Color.primaryGreen)
+                            .padding(.horizontal,6)
+                            .onTapGesture {
+                                self.topicArticles.fetchArticle(givenmaintopic: self.userInfo.recentContentMod[index].maintopic, title: self.userInfo.recentContentMod[index].title) { arti in
+                                        self.toggleArticle.toggle()
+                                        self.toggleHome.toggle()
+                                        print(arti)
+                                }
+                            }
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.vertical,11)
+            }
+        }
+    }
+}
+
+struct MainTopicView: View {
+    @Binding var toggleSavings : Bool
+    @Binding var toggleSpending : Bool
+    @Binding var toggleManaging : Bool
+    @Binding var toggleInvesting : Bool
+    @Binding var toggleStudents : Bool
+    
+    var body: some View {
+        VStack {
+            
+            HStack {
+                
+                MainTopicCardView(mainTopic: "Savings", primaryColor: Color.secondaryGold, topicImage: "Home - Savings Illustration", toggle: self.$toggleSavings)
+                    .padding(.trailing,7)
+                
+                MainTopicCardView(mainTopic: "Spending", primaryColor: Color.primaryGreen, topicImage: "Home - Spending Illustration", toggle: self.$toggleSpending)
+                
+                
+            }.padding(.bottom,7)
+            
+            HStack {
+                
+                MainTopicCardView(mainTopic: "Managing", primaryColor: Color.secondaryPink, topicImage: "Home - Management Illustration",toggle: self.$toggleManaging)
+                    .padding(.trailing,7)
+                
+                MainTopicCardView(mainTopic: "Investing",primaryColor: Color.secondaryMint, topicImage: "Home - Investing Illustration", toggle: self.$toggleInvesting)
+                
+            }.padding(.vertical,7)
+            
+            HStack {
+                
+                MainTopicCardView(mainTopic: "Student\nSpecific", primaryColor: Color.secondaryOrange, topicImage: "Home - Student Spec Illustration", toggle: self.$toggleStudents)
+                    .padding(.horizontal,21)
+                
+                Spacer()
+                
+            }.padding(.vertical,7)
+            
+        }.padding(.top,7)
+    }
+}

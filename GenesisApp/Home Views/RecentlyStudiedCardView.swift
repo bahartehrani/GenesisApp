@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RecentlyStudiedCardView: View {
     @State var mainTopic : String
-    @State var subTopic : String
+    @State var title : String
     @State var primaryColor : Color
     
     
@@ -18,14 +18,16 @@ struct RecentlyStudiedCardView: View {
         Button(action: {
             //
         }) { 
-            VStack {
+            VStack(spacing: 4.0) {
                 Text(mainTopic + ":")
-                    .font(Font.custom("Lato-Thin", size: 18))
-                Text(subTopic)
-                    .font(Font.custom("Lato-Bold", size: 28))
+                    .font(Font.custom("Lato-Bold", size: 18))
+                Text(title)
+                    .font(Font.custom("Lato-Thin", size: 21))
+                    .multilineTextAlignment(.center)
             }
                 .foregroundColor(.black)
-                .frame(width: 240, height: 80)
+            .padding(.horizontal, 12)
+                .frame(width: 240, height: 85)
                 .background(primaryColor.cornerRadius(20).shadow(radius: 1))
                 .overlay(
             
@@ -39,6 +41,6 @@ struct RecentlyStudiedCardView: View {
 
 struct RecentlyStudiedCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RecentlyStudiedCardView(mainTopic: "Managing", subTopic: "Budgeting", primaryColor: .secondaryGold)
+        RecentlyStudiedCardView(mainTopic: "Managing", title: "Learning to Investments", primaryColor: .secondaryGold)
     }
 }
