@@ -27,8 +27,8 @@ struct ContentView: View {
     @State var toggleProfile = false
     @State var toggleInfo = false
     @State var toggleSearch = false
+//    @State var toggleArticle = false
     @State var toggleArticle = false
-    @State var toggleHome = true
     
     @State var fillerRS = [
         "Managing" : "Budgeting",
@@ -109,9 +109,8 @@ struct ContentView: View {
                         EmptyView()
                     }
                     
-                    NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleHome: self.$toggleHome)
+                    NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleArticle: self.$toggleArticle)
                         .navigationBarTitle("")
-                    .navigationBarHidden(true)
                     .navigationBarBackButtonHidden(true)
                         , isActive: self.$toggleArticle){
                         EmptyView()
@@ -144,7 +143,7 @@ struct ContentView: View {
                                 // if !recentContent.count == 0 then...
                             if self.userInfo.recentContent?.count != 0 {
                                 
-                                RecentlyStudiedView(toggleArticle: self.$toggleArticle, toggleHome: self.$toggleHome)
+                                RecentlyStudiedView(toggleArticle: self.$toggleArticle)
                                 
                             }
                                 
@@ -253,7 +252,6 @@ struct RecentlyStudiedView: View {
     @EnvironmentObject var topicArticles : ArticleStore
     
     @Binding var toggleArticle : Bool
-    @Binding var toggleHome : Bool
     
     var body: some View {
         VStack {
@@ -277,7 +275,6 @@ struct RecentlyStudiedView: View {
                             .onTapGesture {
                                 self.topicArticles.fetchArticle(givenmaintopic: self.userInfo.recentContentMod[index].maintopic, title: self.userInfo.recentContentMod[index].title) { arti in
                                         self.toggleArticle.toggle()
-                                        self.toggleHome.toggle()
                                         print(arti)
                                 }
                             }

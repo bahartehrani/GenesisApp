@@ -15,19 +15,19 @@ struct RecentlyStudiedCardView: View {
     
     
     var body: some View {
-        Button(action: {
-            //
-        }) { 
+//        Button(action: {
+//            //
+//        }) {
             VStack(spacing: 4.0) {
                 Text(mainTopic + ":")
                     .font(Font.custom("Lato-Bold", size: 18))
                 Text(title)
-                    .font(Font.custom("Lato-Thin", size: 21))
+                    .font(Font.custom("Lato-Thin", size: 20))
                     .multilineTextAlignment(.center)
             }
                 .foregroundColor(.black)
             .padding(.horizontal, 12)
-                .frame(width: 240, height: 85)
+                .frame(width: 230, height: 85)
                 .background(primaryColor.cornerRadius(20).shadow(radius: 1))
                 .overlay(
             
@@ -35,7 +35,7 @@ struct RecentlyStudiedCardView: View {
                     
             
                 )
-        }
+//        }
     }
 }
 

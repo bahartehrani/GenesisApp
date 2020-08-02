@@ -17,7 +17,7 @@ struct ArticleView: View {
     
     @Binding var toggle : Bool
     @State var toggleStar = false
-    @Binding var toggleHome : Bool
+    @Binding var toggleArticle : Bool
 //    @State var name : String
 //    @State var date : String
 //    @State var author : String
@@ -143,7 +143,7 @@ struct ArticleView: View {
                 }), trailing:
                 Button(action: {
                     withAnimation {
-                        self.toggleHome.toggle()
+                        self.toggleArticle.toggle()
                     }
                 }, label: {
                     Image(systemName: "house")
