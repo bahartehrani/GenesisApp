@@ -110,9 +110,12 @@ struct ContentView: View {
                     }
                     
                     NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleHome: self.$toggleHome)
+                        .navigationBarTitle("")
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
                         , isActive: self.$toggleArticle){
                         EmptyView()
-                    }
+                    }.isDetailLink(false)
                     
                     // .font(Font.custom("Lato-Black", size: 20))
                     

@@ -96,8 +96,12 @@ struct WeeklyExpensesView: View {
                     VStack {
                         
                         // Graph - the hard part
-                        Rectangle()
-                            .foregroundColor(.white)
+//                        Rectangle()
+//                            .foregroundColor(.white)
+                        
+                        Image("Weekly Expenses Graph")
+                            .resizable()
+                            .padding(8)
                         
                         Spacer()
                         
