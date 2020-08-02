@@ -45,7 +45,9 @@ struct ArticleView: View {
                         
                         Spacer()
                         
-                        Image(systemName: toggleStar ? "star.fill" : "star")
+                        Image(systemName: self.userInfo.starredContent?.contains(self.currentArt.type + "," + self.currentArt.maintopic + "," + self.currentArt.articleName) ?? self.toggleStar
+            
+                            ? "star.fill" : "star")
                             .onTapGesture {
                                 self.toggleStar.toggle()
                                 
