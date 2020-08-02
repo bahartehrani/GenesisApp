@@ -13,8 +13,8 @@ struct InfoView: View {
     
     var subviews = [
         UIHostingController(rootView: InfoSubview(background: "TutorialHome", woman: "TutorialPointer1")),
-        UIHostingController(rootView: InfoSubview(background: "TutorialProfile", woman: "TutorialPointer2")),
-        UIHostingController(rootView: InfoSubview(background: "TutorialHome", woman: "TutorialPointer3")),
+        UIHostingController(rootView: InfoSubview(background: "TutorialHome", woman: "TutorialPointer2")),
+        UIHostingController(rootView: InfoSubview(background: "TutorialProfile", woman: "TutorialPointer3")),
         UIHostingController(rootView: InfoSubview(background: "TutorialHome", woman: "TutorialPointer4")),
     ]
     
