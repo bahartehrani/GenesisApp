@@ -109,53 +109,55 @@ struct ContentView: View {
                         EmptyView()
                     }
                     
-//                    NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleHome: self.$toggleHome)
-//                        , isActive: self.$toggleArticle){
-//                        EmptyView()
-//                    }
+                    NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleHome: self.$toggleHome)
+                        , isActive: self.$toggleArticle){
+                        EmptyView()
+                    }
                     
                     // .font(Font.custom("Lato-Black", size: 20))
                     
-                    VStack {
-                        
-                        // Welcome Sign
-                        Text("Welcome, " + self.userInfo.firstName)
-                        .font(Font.custom("Lato-Bold", size: 30))
-                        
-                        Text("What would you like to learn today?")
-                        .font(Font.custom("Lato-Thin", size: 18))
-                            .padding(.vertical, 12)
-                        
-                        
-                        // Search Bar
-                        SearchBar(text: $searchQuery, toggleSearch: $toggleSearch)
-                        
-                        
-                    }
-                    .padding(.top,-30)
-                    
-                    //Error extra argument in call when trying to add Nav link for recently studied
-                VStack {
-                        // Recently Studied - hide if user hasn't clicked on anything
-                        // if !recentContent.count == 0 then...
-                    if self.userInfo.recentContent?.count != 0 {
-                        
-                        RecentlyStudiedView(toggleArticle: self.$toggleArticle, toggleHome: self.$toggleHome)
-                        
-                    }
-                        
-                        
-                        // Browse by Topic
-                        HStack {
-                            Text("Browse By Topic")
-                                .font(Font.custom("Lato-Bold", size: 26))
-                                .padding(.horizontal,18)
-                                .padding(.vertical,4)
+                    Group {
+                        VStack {
+                                
+                                // Welcome Sign
+                                Text("Welcome, " + self.userInfo.firstName)
+                                .font(Font.custom("Lato-Bold", size: 30))
+                                
+                                Text("What would you like to learn today?")
+                                .font(Font.custom("Lato-Thin", size: 18))
+                                    .padding(.vertical, 12)
+                                
+                                
+                                // Search Bar
+                                SearchBar(text: $searchQuery, toggleSearch: $toggleSearch)
+                                
+                                
+                            }
+                            .padding(.top,-30)
                             
-                            Spacer()
-                        }
-                        
-                    MainTopicView(toggleSavings: self.$toggleSavings, toggleSpending: self.$toggleSpending, toggleManaging: self.$toggleManaging, toggleInvesting: self.$toggleInvesting, toggleStudents: self.$toggleStudents)
+                            //Error extra argument in call when trying to add Nav link for recently studied
+                        VStack {
+                                // Recently Studied - hide if user hasn't clicked on anything
+                                // if !recentContent.count == 0 then...
+                            if self.userInfo.recentContent?.count != 0 {
+                                
+                                RecentlyStudiedView(toggleArticle: self.$toggleArticle, toggleHome: self.$toggleHome)
+                                
+                            }
+                                
+                                
+                                // Browse by Topic
+                                HStack {
+                                    Text("Browse By Topic")
+                                        .font(Font.custom("Lato-Bold", size: 26))
+                                        .padding(.horizontal,18)
+                                        .padding(.vertical,4)
+                                    
+                                    Spacer()
+                                }
+                                
+                            MainTopicView(toggleSavings: self.$toggleSavings, toggleSpending: self.$toggleSpending, toggleManaging: self.$toggleManaging, toggleInvesting: self.$toggleInvesting, toggleStudents: self.$toggleStudents)
+                            }
                     }
                     
 //                    Spacer()
