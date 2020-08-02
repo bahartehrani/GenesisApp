@@ -45,7 +45,7 @@ struct TopicView: View {
             VStack {
     //            Top section
                 
-                NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleView, toggleArticle: self.$toggle)
+                NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleView, toggleArticle: self.$toggle, background: self.$backgroundColor)
                     .environmentObject(self.userInfo)
                     .environmentObject(self.topicArticles)
                         .navigationBarBackButtonHidden(true)

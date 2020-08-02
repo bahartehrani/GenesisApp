@@ -27,7 +27,7 @@ struct ContentView: View {
     @State var toggleProfile = false
     @State var toggleInfo = false
     @State var toggleSearch = false
-//    @State var toggleArticle = false
+    @State var backgroundColor = ""
     @State var toggleArticle = false
     
     @State var fillerRS = [
@@ -109,7 +109,7 @@ struct ContentView: View {
                         EmptyView()
                     }
                     
-                    NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleArticle: self.$toggleArticle)
+                    NavigationLink(destination: ArticleView(currentArt: self.$topicArticles.currentArticle, toggle: self.$toggleArticle, toggleArticle: self.$toggleArticle, background: self.$backgroundColor)
                         .navigationBarTitle("")
                     .navigationBarBackButtonHidden(true)
                         , isActive: self.$toggleArticle){
@@ -179,6 +179,24 @@ struct ContentView: View {
                 .onDisappear(perform: {
                     self.toggleTopic.toggle()
                     let choose = true
+
+                    let topic = self.topicArticles.currentArticle.maintopic
+                    print(self.topicArticles.currentArticle.maintopic)
+                    switch topic {
+                    case "Savings" :
+                        self.backgroundColor = "secondaryGold"
+                    case "Spending" :
+                        self.backgroundColor = "primaryGreen"
+                    case "Managing" :
+                        self.backgroundColor = "secondaryPink"
+                    case "Investing" :
+                        self.backgroundColor = "secondaryMint"
+                    case "Students" :
+                        self.backgroundColor = "primaryOrange"
+
+                    default :
+                        self.backgroundColor = "primaryBlue"
+                    }
                     
                     switch choose {
                     case self.toggleSavings :

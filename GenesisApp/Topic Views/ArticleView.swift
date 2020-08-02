@@ -18,13 +18,11 @@ struct ArticleView: View {
     @Binding var toggle : Bool
     @State var toggleStar = false
     @Binding var toggleArticle : Bool
-//    @State var name : String
-//    @State var date : String
-//    @State var author : String
-//    @State var topic : String
+    @Binding var background : String
+    
+    
     
     var body: some View {
-        
         VStack {
             HStack{
                 Text(self.currentArt.maintopic)
@@ -34,7 +32,7 @@ struct ArticleView: View {
             .font(.custom("Lato-Bold", size: 32))
             .padding(.horizontal, 32)
             .frame(width: screen.width, height: 220)
-            .background(Color.secondaryGold)
+            .background(Color(self.background).animation(.spring()))
             .offset(x: 0, y: screen.height > 850 ? -30 : -35)
             
             VStack {
