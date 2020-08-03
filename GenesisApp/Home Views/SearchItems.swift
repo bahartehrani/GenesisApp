@@ -12,14 +12,15 @@ struct SearchItems: View {
     @Binding var searchQuery : String
     @Binding var toggleSearch : Bool
     @State var randomColors = [Color(.primaryBlue),Color(.primaryGreen), Color(.secondaryPink), Color(.secondaryMint), Color(.secondaryOrange), Color(.secondaryGold)]
+    @State var randomBackground = ["Home - Investing Illustration","Home - Management Illustration", "Home - Student Spec Illustration"]
     //will replace w subtopicarticles from database later
     //this is tester: TYPE IN SEARCH "Apples" huehue ;)
     @State var searchTopics: [String] = []
     @State var searchTest =
-    [Article(articleBody: "Apples and bananas and stuff to look for", articleName: "Apples and bananas eats", author: "c", dateCreated: "d", maintopic: "eats", subtopic: "f", type: "Im"),
-    Article(articleBody: "helps and stuff Apples", articleName: "stuff Apples", author: "j", dateCreated: "k", maintopic: "pie", subtopic: "m", type: "Pretty"),
-    Article(articleBody: "Apples and stuff", articleName: "Apples and stuff eats", author: "c", dateCreated: "d", maintopic: "eats", subtopic: "f", type: "Hungers"),
-    Article(articleBody: "Apples and look for", articleName: "Apples and look", author: "c", dateCreated: "d", maintopic: "eats", subtopic: "f", type: "WBU")]
+    [Article(articleBody: "These are articles that will be search", articleName: "Introduction to Short-Term Trading", author: "Bob", dateCreated: "d", maintopic: "Investing", subtopic: "Investing", type: "Article"),
+    Article(articleBody: "helpful articles to help", articleName: "Introduction to Financial Aid", author: "Bob", dateCreated: "k", maintopic: "Students", subtopic: "Investing", type: "Article"),
+    Article(articleBody: "articles that help are helpful", articleName: "Introduction to FAFSA", author: "Bob", dateCreated: "d", maintopic: "Students", subtopic: "Investing", type: "Quiz"),
+    Article(articleBody: "more things to search", articleName: "Introduction to Investing", author: "Bob", dateCreated: "d", maintopic: "Investing", subtopic: "Investing", type: "Article")]
     
     func addTopic(maintopic : String){
         searchTopics.append(maintopic)
@@ -65,7 +66,7 @@ struct SearchItems: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                                 .offset(x: 1, y: 2)
                             
-                            MainTopicCardView(mainTopic: topic, primaryColor: self.randomColors.randomElement()!, topicImage: "Home - Investing Illustration" , toggle: .constant(false))
+                            MainTopicCardView(mainTopic: topic, primaryColor: self.randomColors.randomElement()!, topicImage: self.randomBackground.randomElement()! , toggle: .constant(false))
                                 .offset(x: 0, y: 0)
     //                        Text(article.articleName)
     //                        .font(Font.custom("Lato-Bold", size: 20))
