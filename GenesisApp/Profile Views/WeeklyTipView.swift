@@ -115,7 +115,7 @@ struct oldTipView: View {
                     }) {
                         Image(systemName: "chevron.right")
                             .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
-                            .rotationEffect(.degrees(180))
+                            //.rotationEffect(.degrees(180))
                     }
                 }
                 
