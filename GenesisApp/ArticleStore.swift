@@ -30,7 +30,9 @@ class ArticleStore : ObservableObject {
     
     @Published var maintopicviewSpending = MainTopicOverview(title: "spending", subtopics: [], description: "", subtopicArtifacts : [:])
     @Published var maintopicviewSavings = MainTopicOverview(title: "savings", subtopics: [], description: "", subtopicArtifacts : [:])
-
+    @Published var maintopicviewInvesting = MainTopicOverview(title: "investing", subtopics: [], description: "", subtopicArtifacts : [:])
+    
+    
     func fetchMainTopic (maintopic: String, completion: @escaping (Bool) -> Void) {
         //self.maintopicview.subtopicArtifacts.removeAll()
         // , completion: @escaping (MainTopicOverview) -> Void
@@ -71,6 +73,9 @@ class ArticleStore : ObservableObject {
                     }
                     if maintopic == "savings" {
                         self.maintopicviewSavings = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)
+                    }
+                    if maintopic == "investing" {
+                        self.maintopicviewInvesting = MainTopicOverview(title: mainTitle, subtopics: mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)
                     }
                     
 //                    self.maintopicview = MainTopicOverview(title: mainTitle, subtopics:   mainSubtopics, description: mainDescript, subtopicArtifacts: mainSubtopicArtifacts)

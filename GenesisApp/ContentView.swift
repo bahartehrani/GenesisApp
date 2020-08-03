@@ -67,7 +67,7 @@ struct ContentView: View {
                             EmptyView()
                     }.isDetailLink(false)
                     
-                    NavigationLink(destination: TopicView(mainTopic: "Investing", backgroundColor: "secondaryMint", toggle: self.$toggleInvesting, maintopicview: self.$topicArticles.maintopicviewSpending)
+                    NavigationLink(destination: TopicView(mainTopic: "Investing", backgroundColor: "secondaryMint", toggle: self.$toggleInvesting, maintopicview: self.$topicArticles.maintopicviewInvesting)
                     .environmentObject(userInfo)
                         .environmentObject(topicArticles)
                     .navigationBarBackButtonHidden(true)
@@ -206,7 +206,7 @@ struct ContentView: View {
                     case self.toggleManaging :
                         self.currentTopic = "spending"
                     case self.toggleInvesting :
-                        self.currentTopic = "spending"
+                        self.currentTopic = "investing"
                     case self.toggleStudents :
                         self.currentTopic = "spending"
                     default :
