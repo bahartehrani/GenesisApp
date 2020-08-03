@@ -271,6 +271,7 @@ struct RecentlyStudiedView: View {
     
     @Binding var toggleArticle : Bool
     
+    
     var body: some View {
         VStack {
             HStack {

@@ -73,7 +73,7 @@ struct TopicView: View {
                 .padding(32)
                 .frame(maxHeight: 350)
                 .background(
-                    LinearGradient(gradient: Gradient(colors: [Color(self.backgroundColor), Color(.primaryGreen)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    LinearGradient(gradient: Gradient(colors: [Color(self.backgroundColor), Color(.primaryBlue)]), startPoint: .topLeading, endPoint: .bottomTrailing)
 //                    Color(self.backgroundColor)
                 )
                 

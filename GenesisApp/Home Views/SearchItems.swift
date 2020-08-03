@@ -11,7 +11,7 @@ import SwiftUI
 struct SearchItems: View {
     @Binding var searchQuery : String
     @Binding var toggleSearch : Bool
-    
+    @State var randomColors = [Color(.primaryBlue),Color(.primaryGreen), Color(.secondaryPink), Color(.secondaryMint), Color(.secondaryOrange), Color(.secondaryGold)]
     //will replace w subtopicarticles from database later
     //this is tester: TYPE IN SEARCH "Apples" huehue ;)
     @State var searchTopics: [String] = []
@@ -65,7 +65,7 @@ struct SearchItems: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                                 .offset(x: 1, y: 2)
                             
-                            MainTopicCardView(mainTopic: topic, primaryColor: .primaryGreen, topicImage: "Home - Investing Illustration" , toggle: .constant(false))
+                            MainTopicCardView(mainTopic: topic, primaryColor: self.randomColors.randomElement()!, topicImage: "Home - Investing Illustration" , toggle: .constant(false))
                                 .offset(x: 0, y: 0)
     //                        Text(article.articleName)
     //                        .font(Font.custom("Lato-Bold", size: 20))
