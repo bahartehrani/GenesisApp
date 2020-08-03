@@ -54,7 +54,7 @@ struct currentTipView: View {
                     Button(action: {
                         self.toggleTip.toggle()
                     }) {
-                        Image("Backward arrow small")
+                        Image(systemName: "chevron.left")
                             .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
                     }
                     
@@ -113,7 +113,7 @@ struct oldTipView: View {
                     Button(action: {
                         self.toggleTip.toggle()
                     }) {
-                        Image("Backward arrow small")
+                        Image(systemName: "chevron.right")
                             .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
                             .rotationEffect(.degrees(180))
                     }

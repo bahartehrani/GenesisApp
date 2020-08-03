@@ -59,7 +59,8 @@ struct WeeklyExpensesView: View {
                     Button(action: {
                         //
                     }) {
-                        Image("Backward arrow small")
+                        Image(systemName: "chevron.left")
+                            .font(Font.custom("Lato-Black", size: 18))
                             
                             //This color is slllighttly less harsh than white o-o
                             .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
@@ -68,9 +69,10 @@ struct WeeklyExpensesView: View {
                     Button(action: {
                         //
                     }) {
-                        Image("Backward arrow small")
+                        Image(systemName: "chevron.right")
+                            .font(Font.custom("Lato-Black", size: 18))
                             .foregroundColor(Color(#colorLiteral(red: 0.9614372849, green: 0.9614372849, blue: 0.9614372849, alpha: 1)))
-                            .rotationEffect(.degrees(180))
+                            //.rotationEffect(.degrees(180))
                     }.padding(.leading,3)
                     
                     Button(action: {
